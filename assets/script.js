@@ -19,23 +19,14 @@
     }
   };
 
-  // Attempt to load translations.js; resolve whether it loads or not
+  // translations.js is explicitly included in index.html. No dynamic loading needed.
   function loadTranslations() {
-    return new Promise((resolve) => {
-      if (window.translations) {
-        resolve();
-        return;
-      }
-      const script = document.createElement('script');
-      script.src = 'assets/translations.js';
-      script.async = true;
-      script.onload = () => resolve();
-      script.onerror = () => resolve(); // proceed with fallback
-      document.head.appendChild(script);
-    });
+    return Promise.resolve();
   }
 
   function getTranslations() {
+    const source = window.translations ? 'external' : 'fallback';
+    try { console.log(`[i18n] Using ${source} translations`); } catch (e) {}
     return window.translations || fallbackTranslations;
   }
 

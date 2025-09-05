@@ -1,5 +1,6 @@
 // assets/translations.js
-const translations = {
+// Expose translations on the global window so other scripts can access it
+window.translations = {
     en: {
       orgDescription: `
         <p>FinoGeeks, established in 2017, is dedicated to helping enterprises build an autonomous and open digital ecosystem under the premise of data security and privacy protection. With our unique enterprise-grade cloud-native mobile application digital engine compatible with mainstream internet mini-program technologies, we provide a foundational platform for enterprise digitization.</p>
