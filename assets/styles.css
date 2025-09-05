@@ -22,3 +22,43 @@ body {
   #repo-list li {
     margin: 10px 0;
   }
+
+  /* Products grid on index */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  .product-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 16px;
+    background: #fff;
+  }
+
+  .product-card h3 {
+    margin-top: 0;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: #0366d6;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    background: #024ea6;
+  }
+
+  /* Language switcher */
+  .lang-switcher {
+    margin: 12px 0 24px;
+  }
+  .lang-switcher .btn {
+    margin-right: 8px;
+  }

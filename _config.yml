@@ -26,3 +26,8 @@ baseurl: ""   # if serving from a subpath
 # Ensure remote theme works in local builds as well
 plugins:
   - jekyll-remote-theme
+
+# Show product pages in the top navigation
+header_pages:
+  - en/finclip.md
+  - en/neuronkit.md

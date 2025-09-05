@@ -1,24 +1,24 @@
 ---
-layout: home
-title: FinClip - The SuperApp Platform
+layout: default
+title: Redirecting…
+permalink: /
 ---
 
-<header>
-  <div id="language-switcher">
-    <button onclick="setLanguage('en')">English</button>
-    <button onclick="setLanguage('zh')">中文</button>
-  </div>
-  <hr/>
-  
-</header>
-
 <main>
-  <section id="org-description"></section>
-  <section id="repos">
-    <h2>Repositories</h2>
-    <ul id="repo-list"></ul>
+  <section>
+    <h2>Redirecting…</h2>
+    <p>If you are not redirected automatically, choose your language:</p>
+    <p>
+      <a class="btn" href="{{ '/en/' | relative_url }}">English</a>
+      <a class="btn" href="{{ '/zh/' | relative_url }}">中文</a>
+    </p>
   </section>
 </main>
 
-<script src="{{ '/assets/translations.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ '/assets/script.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script>
+  (function () {
+    var lang = (navigator.language || 'en').toLowerCase();
+    var target = lang.indexOf('zh') === 0 ? '{{ '/zh/' | relative_url }}' : '{{ '/en/' | relative_url }}';
+    try { window.location.replace(target); } catch (e) { window.location.href = target; }
+  })();
+</script>
