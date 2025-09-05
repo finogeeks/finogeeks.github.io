@@ -4,6 +4,11 @@ title: Redirecting…
 permalink: /
 ---
 
+<!-- Fallback when JavaScript is disabled: go to English -->
+<noscript>
+  <meta http-equiv="refresh" content="0; url=/en/">
+</noscript>
+
 <main>
   <section>
     <h2>Redirecting…</h2>
@@ -18,7 +23,10 @@ permalink: /
 <script>
   (function () {
     var lang = (navigator.language || 'en').toLowerCase();
-    var target = lang.indexOf('zh') === 0 ? '{{ '/zh/' | relative_url }}' : '{{ '/en/' | relative_url }}';
+    var isFile = location.protocol === 'file:';
+    var en = isFile ? 'en/index.html' : '/en/';
+    var zh = isFile ? 'zh/index.html' : '/zh/';
+    var target = lang.indexOf('zh') === 0 ? zh : en;
     try { window.location.replace(target); } catch (e) { window.location.href = target; }
   })();
 </script>
