@@ -8,12 +8,12 @@
   // Fallback translations in case assets/translations.js isn't loaded
   const fallbackTranslations = {
     en: {
-      orgDescription: `<h2>FinoGeeks</h2><p>Building an autonomous and open digital ecosystem with enterprise-grade, cloud-native mobile app engines.</p>`,
+      orgDescription: `<p>Building an autonomous and open digital ecosystem with enterprise-grade, cloud-native mobile app engines.</p>`,
       learnMore: "Learn more about our products at <a href='https://www.finclip.com'>FinClip</a>.",
       contact: 'Contact us at 400-066-0021 or 0755-86967467 for business inquiries.'
     },
     zh: {
-      orgDescription: `<h2>凡泰极客</h2><p>以企业级云原生移动应用数字引擎构建自主开放的数字生态。</p>`,
+      orgDescription: `<p>以企业级云原生移动应用数字引擎构建自主开放的数字生态。</p>`,
       learnMore: "访问 <a href='https://www.finclip.com'>FinClip</a> 了解更多产品信息。",
       contact: '商务洽谈请致电 400-066-0021 或 0755-86967467。'
     }
