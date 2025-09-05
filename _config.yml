@@ -27,7 +27,5 @@ baseurl: ""   # if serving from a subpath
 plugins:
   - jekyll-remote-theme
 
-# Show product pages in the top navigation
-header_pages:
-  - en/finclip.md
-  - en/neuronkit.md
+# Disable default header_pages; we render a custom header include instead
+header_pages: []

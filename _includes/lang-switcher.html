@@ -1,19 +1,18 @@
-{% assign url = page.url | split: '?' | first %}
-{% if url %}
-  {% if url startswith '/en/' %}
-    {% assign alt = url | replace_first: '/en/', '/zh/' %}
-    <nav class="lang-switcher" aria-label="Language">
-      <a class="btn" href="{{ alt | relative_url }}">中文</a>
-    </nav>
-  {% elsif url startswith '/zh/' %}
-    {% assign alt = url | replace_first: '/zh/', '/en/' %}
-    <nav class="lang-switcher" aria-label="Language">
-      <a class="btn" href="{{ alt | relative_url }}">English</a>
-    </nav>
-  {% else %}
-    <nav class="lang-switcher" aria-label="Language">
-      <a class="btn" href="{{ '/en/' | relative_url }}">English</a>
-      <a class="btn" href="{{ '/zh/' | relative_url }}">中文</a>
-    </nav>
-  {% endif %}
+{% assign url = page.url | split: '?' | first | default: '' %}
+{% assign prefix = url | slice: 0, 4 %}
+{% if prefix == '/en/' %}
+  {% assign alt = url | replace_first: '/en/', '/zh/' %}
+  <nav class="lang-switcher" aria-label="Language">
+    <a class="btn" href="{{ alt | relative_url }}">中文</a>
+  </nav>
+{% elsif prefix == '/zh/' %}
+  {% assign alt = url | replace_first: '/zh/', '/en/' %}
+  <nav class="lang-switcher" aria-label="Language">
+    <a class="btn" href="{{ alt | relative_url }}">English</a>
+  </nav>
+{% else %}
+  <nav class="lang-switcher" aria-label="Language">
+    <a class="btn" href="{{ '/en/' | relative_url }}">English</a>
+    <a class="btn" href="{{ '/zh/' | relative_url }}">中文</a>
+  </nav>
 {% endif %}
