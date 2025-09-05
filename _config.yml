@@ -1,0 +1,28 @@
+title: FinoGeeks
+description: "Building an autonomous and open digital ecosystem with enterprise-grade, cloud-native mobile app engines."
+# Enable the Minima theme for GitHub Pages
+# See: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll
+# Minima repository: https://github.com/jekyll/minima
+
+remote_theme: jekyll/minima
+# Alternatively, for local builds with Gemfile, use:
+# theme: minima
+
+# Optional: Minima skin options include 'classic', 'dark', 'solarized', 'auto'
+# See: https://github.com/jekyll/minima#skins
+minima:
+  skin: classic
+
+# Basic site settings
+url: ""   # set your production URL if needed
+baseurl: ""   # if serving from a subpath
+
+# Optional social links shown by Minima (customize as needed)
+# https://github.com/jekyll/minima#social-links
+# social_links:
+#   - { platform: github,  user_url: "https://github.com/finogeeks" }
+#   - { platform: website, user_url: "https://www.finclip.com" }
+
+# Ensure remote theme works in local builds as well
+plugins:
+  - jekyll-remote-theme
