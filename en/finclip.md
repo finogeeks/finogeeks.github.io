@@ -4,8 +4,6 @@ title: FinClip — The SuperApp Platform
 permalink: /en/finclip.html
 ---
 
-{% include lang-switcher.html %}
-
 FinClip is an enterprise-grade SuperApp platform that lets you embed mini‑apps into your existing mobile applications. It provides the runtime, packaging, distribution, and governance needed to run rich mini‑app experiences safely at scale.
 
 ## Highlights

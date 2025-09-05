@@ -4,8 +4,6 @@ title: NeuronKit — Agentic 中间件
 permalink: /zh/neuronkit.html
 ---
 
-{% include lang-switcher.html %}
-
 NeuronKit 是一套让任何移动应用与 IoT 设备具备 Agentic 能力的中间件。它通过策略（Policy）与上下文（Context）来安全编排能力，实现在设备与服务之间的自动化联动。
 
 ## 亮点

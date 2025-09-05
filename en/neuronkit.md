@@ -4,8 +4,6 @@ title: NeuronKit — Agentic Middleware
 permalink: /en/neuronkit.html
 ---
 
-{% include lang-switcher.html %}
-
 NeuronKit is a middleware that turns any mobile app and IoT device into an agentic system. It orchestrates capabilities with policies and context to safely automate tasks across devices and services.
 
 ## Highlights
