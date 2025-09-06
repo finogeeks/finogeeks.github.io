@@ -1,19 +1,197 @@
 ---
 layout: neuronkit
-title: "电商的变革：从点击流到对话流"
+title: "电子商务的变革：从点击流到对话流"
 permalink: /zh/neuronkit/whitepaper/
 ---
 
-## 摘要
+## 内容提要
 
-电商正从“点击流 + 网站”范式迈向“对话流 + 代理（Agent）”新范式。借助上下文记忆、设备侧沙箱（PDP/PEP）与对话式 UI，品牌能够以隐私友好且安全的方式实现更高转化与更好体验。
+电子商务格局正处在一场根本性的模式转变的关键节点上：从以“点击流+网站”为基础的传统架构，转向以“对话流+智能代理”为核心的先进框架。当前依赖于预设路径、通过线性漏斗追踪用户的点击式系统，正暴露出战略层面的局限性。其根本弱点在于，无法准确理解用户意图，导致观察到的行为与实际客户满意度之间出现脱节。与此同时，第三方 Cookie 的逐渐淘汰，也使得传统依赖“监控”的个性化模型走向过时。
 
-## 目录
+新兴的对话流范式，标志着人机交互（HCI）的一次战略升级。这一新模式以自主人工智能代理为驱动，其核心逻辑发生了根本转变：不再要求用户适应复杂的界面，而是让技术主动适应人类的自然交流方式。这类代理凭借先进的自然语言处理（NLP）和机器学习能力，可通过文本、语音甚至视觉信号，与客户进行流畅、多模态的对话。这种对话机制，天然地弥补了点击流时代的缺陷——通过直接捕捉用户的意图与偏好，提供更优质、高度个性化且流畅无阻的体验。
 
-- 为什么从点击流走向对话流
-- 设备侧沙箱与能力模型（Feature → Capability → Primitive）
-- 云端记忆与上下文工程
-- 对话式 UI（ConvoUI）与可操作组件
-- 安全、合规与可观测
+本报告深入剖析了这一新范式的基础机制：详细阐述线性的转化漏斗如何被实时、灵活的对话旅程所取代；解释如何以前所未有的准确与效率，实现交叉销售、向上销售与快速成交等商业目标；最后，为企业在以隐私优先、无 Cookie 为特征的新互联网环境中持续发展，提供战略蓝图——在这个新时代，真正的商业货币是用户自愿提供的第一方与零方数据，核心资产则是客户与品牌AI代理之间持续、基于信任的对话。
 
-> 说明：这是中文版白皮书的占位稿，完整内容将与英文版同步更新。
+## 第一部分：点击流时代的尾声
+
+### 1.1 点击流漏斗的结构
+
+传统的电子商务旅程是一个长期主导数字零售战略的概念模型，通常被形象地比喻为一个“漏斗”——顶部宽阔代表品牌认知，底部收窄最终指向购买行为 。常见的漏斗模型包括意识（Awareness）、考虑（Consideration）、获取（Acquisition）和忠诚（Loyalty）等阶段 。在此框架下，客户旅程被理解为一系列连续的步骤与触点：从首次通过广告或博客文章接触品牌，到浏览商品详情页，直至最终完成交易 。
+
+这一过程藉由点击流数据被详细记录，形成用户在网站中的“数字足迹” 。它捕捉了各类互动行为，例如访问页面数量、页面停留时长、加购或移除商品、以及页面间的跳转路径等  。这类数据长期以来是电商分析的基础，使零售商能够设定可量化的关键绩效指标（KPI）（如跳出率和退出率），并优化网站以提升用户流转效率 。其核心目标，是设计一条引导用户以最少点击完成预期动作（如购买）的最优路径 。
+
+### 1.2 路径依赖模式的局限
+
+尽管点击流模型沿用已久，但其局限性是结构性的。最突出的弱点在于，它仅能观察用户行为，却无法深入理解背后的动机或意图 。数据可以告诉我们用户“做了什么”，但无法解释“为什么这样做”。例如，点击流分析可能显示某个用户在商品页上停留了很久。传统解读会认为这是深度参与、内容吸引，应加以推广 。然而同样的情况也可能代表用户的困惑与沮丧：页面布局混乱、信息表达不清或功能失灵，导致他们无法进行下一步 。由于无法区分这两种截然不同的情境，企业往往难以做出真正数据驱动的决策 。
+
+这种偏差可能带来误导。客户可能仅因迫切需求某商品而完成购买——哪怕体验很差 。此时，营收数据显示交易成功，但客户情绪实为负面。点击流模型将收入视为客户满意度的唯一指标，这一前提本身就有缺陷。尽管它可识别出用户流失的“瓶颈”，却常常无法提供理解问题根源所需的背景信息，例如冗长的加售页面或复杂的结算流程 。此外，将该数据与线下行为整合也面临挑战，通常需用户登录会员账号，限制了企业构建无缝全渠道体验的能力 。这类数据处理起来异常复杂，需专业数据分析师才能提取有效洞察，因此对许多企业仍是一个未被充分挖掘的领域  。
+
+### 1.3 传统个性化策略的困境
+
+点击流时代的个性化方法，同样面临战略层面的危机。其传统做法是基于人口属性、浏览历史与购买行为，将客户分群 。该模式严重依赖第三方Cookie——通过跨网站跟踪用户行为，构建用于广告投放和内容分发的用户画像 。然而，这一框架正在迅速失效。主流浏览器逐步淘汰第三方Cookie，是对全球隐私保护立法（如GDPR和CCPA）的直接回应   。
+
+这不仅是一项技术挑战，更是消费者态度的深刻转变。如今绝大多数用户对品牌如何收集和使用其数据表现出高度警惕 。建立在第三方Cookie之上的个性化机制，本质上与这一趋势相悖。它被部分观点批评为“监控资本主义”，即用户数据被持续追踪并用于预测甚至操纵行为以获利 ，从而导致信任基础的瓦解。行业亟需战略转型——从未经许可的数据收集模式，转向强调透明与用户同意的“隐私优先”策略  。而点击流模式，因其本质，仍与这一过时且不可持续的数据范式紧密绑定。
+
+## 第二部分：对话流范式的兴起
+
+### 2.1 何为对话式商务？
+
+对话式商务指的是利用自动化交互与人工智能技术，打造更具吸引力的客户体验的过程 。这是人机交互（HCI）的一次根本转变：用户可通过网站聊天窗口、即时通讯应用或语音助手，使用自然语言与企业沟通  。关键在于，这并非旧式规则聊天机器人的简单延伸。传统聊天机器人基于“预设对话流程”，只能响应有限范围的问题，如同一个僵化的电话菜单系统  。其静态、脚本化的交互，常在用户提问超出设定范围时带来挫败感 。
+
+相比之下，现代对话式人工智能则是一次显著进化，它融合自然语言处理（NLP）、机器学习（ML）与实时客户数据  ，使得系统能够“分析并把握人类意图”，即便面对口语化、带俚语或具有隐含语义的提问 。生成式人工智能的加入，更使其能够突破固定脚本，生成贴合语境、灵活多样的回应，实现真正的双向对话 。用户与AI互动越频繁，后者就越能学习并完善应答，无需额外工程支持，使体验日渐个性化、更具“人感” 。
+
+### 2.2 代理型人工智能的崛起
+
+新范式中的“代理”，是驱动对话流的主动、自主引擎。与传统AI模型被动响应用户指令不同，代理型AI能够独立做出决策、执行复杂任务，几乎不需人工干预  。它是一种智能系统，能够持续从海量数据（包括浏览行为、点击与购买记录）中学习，实时调整并优化客户触达策略 。
+
+其自主性是一大关键区别。代理可主动发起客户互动，预测其需求，并在被询问之前就提供提示、提醒或建议 。这样一来，电商体验从“被动响应”转变为“主动引导”型 。例如，企业无需再手动分析点击流以寻找用户流失点，而是由AI代理从数字行为中识别早期购买信号，并启动相关、贴合语境的对话，引导用户完成购买 。这种独立运作与持续优化的能力，正是代理模型的独特之处，使其能自主处理端到端流程，例如在没有人工介入的情况下解决客户投诉 。
+
+### 2.3 人机交互的范式转变：从界面到交流
+
+向对话流范式的转变，代表着人机交互（HCI）的根本性变革。旧模式要求用户学习并适应图形界面的复杂性——包括菜单、按钮与导航系统 ，常伴随操作摩擦与认知负荷 。而新模式颠覆了这一动态：技术开始适应人类自然的交流方式 。
+
+对话式用户界面（CUI）模仿人类对话方式，使交互更直观、自然  ，显著降低技术使用门槛，提升对技术能力有限或残障用户的可访问性 。系统能够维持“语境理解”，记忆对话上下文，从而实现更连贯、一致的交流 ，为用户带来更具沉浸感和情感共鸣的体验 。这一人机交互范式转变的核心价值，不仅在于企业后端效率的提升，更在于为消费者提供了更顺畅、更个性化的体验。
+
+| **对比维度** | **点击流+网站范式** | **对话流+代理范式** |
+| :--- | :--- | :--- |
+| **人机交互模式** | **以界面为中心：** 用户需学习点击操作， navigating 静态视觉界面与菜单。 | **以交流为中心：** 技术通过对话适应自然语言与手势。 |
+| **数据类型** | **推断型数据：** 依赖被动记录的点击流与第三方Cookie推测意图。 | **同意型数据：** 直接获取用户自愿提供的零方与第一方数据。 |
+| **个性化机制** | **静态分群：** 基于广泛用户细分提供通用推荐。 | **动态超个性化：** 基于持续对话提供实时定制导购。 |
+| **用户旅程** | **预设路径：** 旅程是线性的、分阶段的，可喻为漏斗。 | **流动非线性：** 旅程是客户中心的对话飞轮。 |
+| **业务重心** | **路径优化：** 着力减少摩擦点，改善点击路径。 | **对话引导：** 专注实时辅助与主动互动。 |
+| **核心问题** | **意图误判：** 难以准确理解用户行为背后的原因。 | **伦理风险：** 需谨慎管理，防范数据隐私与操控行为。 |
+
+## 第三部分：新电商时代的客户旅程
+
+### 3.1 重构漏斗：从线性路径到流动对话
+
+在对话流范式下，传统电商的线性阶段漏斗已然过时。新的客户旅程更像一个“飞轮”或一系列流动、非线性的“微漏斗”，客户始终处于中心 。该模型认识到，用户不再遵循预设路径，而是与品牌展开持续对话。AI代理成为中枢纽带，能够在从产品发现到购买的全过程中为客户提供支持，且这一切可在一次对话中完成 。
+
+例如，用户旅程可能始于在短视频平台看到某商品，继而通过对话代理咨询建议，最终通过直播或内置聊天完成购买 。代理可全程协助：回答问题、提供推荐、简化结账，用户无需跳转多个静态页面 。这从根本上消除了点击流模式中的摩擦点，将多次点击与页面浏览压缩为一次无缝互动，加速购买路径。代理持续提供安心支持与即时问题解决的能力，也增强了客户决策信心，即便在交易最后阶段也是如此 。
+
+### 3.2 个人购物助理效应：AI驱动的大规模个性化
+
+对话流范式将个性化提升至全新高度——将网站静态推荐转变为动态的、“一对一”个人购物助理式体验  。AI代理运用先进自然语言处理（NLP）能力解析用户具体意图。例如，一道复杂提问——“我想找一双适合日常穿的、轻便透气、价格不超过800元的跑鞋”——可被拆解为具体数据点：产品类型、关键属性、价格上限 。这远超出传统关键词匹配，使代理能够提供仿佛为顾客量身定制的高精选产品列表 。
+
+AI实现这一点，是靠整合多源数据：包括用户历史购买、浏览行为、当下季节趋势等  。它可运用协同过滤（基于相似用户偏好推荐）与基于内容的过滤（基于产品属性推荐）等复杂算法  。通过融合这些方法，代理生成高度准确、全面的推荐。这一从用户互动、反馈与偏好中持续学习的过程是实时发生的，使得代理能不断优化调整客户旅程，推送更贴合其需求与愿望的个性化内容  。
+
+### 3.3 超越屏幕：语音与视觉商务的作用
+
+对话流并不局限于文本聊天。它是一个多模态范式，融合语音、视觉搜索和沉浸式技术，打造真正无缝的体验 。例如，语音商务代表着重要范式演进，通过语音助手实现免提购物，使得在驾车、烹饪等不便使用传统界面的场景中浏览和购买成为可能  ，同时显著加速购物流程（因说话快于打字） 。
+
+视觉搜索技术也在融入对话流。例如亚马逊的Lens Live功能，允许用户直接通过摄像头识别现实生活中的物品并即时购买 。AI代理借助视觉输入提供匹配商品、解答产品问题 。此外，增强现实（AR）和虚拟现实（VR）正用于提供沉浸式购物体验，用户可虚拟“试穿”产品或仔细查看细节，增强购买信心，提高转化率  。AI代理充当这些多样化交互模式的统一层，维持语境连续性，为用户提供协调、持续的体验。语音、视觉与沉浸式技术的战略整合，是新兴电商范式的核心。
+
+## 第四部分：无Cookie互联网的战略应对
+
+| **数据类型** | **零方数据** | **第一方数据** |
+| :--- | :--- | :--- |
+| **数据来源** | 用户主动通过对话、问卷、个人资料设置提供。 | 从企业自有渠道（如网站、App）直接收集，包括点击、浏览与购买历史。 |
+| **战略价值** | **明确高信任：** 提供用户偏好与意图最准确、可靠且合规的洞察。 | **推断大体量：** 提供大量行为数据，可用于推测用户兴趣与习惯。 |
+| **在对话流中的应用** | 生成超个性化推荐、风格建议与定制内容，精准匹配用户明示需求。 | 触发情境感知的对话提示与主动支持，如购物车放弃提醒。 |
+
+### 4.1 第三方Cookie的退场
+
+向无Cookie互联网的转变并非短期趋势，而是在监管压力与消费者态度转变共同作用下的永久性结构变革  。GDPR、CCPA等法规正严格限制客户数据的收集与使用，使得依靠第三方Cookie进行跨站跟踪的旧模式难以持续  。点击流模型对该模式的依赖，成为其最显著弱点。这一战略转变迫使企业重新思考如何个性化营销与获取客户 。
+
+消费者日益关注并警惕品牌如何收集其数据 ，积极寻求保护个人信息的方法，常选择退出Cookie跟踪等侵入式手段 。这引发了“信任转移”问题：用户对看似“免费”的平台保持怀疑，不愿向未明确承诺隐私保护的企业提供个人数据 。未能适应的企业将难以大规模提供个性化体验，丧失关键竞争优势 。
+
+### 4.2 新数据货币：第一方与零方数据
+
+在无Cookie环境中，新的数据货币是第一方和零方数据  。第一方数据是从品牌自有数字渠道（如官网、App）直接收集的信息，包括浏览历史、购买记录和会员计划互动等 。零方数据是价值更高的资产——客户自愿、明确提供给品牌的偏好、兴趣或问卷回答等   。
+
+对话流范式在收集这类数据方面具有天然优势。与AI代理的对话可作为实时、无缝的机制，收集明确的零方数据，使企业无需侵入式跟踪即可理解客户需求与偏好 。这形成一种双赢交换：消费者获得高度个性化的优质体验，企业则持续获得最准确、最合规的数据流。这一原生能力从根本上解决了新用户的“冷启动”问题——代理从首次对话即可开始个性化体验 。
+
+### 4.3 新衡量框架
+
+第三方Cookie的衰落要求建立新的电商效果衡量框架。依赖跨站跟踪的传统多触点归因模型效力下降 。重点将转向直接、第一方数据驱动的方法。企业将采用服务器端跟踪等技术——在自有服务器环境中处理数据，降低对客户端Cookie的依赖，增强数据自主权  。
+
+客户数据平台（CDP）将至关重要，用于整合统一来自各触点的第一方数据，构建客户全景视图   。新范式的成效需通过一套新指标衡量：企业不再仅关注点击与浏览量，而是追踪AI代理的表现，如采用率、参与度、任务完成率及其对客户满意度、收入提升等核心业务指标的影响 。新衡量框架旨在理解流畅、对话式的客户旅程，确保企业在隐私优先的世界中仍能做出数据驱动的决策与成效归因。
+
+## 第五部分：新时代业务成果的实现机制
+
+| **AI代理能力** | **核心功能** | **战略业务影响** | **支撑技术** |
+| :--- | :--- | :--- | :--- |
+| **智能线索评分** | 分析实时行为与对话数据，对潜在客户评分与优先级排序。 | 聚焦高意向线索，缩短销售周期，提高成交率。 | 自然语言处理，机器学习，CRM集成 |
+| **下一代交叉销售与向上销售** | 在实时自然对话中推荐互补或升级产品。 | 精准提升客单价（AOV）与客户终身价值（CLV）。 | 预测分析，协同过滤，语境理解 |
+| **主动互动** | 基于用户潜在需求或数字信号发起对话或提供帮助。 | 引导客户完成预期行动，提高参与度与转化率。 | 代理型AI，实时分析 |
+| **方案与报价自动化** | 根据对话情境与交易阶段自动生成定制方案与报价。 | 加速成交进程，减少人为错误，提升效率。 | 生成式AI，数据集成 |
+
+### 5.1 加速销售：代理作为成交推动者
+
+AI代理不仅是客服工具，更是旨在简化与加速销售周期的战略资产 。通过处理常规任务、实时互动潜在客户，它们解放人类销售团队，使其聚焦于高价值、战略性对话与复杂谈判  。
+
+代理可高效自动化关键销售流程：包括智能线索评分——通过探索性提问互动、分析行为数据，优先处理高购买意向客户 ；跨渠道触发及时个性化跟进；根据交易语境自动生成方案与报价，缩短响应时间，减少易错的人工操作  。代理如同人类销售代表的“智能协作者”，在实时通话中提供协助，如推荐应对异议的话术、或实时提供竞争情报  。这些自动化、自主行动的累积效应是摩擦大幅减少，显著缩短销售周期，提升整体销售生产力与成交率 。
+
+### 5.2 最大化客户价值：下一代交叉销售与向上销售
+
+对话流范式以远高于点击流模型的准确度与更低摩擦度，为交叉销售与向上销售带来新可能。旧模式中，零售商可能采用生硬推广（如“不必要的加售页面”），导致客户放弃购物车 。而新模型将这种打断转变为自然对话中的有用建议 。
+
+AI代理运用预测分析，实时解析客户行为、购买历史与对话线索，判断“下一步可能买什么”  。例如，若客户正在咨询新智能手机，代理可在同一对话中智能推荐更高配置型号（向上销售），或建议配套贴膜、无线耳机等配件（交叉销售） 。这种对话式建议，更像来自知识丰富的销售助理，而非通用营销战术 。这不仅提高转化概率，也增强整体客户体验，建立更具价值的长期关系 。
+
+### 5.3 盈利模式变革：从广告驱动到价值驱动
+
+从点击流向对话流范式的转变，从根本上重塑了电商的经济模型。在第三方Cookie跟踪不再可行的环境下，传统侵入式、广告驱动的收入模式，正逐渐让位于更直接、价值驱动的方法 。新盈利策略的核心，是提供卓越的用户体验——这种体验自然驱动更高转化率与客户终身价值。
+
+数据支撑这一战略优势：个性化推荐是对话流的原生能力，可贡献在线收入的三成以上，并能有效降低弃购率 。此外，融入对话流程的AR/VR沉浸体验带来直接财务影响——部分企业报告转化率提升94% 。作为另一核心组成部分，语音商务也带来高客户满意度，用户愿意为便利性支付溢价  。这表明，新范式聚焦于基于同意的数据、卓越体验与实时引导，是驱动切实业务成果的战略机制。它形成良性循环：为客户提供更多价值→赢得更多信任→带来更高转化与更直接收入→反哺企业成长。
+
+## 第六部分：伦理框架与未来展望
+
+### 6.1 应对伦理挑战
+
+AI代理与个性化对话的巨大能力，也带来新的、微妙的伦理挑战，需主动应对。新范式的对话形式制造了一种“隐私与亲密的幻觉”，鼓励用户分享他们通常不会披露的敏感信息 ，可能导致“信任转移”问题——用户误将AI系统视为中立工具，而非带有商业目标的产品，从而更易分享数据 。
+
+还存在算法偏见的重大风险：基于有偏数据训练的AI系统可能产生系统性错误，导致不公平结果或排斥弱势群体 ，表现为缺乏包容性的推荐，或对某些体型、身份的错误呈现 。AI的高级能力还可能被用于制造“欺骗性用户体验”或“黑暗模式”，如虚假紧急倒计时，微妙地强迫消费 。此外，持续的高个性化建议流可能导致消费者依赖或强迫性购物，构成心理健康风险 。这些是比点击流模式的数据监控问题更复杂的伦理隐患，需采取主动的、信任至上的策略。
+
+### 6.2 构建信任至上的策略
+
+企业必须将“隐私优先”和“信任至上”方法作为其品牌价值主张的核心，方能在新时代取得成功  。这需要积极建立并维护客户信任。透明性是关键：企业需明确告知数据如何收集、存储与使用，并清晰标注AI生成内容  。还应实施“数据最小化”策略，仅收集必要信息，并赋予用户对其数据的精细控制权  。
+
+道德的AI策略还需主动审计算法，防止偏见，确保包容性  ，包括手动修正偏差模型，以确保营销活动公平触达多元受众 。长远看，企业应优先选择在伦理AI实践方面有明确承诺的技术品牌与工具 。通过主动应对这些伦理挑战，企业可将潜在负债转化为强大竞争优势：客户更愿意与真正尊重其隐私与福祉的品牌互动并保持忠诚  。
+
+### 6.3 2030年愿景：全面代理化的商业生态
+
+从点击流向对话流的转变，是迈向未来全代理式商业生态的关键第一步。到2030年，AI代理预计将参与大多数商业任务，根据情境与结果学习、推理与适应 。电商生态将演进为“虚实融合”的景观——在线与实体零售体验无缝融合为有机整体 。
+
+未来，客户与品牌的关系将由持续、无处不在的AI代理对话所定义。代理不仅提供实时个性化与支持，还能完全自主决策：从无需人工干预解决复杂投诉，到主动管理售后支持与客户留存  。最终形成一个生态——商业不再是屏幕上的一系列点击，而是一种流畅、无摩擦、高度个性化的对话，在客户表达需求前就已预见并满足。
+
+## 参考资料
+
+[1] Ecommerce Customer Journey Maps 101 (2025) — Shopify: <https://www.shopify.com/enterprise/blog/customer-journey-map-ecommerce>
+[2] How to Improve Customer Experience with Clickstream Data? — Netguru: <https://www.netguru.com/blog/clickstream-data-customer-experience>
+[3] What is Clickstream Data? Definition, Examples, and Benefits — RudderStack: <https://www.rudderstack.com/blog/clickstream-data/>
+[4] Clickstream Analysis — Dremio: <https://www.dremio.com/wiki/clickstream-analysis/>
+[5] Edinburgh Research Explorer (Shopping Hard Or Hardly Shopping?): <https://www.research.ed.ac.uk/files/202557740/ZavaliEtal2021IEEETEMShoppingHardOrHardlyShopping.pdf>
+[6] Personalized AI Agents: A New Era of Customized User Experiences: <https://exei.ai/blog/personalized-ai-agents-a-new-era-of-customized-user-experiences/>
+[7] E-commerce without cookies: How to win customers in the era of privacy? — Tanganica: <https://www.tanganica.com/en/blog/e-commerce-without-cookies-how-to-win-customers-in-the-era-of-privacy>
+[8] Cookieless Marketing: 7 Strategies to Stay Ahead in 2025 — CookieYes: <https://www.cookieyes.com/blog/cookieless-marketing/>
+[9] Unify: A Complete View of Your Customer with Identity Resolution — Segment: <https://segment.com/blog/individualization-without-cookies-the-missing-ingredient/>
+[10] Cookieless Personalization in a Privacy-First Era — Sitecore: <https://www.sitecore.com/resources/insights/personalization/cookieless-personalization-in-a-privacy-first-era>
+[11] Personalized marketing in a cookieless era — Supermetrics: <https://supermetrics.com/blog/personalized-marketing>
+[12] Ethical AI Shopping: What Every Smart Shopper Needs to Know — Glance: <https://glance.com/us/blogs/glanceai/ai-shopping/ethical-ai-shopping-explained>
+[13] Privacy-first | Decoder — Thoughtworks: <https://www.thoughtworks.com/en-us/insights/decoder/p/privacy-first>
+[14] Why Conversational Commerce Is More Than a Chatbot — Bloomreach: <https://www.bloomreach.com/en/blog/why-conversational-commerce-is-more-than-just-a-chatbot>
+[15] What Is Conversational Commerce? (Benefits & Examples) — Tidio: <https://www.tidio.com/blog/conversational-commerce/>
+[16] What are Conversational User Interfaces (Examples & Tips) — SalesGroup: <https://salesgroup.ai/what-are-conversational-user-interfaces/>
+[17] Conversational Commerce in 2025 (Everything to Know) — BigCommerce: <https://www.bigcommerce.com/articles/ecommerce/conversational-commerce/>
+[18] What Is Agentic Personalization? — Bloomreach: <https://www.bloomreach.com/en/blog/what-is-agentic-personalization>
+[19] AI Agents for Sales: How Enterprises Close Deals 3x Faster — Wizr AI: <https://wizr.ai/blog/ai-agents-for-sales/>
+[20] Conversational UI: Enhancing Human Computer Interaction — Glow: <https://glow.team/blog/conversational-ui-enhancing-human-computer-interaction/>
+[21] E-commerce funnel: goodbye straight line, hello smart loop — SEOZoom: <https://www.seozoom.com/ecommerce-funnel/>
+[22] Conversational AI in E-Commerce: Benefits & Examples — Cognigy: <https://www.cognigy.com/blog/conversational-ai-in-e-commerce>
+[23] AI Shopping Assistants: What They Are & How They Work (2025 Guide) — App0: <https://www.app0.io/blog/ai-shopping-assistants>
+[24] Revolutionizing Retail with Generative AI: Personalized Recommendation — Netguru: <https://www.netguru.com/blog/generative-ai-personalized-product-recommendations>
+[25] What are product recommendations? — Optimizely: <https://www.optimizely.com/optimization-glossary/product-recommendations/>
+[26] What is voice commerce and how it's transforming eCommerce in 2025 — Cloudflight: <https://www.cloudflight.io/en/blog/what-is-voice-commerce-and-how-its-transforming-ecommerce-in-2025/>
+[27] What Is Voice Commerce? — Sana Commerce: <https://www.sana-commerce.com/e-commerce-terms/what-is-voice-commerce/>
+[28] Amazon launches 'Lens Live' an AI-powered visual search for real-time shopping — Times of India: <https://timesofindia.indiatimes.com/technology/tech-news/amazon-launches-lens-live-an-ai-powered-visual-search-for-real-time-shopping/articleshow/123668913.cms>
+[29] Top 15 eCommerce Trends You Should Know in 2025 — Hostinger: <https://www.hostinger.com/tutorials/ecommerce-trends>
+[30] Top 13 Ecommerce Trends (2024 & 2025) — Exploding Topics: <https://explodingtopics.com/blog/ecommerce-trends>
+[31] Advertisement, Privacy, and Intimacy: Lessons from Social Media for Conversational AI — Hugging Face: <https://huggingface.co/blog/giadap/privacy-conversational-ai>
+[32] Retail's AI Ambitions Are High. Their Data Readiness Isn't — Total Retail: <https://www.mytotalretail.com/article/retails-ai-ambitions-are-high-their-data-readiness-isnt/>
+[33] AI On: 6 Ways AI Agents Are Raising Team Performance — NVIDIA Blog: <https://blogs.nvidia.com/blog/ways-ai-agents-are-raising-team-performance/>
+[34] AI Agents for Sales: Automating Workflows to Close Deals Faster — Automation Anywhere: <https://www.automationanywhere.com/company/blog/automation-ai/ai-agents-sales-automating-workflows-close-deals-faster>
+[35] How AI Enhances Cross-Selling and Upselling Strategies — iSmartCom: <https://www.ismartcom.com/blog/how-ai-enhances-cross-selling-and-upselling-strategies/>
+[36] Conversational AI for Sales — AIMultiple Research: <https://research.aimultiple.com/conversational-ai-for-sales/>
+[37] NLP-based product recommendations for retail industry — Infosys BPM: <https://www.infosysbpm.com/blogs/master-data-management/product-recommendations-using-nlp.html>
+[38] Ethical implications of conversational agents in global public health — PMC: <https://pmc.ncbi.nlm.nih.gov/articles/PMC7133471/>
+[39] The Ethical Use of AI in Digital Marketing — Digital Marketing Institute: <https://digitalmarketinginstitute.com/blog/the-ethical-use-of-ai-in-digital-marketing>
