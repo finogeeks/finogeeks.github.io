@@ -15,7 +15,17 @@
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.classList.add('dark');
     }
-    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    // Initialize Mermaid after the deferred script has executed
+    function initMermaid() {
+      if (window.mermaid && typeof window.mermaid.initialize === 'function') {
+        window.mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMermaid);
+    } else {
+      initMermaid();
+    }
   </script>
   <style>
     html { scroll-behavior: smooth; }
