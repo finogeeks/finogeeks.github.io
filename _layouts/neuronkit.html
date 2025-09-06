@@ -32,21 +32,37 @@
   <header class="sticky top-0 z-40 backdrop-blur border-b border-zinc-200/60 dark:border-zinc-800/60 bg-white/60 dark:bg-zinc-950/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-16 flex items-center justify-between">
-        <a href="/en/neuronkit/" class="flex items-center gap-2 font-semibold text-lg">
+        {% assign url = page.url | split: '?' | first | default: '' %}
+        {% assign prefix = url | slice: 0, 4 %}
+        {% if prefix == '/zh/' %}
+          {% assign base = '/zh/neuronkit' %}
+        {% else %}
+          {% assign base = '/en/neuronkit' %}
+        {% endif %}
+        <a href="{{ base }}/" class="flex items-center gap-2 font-semibold text-lg">
           <span class="inline-flex h-8 w-8 rounded-xl bg-gradient-to-br from-cyan-500 via-indigo-500 to-emerald-500"></span>
           <span>NeuronKit</span>
           <span class="ml-2 rounded-full px-2 py-0.5 text-xs bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">Preview</span>
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="/en/neuronkit/#why" class="hover:text-indigo-600">Why</a>
-          <a href="/en/neuronkit/#features" class="hover:text-indigo-600">Features</a>
-          <a href="/en/neuronkit/#whitepaper" class="hover:text-indigo-600">White Paper</a>
-          <a href="/en/neuronkit/#compare" class="hover:text-indigo-600">Comparison</a>
-          <a href="/en/neuronkit/#docs" class="hover:text-indigo-600">Docs</a>
+          {% if prefix == '/zh/' %}
+            <a href="{{ base }}/#why" class="hover:text-indigo-600">为什么</a>
+            <a href="{{ base }}/#features" class="hover:text-indigo-600">特性</a>
+            <a href="{{ base }}/#whitepaper" class="hover:text-indigo-600">白皮书</a>
+            <a href="{{ base }}/#compare" class="hover:text-indigo-600">对比</a>
+            <a href="{{ base }}/#docs" class="hover:text-indigo-600">文档</a>
+          {% else %}
+            <a href="{{ base }}/#why" class="hover:text-indigo-600">Why</a>
+            <a href="{{ base }}/#features" class="hover:text-indigo-600">Features</a>
+            <a href="{{ base }}/#whitepaper" class="hover:text-indigo-600">White Paper</a>
+            <a href="{{ base }}/#compare" class="hover:text-indigo-600">Comparison</a>
+            <a href="{{ base }}/#docs" class="hover:text-indigo-600">Docs</a>
+          {% endif %}
         </nav>
         <div class="flex items-center gap-3">
           <a href="https://finogeeks.github.io/agentic" target="_blank" rel="noreferrer" class="px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-sm">GitHub</a>
           <a href="#cta" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium">Join Waitlist</a>
+          {% include lang-switcher.html %}
         </div>
       </div>
     </div>

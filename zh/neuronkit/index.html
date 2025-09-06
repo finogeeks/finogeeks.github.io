@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuronKit — Agentic 中间件</title>
+  <meta name="description" content="让移动应用与 IoT 设备具备 Agentic 能力：设备侧沙箱、丰富上下文、云端记忆、对话式 UI。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+    function initMermaid() {
+      if (window.mermaid && typeof window.mermaid.initialize === 'function') {
+        window.mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMermaid);
+    } else {
+      initMermaid();
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    .gradient-text { background: linear-gradient(90deg, #06b6d4 0%, #6366f1 50%, #22c55e 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); }
+    .dark .glass { background: rgba(9,9,11,0.35); }
+  </style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-40 backdrop-blur border-b border-zinc-200/60 dark:border-zinc-800/60 bg-white/60 dark:bg-zinc-950/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-16 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-2 font-semibold text-lg">
+          <span class="inline-flex h-8 w-8 rounded-xl bg-gradient-to-br from-cyan-500 via-indigo-500 to-emerald-500"></span>
+          <span>NeuronKit</span>
+          <span class="ml-2 rounded-full px-2 py-0.5 text-xs bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">预览</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#why" class="hover:text-indigo-600">为什么</a>
+          <a href="#features" class="hover:text-indigo-600">特性</a>
+          <a href="#whitepaper" class="hover:text-indigo-600">白皮书</a>
+          <a href="#compare" class="hover:text-indigo-600">对比</a>
+          <a href="#docs" class="hover:text-indigo-600">文档</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="https://finogeeks.github.io/agentic" target="_blank" rel="noreferrer" class="px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-sm">GitHub</a>
+          <a href="#cta" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium">加入候补名单</a>
+          <a href="/en/neuronkit/index.html" class="px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-sm">English</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 首屏 -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-indigo-50 via-zinc-50 to-transparent dark:from-indigo-950/20 dark:via-zinc-950 dark:to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 relative">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+            让任何应用具备 <span class="gradient-text">Agentic 体验</span>。
+          </h1>
+          <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+            <strong>NeuronKit</strong> 是设备侧 SDK 与沙箱，让移动应用与 IoT 平台具备上下文感知、安全且可控的代理执行能力。推理在云端，动作安全地在设备上执行。
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#cta" class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium">申请早期访问</a>
+            <a href="#whitepaper" class="px-5 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">阅读白皮书</a>
+          </div>
+          <div class="mt-6 text-sm text-zinc-600 dark:text-zinc-400">云端“脑”、设备“手”。隐私优先，策略可控，人在回路。</div>
+        </div>
+        <div class="lg:pl-8">
+          <div class="glass rounded-3xl p-6 shadow-xl ring-1 ring-zinc-200/60 dark:ring-zinc-800/60">
+            <div class="text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-2">实时概念图</div>
+            <div class="mermaid">
+%%{init: {"securityLevel": "strict", "flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+  subgraph D[设备]
+    A[应用 + NeuronKit SDK]
+    S["设备侧沙箱\n(PEP/PDP)"]
+  end
+  subgraph C[云]
+    M[(上下文记忆服务)]
+    G([AI 代理])
+  end
+  U((用户))
+  U -->|语音 / 文本| A
+  A -->|意图 + 上下文| M
+  M -->|上下文 + 意图| G
+  G -->|动作计划| S
+  S -->|执行| A
+  G -->|对话 + UI| A
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-zinc-600 dark:text-zinc-400">云端推理；设备执行。应用如同大型 Agent 系统中的一个“神经元”。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 为什么 -->
+  <section class="py-12 md:py-20" id="why">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold">为什么选择 NeuronKit</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+          <h3 class="font-semibold text-xl">上下文即智能</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">采集设备侧信号并组织为语义/情景/程序性记忆，支持更相关的推理。</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+          <h3 class="font-semibold text-xl">安全的设备侧动作</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">能力模型 + 策略引擎，确保代理触发的动作在执行前得到校验、同意与审计。</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+          <h3 class="font-semibold text-xl">对话流式体验</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">ConvoUI 将自然语言与内嵌 UI 组件结合，用户可“说 + 点”完成任务。</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+          <h3 class="font-semibold text-xl">无侵入集成</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">作为中间件快速接入，最小改动即可把功能注册为能力，由 NeuronKit 负责上下文、策略与 UI。</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+          <h3 class="font-semibold text-xl">开发者与企业友好</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">简单 API + 企业级合规、可观测与治理能力。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键特性 -->
+  <section id="features" class="py-12 md:py-20 bg-zinc-100/60 dark:bg-zinc-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold">关键特性</h2>
+          <ul class="mt-6 space-y-4 text-zinc-700 dark:text-zinc-300">
+            <li><span class="font-medium">丰富上下文：</span> 位置、传感器、遥测等作为情景上下文。</li>
+            <li><span class="font-medium">设备侧沙箱：</span> 功能 → 能力 → 原语；敏感操作需同意。</li>
+            <li><span class="font-medium">云端记忆：</span> 时间序列日志促进为语义/情景/程序性记忆。</li>
+            <li><span class="font-medium">代理路由：</span> 将意图路由到注册代理，返回动作计划。</li>
+            <li><span class="font-medium">ConvoUI：</span> 语音/聊天 + 内嵌 UI 组件。</li>
+            <li><span class="font-medium">分析与审计：</span> 策略决策、同意与动作轨迹。</li>
+            <li><span class="font-medium">平台无关：</span> 兼容 Android / iOS / IoT，云中立。</li>
+          </ul>
+        </div>
+        <div class="lg:pl-8">
+          <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+            <h3 class="font-semibold text-lg">适用场景</h3>
+            <ul class="mt-3 space-y-2 text-zinc-700 dark:text-zinc-300 list-disc list-inside">
+              <li>Agentic 电商与超级应用</li>
+              <li>智能家居与 IoT 控制</li>
+              <li>现场服务、物流与运营</li>
+              <li>注重同意与隐私的医金场景</li>
+            </ul>
+            <h3 class="mt-6 font-semibold text-lg">内置防护</h3>
+            <ul class="mt-3 space-y-2 text-zinc-700 dark:text-zinc-300 list-disc list-inside">
+              <li>高风险操作的人在回路提示</li>
+              <li>细粒度能力范围</li>
+              <li>逐次同意与审计追踪</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 白皮书 -->
+  <section id="whitepaper" class="py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold">白皮书</h2>
+      <p class="mt-4 text-zinc-700 dark:text-zinc-300 max-w-3xl">深入了解 NeuronKit 的架构、能力模型与安全设计：云端记忆、设备侧沙箱（PDP/PEP）与对话式 UI 如何协同，构建安全的上下文智能体验。</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/zh/neuronkit/whitepaper/" class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium">在线阅读</a>
+        <a href="#" class="px-5 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">下载 PDF（即将提供）</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 对比 -->
+  <section id="compare" class="py-12 md:py-20 bg-zinc-100/60 dark:bg-zinc-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold">与云端沙箱的对比</h2>
+      <div class="mt-6 overflow-x-auto">
+        <table class="w-full text-left text-sm border-separate border-spacing-y-2">
+          <thead class="text-zinc-600 dark:text-zinc-400">
+            <tr>
+              <th class="px-4 py-2">维度</th>
+              <th class="px-4 py-2">云端沙箱（如 E2B/Modal）</th>
+              <th class="px-4 py-2">NeuronKit（设备侧）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white/60 dark:bg-zinc-900/60">
+              <td class="px-4 py-3 font-medium">工具运行位置</td>
+              <td class="px-4 py-3">服务器容器</td>
+              <td class="px-4 py-3">直接在应用 / 设备内</td>
+            </tr>
+            <tr class="bg-white/60 dark:bg-zinc-900/60">
+              <td class="px-4 py-3 font-medium">上下文丰富度</td>
+              <td class="px-4 py-3">受限于设备实时信号</td>
+              <td class="px-4 py-3">完整设备上下文（受策略控制）</td>
+            </tr>
+            <tr class="bg-white/60 dark:bg-zinc-900/60">
+              <td class="px-4 py-3 font-medium">隐私与同意</td>
+              <td class="px-4 py-3">依赖云侧策略</td>
+              <td class="px-4 py-3">设备侧策略引擎 + 逐次同意</td>
+            </tr>
+            <tr class="bg-white/60 dark:bg-zinc-900/60">
+              <td class="px-4 py-3 font-medium">时延</td>
+              <td class="px-4 py-3">执行需往返</td>
+              <td class="px-4 py-3">边缘执行，降低感知时延</td>
+            </tr>
+            <tr class="bg-white/60 dark:bg-zinc-900/60">
+              <td class="px-4 py-3 font-medium">体验</td>
+              <td class="px-4 py-3">仅聊天，UI 分离</td>
+              <td class="px-4 py-3">聊天 + 内嵌 UI 组件</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 文档 -->
+  <section id="docs" class="py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold">文档</h2>
+      <p class="mt-4 text-zinc-700 dark:text-zinc-300 max-w-3xl">从概念、架构到开发指南，快速上手 NeuronKit。</p>
+      <div class="mt-6 grid sm:grid-cols-2 gap-6">
+        <a href="/zh/neuronkit.html" class="block p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900">
+          <h3 class="font-semibold text-lg">入门</h3>
+          <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">概览、关键特性与架构。</p>
+        </a>
+        <a href="https://finogeeks.github.io/agentic" target="_blank" rel="noreferrer" class="block p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900">
+          <h3 class="font-semibold text-lg">GitHub</h3>
+          <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">源码与路线图。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold">加入 Agentic 时代</h2>
+      <p class="mt-4 text-zinc-600 dark:text-zinc-400">我们正在招募首批合作伙伴与早期用户。获取预览版 SDK，反馈意见，共同完善上下文工程标准。</p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a href="mailto:contact@finogeeks.com?subject=NeuronKit%20Early%20Access" class="px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium">申请早期访问</a>
+        <a href="https://finogeeks.github.io/agentic" target="_blank" rel="noreferrer" class="px-6 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">Star on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="py-10 border-t border-zinc-200/60 dark:border-zinc-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-zinc-600 dark:text-zinc-400">© <span id="y"></span> NeuronKit（Agentic 中间件）。早期预览。</p>
+      <div class="text-sm flex items-center gap-4">
+        <a href="/zh/neuronkit.html" class="hover:text-indigo-600">文档</a>
+        <a href="#" class="hover:text-indigo-600">隐私</a>
+        <a href="#" class="hover:text-indigo-600">联系</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
