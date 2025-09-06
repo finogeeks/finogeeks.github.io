@@ -46,14 +46,14 @@
           <span class="ml-2 rounded-full px-2 py-0.5 text-xs bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">Preview</span>
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#why" class="hover:text-indigo-600">Why</a>
           <a href="#features" class="hover:text-indigo-600">Features</a>
-          <a href="#architecture" class="hover:text-indigo-600">Architecture</a>
-          <a href="#compare" class="hover:text-indigo-600">Compare</a>
-          <a href="#developers" class="hover:text-indigo-600">Developers</a>
-          <a href="#enterprise" class="hover:text-indigo-600">Enterprise</a>
+          <a href="#whitepaper" class="hover:text-indigo-600">White Paper</a>
+          <a href="#compare" class="hover:text-indigo-600">Comparison</a>
+          <a href="#docs" class="hover:text-indigo-600">Docs</a>
         </nav>
         <div class="flex items-center gap-3">
-          <a href="https://github.com/agentic" target="_blank" rel="noreferrer" class="px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-sm">GitHub</a>
+          <a href="https://finogeeks.github.io/agentic" target="_blank" rel="noreferrer" class="px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-sm">GitHub</a>
           <a href="#cta" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium">Join Waitlist</a>
         </div>
       </div>
@@ -74,7 +74,7 @@
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
             <a href="#cta" class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium">Request Early Access</a>
-            <a href="#architecture" class="px-5 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">See How It Works</a>
+            <a href="#whitepaper" class="px-5 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">Read the White Paper</a>
           </div>
           <div class="mt-6 text-sm text-zinc-600 dark:text-zinc-400">Cloud brain, device hands. Privacy-first. Policy-controlled. Human-in-the-loop.</div>
         </div>
@@ -107,10 +107,11 @@ flowchart LR
     </div>
   </section>
 
-  <!-- Value Props -->
-  <section class="py-12 md:py-20" id="value">
+  <!-- Why NeuronKit -->
+  <section class="py-12 md:py-20" id="why">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-6">
+      <h2 class="text-3xl md:text-4xl font-bold">Why NeuronKit</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
           <h3 class="font-semibold text-xl">Context is Intelligence</h3>
           <p class="mt-2 text-zinc-600 dark:text-zinc-400">Capture rich device-side signals and organize them into semantic, episodic, and procedural memories for truly relevant agent reasoning.</p>
@@ -127,12 +128,12 @@ flowchart LR
     </div>
   </section>
 
-  <!-- Features -->
+  <!-- Key Features -->
   <section id="features" class="py-12 md:py-20 bg-zinc-100/60 dark:bg-zinc-900/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-10 items-start">
         <div>
-          <h2 class="text-3xl md:text-4xl font-bold">What you get</h2>
+          <h2 class="text-3xl md:text-4xl font-bold">Key Features</h2>
           <ul class="mt-6 space-y-4 text-zinc-700 dark:text-zinc-300">
             <li><span class="font-medium">Rich Context SDK:</span> location, sensors, app telemetry, and more—streamed as scenario context.</li>
             <li><span class="font-medium">On‑Device Sandbox:</span> define features → capabilities → primitives; require consent for sensitive actions.</li>
@@ -164,23 +165,14 @@ flowchart LR
     </div>
   </section>
 
-  <!-- Architecture -->
-  <section id="architecture" class="py-12 md:py-20">
+  <!-- White Paper -->
+  <section id="whitepaper" class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold">Architecture at a glance</h2>
-      <div class="mt-6 grid md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold">Device</h3>
-          <p class="mt-2 text-zinc-600 dark:text-zinc-400">Your app + NeuronKit SDK. Registers features, collects context, enforces actions via the on-device sandbox.</p>
-        </div>
-        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold">Cloud</h3>
-          <p class="mt-2 text-zinc-600 dark:text-zinc-400">Context Memory Server organizes logs into semantic/episodic/procedural memory and routes intents to agents.</p>
-        </div>
-        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold">Agents</h3>
-          <p class="mt-2 text-zinc-600 dark:text-zinc-400">Agents plan actions against your app’s registered capabilities; sandbox validates and executes safely.</p>
-        </div>
+      <h2 class="text-3xl md:text-4xl font-bold">White Paper</h2>
+      <p class="mt-4 text-zinc-700 dark:text-zinc-300 max-w-3xl">Dive deeper into NeuronKit’s architecture, capability model, and security posture. Learn how cloud memory, on-device sandboxing (PDP/PEP), and ConvoUI work together to enable safe, context-rich agentic experiences.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/en/neuronkit/intro.html" class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium">Read Online</a>
+        <a href="#" class="px-5 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">Download PDF (soon)</a>
       </div>
     </div>
   </section>
@@ -188,7 +180,7 @@ flowchart LR
   <!-- Comparison -->
   <section id="compare" class="py-12 md:py-20 bg-zinc-100/60 dark:bg-zinc-900/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold">How we differ from cloud sandboxes</h2>
+      <h2 class="text-3xl md:text-4xl font-bold">Comparison to Other Agent Sandboxes</h2>
       <div class="mt-6 overflow-x-auto">
         <table class="w-full text-left text-sm border-separate border-spacing-y-2">
           <thead class="text-zinc-600 dark:text-zinc-400">
@@ -230,26 +222,20 @@ flowchart LR
     </div>
   </section>
 
-  <!-- Developers & Enterprise -->
-  <section id="developers" class="py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
-      <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-        <h2 class="text-2xl md:text-3xl font-bold">For Developers</h2>
-        <ul class="mt-4 space-y-3 text-zinc-700 dark:text-zinc-300">
-          <li>Register features as capabilities with a few lines of code</li>
-          <li>Drop-in ConvoUI components (voice, buttons, forms)</li>
-          <li>Simple hooks for agent routing and memory queries</li>
-          <li>Local dev sandbox and policy simulator</li>
-        </ul>
-      </div>
-      <div id="enterprise" class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-        <h2 class="text-2xl md:text-3xl font-bold">For Enterprise</h2>
-        <ul class="mt-4 space-y-3 text-zinc-700 dark:text-zinc-300">
-          <li>Human-in-the-loop controls and consent governance</li>
-          <li>Audit trails, analytics, and compliance reporting</li>
-          <li>Cloud-neutral, mobile/IoT friendly architecture</li>
-          <li>Roadmap for SSO, MDM policies, and on-prem memory</li>
-        </ul>
+  <!-- Docs -->
+  <section id="docs" class="py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold">Docs</h2>
+      <p class="mt-4 text-zinc-700 dark:text-zinc-300 max-w-3xl">Get started with the NeuronKit concepts, architecture, and developer guides.</p>
+      <div class="mt-6 grid sm:grid-cols-2 gap-6">
+        <a href="/en/neuronkit/intro.html" class="block p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900">
+          <h3 class="font-semibold text-lg">Introduction</h3>
+          <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Overview, key features, and architecture.</p>
+        </a>
+        <a href="https://finogeeks.github.io/agentic" target="_blank" rel="noreferrer" class="block p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900">
+          <h3 class="font-semibold text-lg">GitHub</h3>
+          <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Source code and roadmap.</p>
+        </a>
       </div>
     </div>
   </section>
@@ -271,7 +257,7 @@ flowchart LR
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
       <p class="text-sm text-zinc-600 dark:text-zinc-400">© <span id="y"></span> NeuronKit (Agentic Context SDK). Early preview.</p>
       <div class="text-sm flex items-center gap-4">
-        <a href="#" class="hover:text-indigo-600">Docs (soon)</a>
+        <a href="/en/neuronkit/intro.html" class="hover:text-indigo-600">Docs</a>
         <a href="#" class="hover:text-indigo-600">Privacy</a>
         <a href="#" class="hover:text-indigo-600">Contact</a>
       </div>
