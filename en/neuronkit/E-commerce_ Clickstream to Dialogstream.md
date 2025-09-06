@@ -1,6 +1,6 @@
 ---
 title: "The Transformation of E-commerce: From Clickstream to Dialog Stream and Beyond"
-layout: page
+layout: neuronkit
 permalink: /en/neuronkit/whitepaper/
 ---
 
