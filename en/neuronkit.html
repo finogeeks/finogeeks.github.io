@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuronKit — Agentic Context SDK</title>
+  <meta name="description" content="Turn any mobile or IoT app into an agentic experience with on-device sandboxing, rich context, cloud memory, and conversational UI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    // Dark mode respect system preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    .gradient-text { background: linear-gradient(90deg, #06b6d4 0%, #6366f1 50%, #22c55e 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); }
+    .dark .glass { background: rgba(9,9,11,0.35); }
+  </style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+  <!-- Nav -->
+  <header class="sticky top-0 z-40 backdrop-blur border-b border-zinc-200/60 dark:border-zinc-800/60 bg-white/60 dark:bg-zinc-950/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-16 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-2 font-semibold text-lg">
+          <span class="inline-flex h-8 w-8 rounded-xl bg-gradient-to-br from-cyan-500 via-indigo-500 to-emerald-500"></span>
+          <span>NeuronKit</span>
+          <span class="ml-2 rounded-full px-2 py-0.5 text-xs bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">Preview</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#features" class="hover:text-indigo-600">Features</a>
+          <a href="#architecture" class="hover:text-indigo-600">Architecture</a>
+          <a href="#compare" class="hover:text-indigo-600">Compare</a>
+          <a href="#developers" class="hover:text-indigo-600">Developers</a>
+          <a href="#enterprise" class="hover:text-indigo-600">Enterprise</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="https://github.com/agentic" target="_blank" rel="noreferrer" class="px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-sm">GitHub</a>
+          <a href="#cta" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium">Join Waitlist</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-indigo-50 via-zinc-50 to-transparent dark:from-indigo-950/20 dark:via-zinc-950 dark:to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 relative">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+            Turn any app into an <span class="gradient-text">agent</span>.
+          </h1>
+          <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+            <strong>NeuronKit</strong> is the Agentic Context SDK: on-device sandboxing, rich device context, cloud memories, and a conversational UI—so your mobile or IoT app can understand, decide, and safely act.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#cta" class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium">Request Early Access</a>
+            <a href="#architecture" class="px-5 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">See How It Works</a>
+          </div>
+          <div class="mt-6 text-sm text-zinc-600 dark:text-zinc-400">Cloud brain, device hands. Privacy-first. Policy-controlled. Human-in-the-loop.</div>
+        </div>
+        <div class="lg:pl-8">
+          <div class="glass rounded-3xl p-6 shadow-xl ring-1 ring-zinc-200/60 dark:ring-zinc-800/60">
+            <div class="text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-2">Live Concept Diagram</div>
+            <div class="mermaid">
+flowchart LR
+  subgraph D[Device]
+    A[App + NeuronKit SDK]
+    S[[On-Device Sandbox<br/>(PEP/PDP)]]
+  end
+  subgraph C[Cloud]
+    M[(Context Memory Server)]
+    G([AI Agents])
+  end
+  U((User))
+  U -->|Voice / Text| A
+  A -->|Intent + Context| M
+  M -->|Context + Intent| G
+  G -->|Action Plan| S
+  S -->|Execute| A
+  G -->|Chat + UI| A
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-zinc-600 dark:text-zinc-400">Inference in the cloud; safe actions on the device. The app behaves like a neuron in a larger agentic system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Props -->
+  <section class="py-12 md:py-20" id="value">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+          <h3 class="font-semibold text-xl">Context is Intelligence</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">Capture rich device-side signals and organize them into semantic, episodic, and procedural memories for truly relevant agent reasoning.</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+          <h3 class="font-semibold text-xl">Secure On‑Device Actions</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">A capability model + policy engine ensures AI-triggered actions are vetted, consented, and auditable—before your app does anything.</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+          <h3 class="font-semibold text-xl">Dialog Stream UX</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">ConvoUI blends natural language with embedded UI components so users can talk and tap their way through tasks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-12 md:py-20 bg-zinc-100/60 dark:bg-zinc-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold">What you get</h2>
+          <ul class="mt-6 space-y-4 text-zinc-700 dark:text-zinc-300">
+            <li><span class="font-medium">Rich Context SDK:</span> location, sensors, app telemetry, and more—streamed as scenario context.</li>
+            <li><span class="font-medium">On‑Device Sandbox:</span> define features → capabilities → primitives; require consent for sensitive actions.</li>
+            <li><span class="font-medium">Cloud Memory Server:</span> time-ordered logs promoted into semantic, episodic, and procedural memory.</li>
+            <li><span class="font-medium">Agent Routing:</span> route intents to registered agents; receive action plans back.</li>
+            <li><span class="font-medium">ConvoUI:</span> drop-in voice + chat with inline UI widgets (buttons, forms, product tiles).</li>
+            <li><span class="font-medium">Analytics & Audit:</span> policy decisions, consents, and action trails for compliance.</li>
+            <li><span class="font-medium">Platform-agnostic:</span> Android / iOS / IoT friendly; cloud-neutral.</li>
+          </ul>
+        </div>
+        <div class="lg:pl-8">
+          <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+            <h3 class="font-semibold text-lg">Ideal for</h3>
+            <ul class="mt-3 space-y-2 text-zinc-700 dark:text-zinc-300 list-disc list-inside">
+              <li>Agentic commerce & superapps</li>
+              <li>Smart home & IoT controllers</li>
+              <li>Field service, logistics, and ops</li>
+              <li>Healthcare & fintech with strict consent</li>
+            </ul>
+            <h3 class="mt-6 font-semibold text-lg">Built-in safeguards</h3>
+            <ul class="mt-3 space-y-2 text-zinc-700 dark:text-zinc-300 list-disc list-inside">
+              <li>Human-in-the-loop prompts for risky actions</li>
+              <li>Fine-grained capability scopes</li>
+              <li>Per-action consent & audit trail</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section id="architecture" class="py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold">Architecture at a glance</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+          <h3 class="font-semibold">Device</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">Your app + NeuronKit SDK. Registers features, collects context, enforces actions via the on-device sandbox.</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+          <h3 class="font-semibold">Cloud</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">Context Memory Server organizes logs into semantic/episodic/procedural memory and routes intents to agents.</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+          <h3 class="font-semibold">Agents</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">Agents plan actions against your app’s registered capabilities; sandbox validates and executes safely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section id="compare" class="py-12 md:py-20 bg-zinc-100/60 dark:bg-zinc-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold">How we differ from cloud sandboxes</h2>
+      <div class="mt-6 overflow-x-auto">
+        <table class="w-full text-left text-sm border-separate border-spacing-y-2">
+          <thead class="text-zinc-600 dark:text-zinc-400">
+            <tr>
+              <th class="px-4 py-2">Aspect</th>
+              <th class="px-4 py-2">Cloud Sandboxes (e.g., E2B/Modal)</th>
+              <th class="px-4 py-2">NeuronKit (On-Device)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white/60 dark:bg-zinc-900/60">
+              <td class="px-4 py-3 font-medium">Where tools run</td>
+              <td class="px-4 py-3">Server-side containers</td>
+              <td class="px-4 py-3">Directly in your app / device</td>
+            </tr>
+            <tr class="bg-white/60 dark:bg-zinc-900/60">
+              <td class="px-4 py-3 font-medium">Context richness</td>
+              <td class="px-4 py-3">Limited live device signals</td>
+              <td class="px-4 py-3">Full device context (with policy)</td>
+            </tr>
+            <tr class="bg-white/60 dark:bg-zinc-900/60">
+              <td class="px-4 py-3 font-medium">Privacy & consent</td>
+              <td class="px-4 py-3">Depends on cloud policies</td>
+              <td class="px-4 py-3">Policy engine + per-action consent on-device</td>
+            </tr>
+            <tr class="bg-white/60 dark:bg-zinc-900/60">
+              <td class="px-4 py-3 font-medium">Latency</td>
+              <td class="px-4 py-3">Round-trips for action execution</td>
+              <td class="px-4 py-3">Edge execution; lower perceived latency</td>
+            </tr>
+            <tr class="bg-white/60 dark:bg-zinc-900/60">
+              <td class="px-4 py-3 font-medium">UX</td>
+              <td class="px-4 py-3">Chat only, UI separate</td>
+              <td class="px-4 py-3">Chat + embedded UI components</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Developers & Enterprise -->
+  <section id="developers" class="py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
+      <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+        <h2 class="text-2xl md:text-3xl font-bold">For Developers</h2>
+        <ul class="mt-4 space-y-3 text-zinc-700 dark:text-zinc-300">
+          <li>Register features as capabilities with a few lines of code</li>
+          <li>Drop-in ConvoUI components (voice, buttons, forms)</li>
+          <li>Simple hooks for agent routing and memory queries</li>
+          <li>Local dev sandbox and policy simulator</li>
+        </ul>
+      </div>
+      <div id="enterprise" class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
+        <h2 class="text-2xl md:text-3xl font-bold">For Enterprise</h2>
+        <ul class="mt-4 space-y-3 text-zinc-700 dark:text-zinc-300">
+          <li>Human-in-the-loop controls and consent governance</li>
+          <li>Audit trails, analytics, and compliance reporting</li>
+          <li>Cloud-neutral, mobile/IoT friendly architecture</li>
+          <li>Roadmap for SSO, MDM policies, and on-prem memory</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold">Be part of the agentic shift</h2>
+      <p class="mt-4 text-zinc-600 dark:text-zinc-400">We’re assembling our first cohort of partners and early adopters. Get access to the preview SDK, provide feedback, and help shape the standard for context engineering.</p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a href="mailto:hello@agentic.github.io?subject=NeuronKit%20Early%20Access" class="px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium">Request Early Access</a>
+        <a href="https://github.com/agentic" target="_blank" rel="noreferrer" class="px-6 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">Star on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-zinc-200/60 dark:border-zinc-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-zinc-600 dark:text-zinc-400">© <span id="y"></span> NeuronKit (Agentic Context SDK). Early preview.</p>
+      <div class="text-sm flex items-center gap-4">
+        <a href="#" class="hover:text-indigo-600">Docs (soon)</a>
+        <a href="#" class="hover:text-indigo-600">Privacy</a>
+        <a href="#" class="hover:text-indigo-600">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
