@@ -4,8 +4,6 @@ layout: neuronkit
 permalink: /en/neuronkit/insights/sandboxing-for-agents/
 ---
 
-## Sandboxing for Agentic Systems — A Technical White Paper
-
 ## Executive summary
 
 Agentic systems — software that uses models to plan, decide, and act (often by executing scripts or controlling UIs) — amplify both capability and risk. Running untrusted agent-generated actions (code, browser automation, file operations, network requests) requires strong, well-architected isolation so that a single malicious or buggy agent cannot escalate to a full system compromise or data exfiltration.
