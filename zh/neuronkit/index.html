@@ -31,6 +31,11 @@
     .gradient-text { background: linear-gradient(90deg, #06b6d4 0%, #6366f1 50%, #22c55e 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
     .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); }
     .dark .glass { background: rgba(9,9,11,0.35); }
+    /* 移动端可读性辅助 */
+    .text-balance { text-wrap: balance; }
+    .text-pretty { text-wrap: pretty; }
+    .hyphens-auto { hyphens: auto; }
+    .break-anywhere { overflow-wrap: anywhere; word-break: break-word; }
   </style>
 </head>
 <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
@@ -62,43 +67,43 @@
   <!-- 首屏 -->
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-indigo-50 via-zinc-50 to-transparent dark:from-indigo-950/20 dark:via-zinc-950 dark:to-transparent"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 relative">
-      <div class="grid lg:grid-cols-2 gap-10 items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-24 relative">
+      <div class="grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
         <div>
           <div id="hero-variants" class="relative">
             <!-- 变体 A（默认） -->
             <div class="hero-variant" data-variant="a">
-              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+              <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-snug md:leading-tight text-balance break-anywhere hyphens-auto">
                 传统应用停在过去——无需大改造，解锁<span class="gradient-text">AI 对话能力</span>
               </h1>
-              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+              <p class="mt-6 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
                 你的移动应用仍依赖僵硬的点击与表单，但用户已期待直觉、主动的互动。AI 代理正在重塑人机交互——别被落下，轻松加入浪潮。<strong>NeuronKit</strong> 是非侵入式 SDK：为你的应用注入实时上下文感知、设备侧安全动作与顺滑的对话流。将被动体验升级为 Agentic 体验，在电商、金融等场景显著提升参与度，同时尊重隐私、改动最小。
               </p>
             </div>
             <!-- 变体 B（更大胆） -->
             <div class="hero-variant hidden" data-variant="b">
-              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+              <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-snug md:leading-tight text-balance break-anywhere hyphens-auto">
                 AI 正在取代老旧应用——<span class="gradient-text">现在升级</span>，别等为时已晚
               </h1>
-              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+              <p class="mt-6 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
                 从笨重的遗留界面迈向聪明的对话式代理：<strong>NeuronKit</strong> 让迁移变得简单顺滑。实时捕捉用户上下文，安全在设备侧执行动作，无需推倒重来即可集成 AI。尤其适合希望在金融、医疗等场景率先完成“面向未来”升级的团队。
               </p>
             </div>
             <!-- 变体 C（点击流 → 对话流；电商 → Agentic 电商） -->
             <div class="hero-variant hidden" data-variant="c">
-              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+              <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-snug md:leading-tight text-balance break-anywhere hyphens-auto">
                 从“点击流”到 <span class="gradient-text">“对话流”</span> —— 电商正演进为 Agentic 电商
               </h1>
-              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+              <p class="mt-6 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
                 静态漏斗与被动购物车，正在被主动、可对话的购物旅程取代。<strong>NeuronKit</strong> 让你的应用具备上下文感知的代理，将“浏览+点击”转化为被引导的结果——合规、私密、且更高效。
               </p>
             </div>
             <!-- 变体 D（云端“脑”，设备“手”） -->
             <div class="hero-variant hidden" data-variant="d">
-              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+              <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-snug md:leading-tight text-balance break-anywhere hyphens-auto">
                 云端“脑”，<span class="gradient-text">设备“手”</span> —— 隐私优先，策略可控
               </h1>
-              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+              <p class="mt-6 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
                 云端推理，设备执行。NeuronKit 的设备侧能力沙箱落实最小权限、逐次同意与完整审计——让你放心上线 Agentic 能力。
               </p>
             </div>
@@ -165,7 +170,7 @@ flowchart LR
   <!-- 为什么 -->
   <section class="py-12 md:py-20" id="why">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold">为什么现在就用 NeuronKit 升级你的遗留应用</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">为什么现在就用 NeuronKit 升级你的遗留应用</h2>
       <div class="mt-6 grid md:grid-cols-3 gap-6">
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
           <h3 class="font-semibold text-xl">从僵硬流程到主动对话</h3>
@@ -196,7 +201,7 @@ flowchart LR
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-10 items-start">
         <div>
-          <h2 class="text-3xl md:text-4xl font-bold">关键特性</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">关键特性</h2>
           <ul class="mt-6 space-y-4 text-zinc-700 dark:text-zinc-300">
             <li><span class="font-medium">无缝上下文 SDK：</span> 轻松将位置、传感器等设备数据转化为可行动洞察——非侵入式升级应用感知，无需“动大手术”。</li>
             <li><span class="font-medium">设备侧防护沙箱：</span> 一次定义权限，AI 动作安全执行并自动处理同意——告别隐私与合规焦虑。</li>
@@ -231,7 +236,7 @@ flowchart LR
   <!-- 白皮书 -->
   <section id="whitepaper" class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold">白皮书</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">白皮书</h2>
       <p class="mt-4 text-zinc-700 dark:text-zinc-300 max-w-3xl">深入了解 NeuronKit 的架构、能力模型与安全设计：云端记忆、设备侧沙箱（PDP/PEP）与对话式 UI 如何协同，构建安全的上下文智能体验。</p>
       <div class="mt-6 flex flex-wrap gap-3">
         <a href="/zh/neuronkit/whitepaper/" class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium">在线阅读</a>
@@ -243,7 +248,7 @@ flowchart LR
   <!-- 对比 -->
   <section id="compare" class="py-12 md:py-20 bg-zinc-100/60 dark:bg-zinc-900/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold">与云端沙箱的对比</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">与云端沙箱的对比</h2>
       <div class="mt-6 overflow-x-auto">
         <table class="w-full text-left text-sm border-separate border-spacing-y-2">
           <thead class="text-zinc-600 dark:text-zinc-400">
@@ -288,7 +293,7 @@ flowchart LR
   <!-- 文档 -->
   <section id="docs" class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold">文档</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">文档</h2>
       <p class="mt-4 text-zinc-700 dark:text-zinc-300 max-w-3xl">从概念、架构到开发指南，快速上手 NeuronKit。</p>
       <div class="mt-6 grid sm:grid-cols-2 gap-6">
         <a href="/zh/neuronkit.html" class="block p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900">
@@ -306,7 +311,7 @@ flowchart LR
   <!-- CTA -->
   <section id="cta" class="py-16 md:py-24">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold">加入 Agentic 时代</h2>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-balance break-anywhere">加入 Agentic 时代</h2>
       <p class="mt-4 text-zinc-600 dark:text-zinc-400">我们正在招募首批合作伙伴与早期用户。获取预览版 SDK，反馈意见，共同完善上下文工程标准。</p>
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
         <a href="mailto:contact@finogeeks.com?subject=NeuronKit%20Early%20Access" class="px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium">申请早期访问</a>
