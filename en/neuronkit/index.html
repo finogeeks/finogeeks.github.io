@@ -51,12 +51,10 @@
           <span class="ml-2 rounded-full px-2 py-0.5 text-xs bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">Preview</span>
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="#challenges" class="hover:text-indigo-600">Challenges</a>
-          <a href="#next" class="hover:text-indigo-600">Next</a>
-          <a href="#features" class="hover:text-indigo-600">Features</a>
-          <a href="#whitepaper" class="hover:text-indigo-600">White Paper</a>
-          <a href="#compare" class="hover:text-indigo-600">Comparison</a>
-          <a href="#docs" class="hover:text-indigo-600">Docs</a>
+          <a href="#challenges" class="hover:text-indigo-600">Why Change</a>
+          <a href="#next" class="hover:text-indigo-600">What's next</a>
+          <a href="#features" class="hover:text-indigo-600">Solution</a>
+          <a href="#whitepaper" class="hover:text-indigo-600">Insights</a>
         </nav>
         <div class="flex items-center gap-3">
           <a href="https://finogeeks.github.io/agentic" target="_blank" rel="noreferrer" class="px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-sm">GitHub</a>
@@ -73,41 +71,42 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-24 relative">
       <div class="grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
         <div>
+          <!-- Tagline Pair -->
+          <div class="mb-6">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug md:leading-tight text-balance break-anywhere hyphens-auto">
+              Turn Any App Into an Agent
+            </h1>
+            <p class="mt-3 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
+              Collect context, secure actions, and unlock agentic experiences—bridging cloud intelligence with on-device execution.
+            </p>
+          </div>
           <div id="hero-variants" class="relative">
             <!-- Variant A (default) -->
             <div class="hero-variant" data-variant="a">
-              <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-snug md:leading-tight text-balance break-anywhere hyphens-auto">
-                Legacy Apps Are Stuck in the Past—Unlock <span class="gradient-text">AI‑Powered Conversations</span> Without the Overhaul
-              </h1>
-              <p class="mt-6 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
-                Your traditional mobile apps rely on rigid clicks and forms, but users demand intuitive, proactive interactions. As AI agents redefine human‑computer interfaces, don’t get left behind—join the wave effortlessly. <strong>NeuronKit</strong> is the non‑intrusive SDK that upgrades your apps with real‑time context awareness, secure on‑device actions, and seamless dialog flows. Turn passive experiences into agentic ones, boosting engagement in e‑commerce, fintech, and more—while respecting privacy and requiring minimal code changes.
+              <h3 class="text-2xl md:text-3xl font-bold text-balance break-anywhere">From Clicks to Conversations</h3>
+              <p class="mt-4 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
+                Transform static, click-driven apps into dialog-driven experiences. Instead of navigating menus and shopping carts, users interact with an intelligent concierge that understands intent and takes action. Conversations replace clicks, creating more natural, proactive, and engaging ways to complete everyday tasks.
               </p>
             </div>
             <!-- Variant B (bold) -->
             <div class="hero-variant hidden" data-variant="b">
-              <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-snug md:leading-tight text-balance break-anywhere hyphens-auto">
-                AI is Replacing Old‑School Apps—<span class="gradient-text">Upgrade Yours</span> Before It’s Too Late
-              </h1>
-              <p class="mt-6 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
-                From clunky legacy interfaces to smart, conversational agents: <strong>NeuronKit</strong> makes the transition painless. Capture user context in real time, execute actions securely on‑device, and integrate AI without ripping apart your codebase. Ideal for developers ready to future‑proof mobile apps in fintech, healthcare, and beyond.
+              <h3 class="text-2xl md:text-3xl font-bold text-balance break-anywhere">Context Creates Intelligence</h3>
+              <p class="mt-4 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
+                AI isn’t just about large language models—it’s about context. By organizing device signals, history, and app state into semantic, episodic, and procedural memories, NeuronKit enables agents to make relevant, timely decisions. Richer context means smarter intelligence and experiences tuned to real situations.
               </p>
             </div>
             <!-- Variant C (clickstreams → dialog streams) -->
             <div class="hero-variant hidden" data-variant="c">
-              <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-snug md:leading-tight text-balance break-anywhere hyphens-auto">
-                From Clickstreams to <span class="gradient-text">Dialog Streams</span> — E‑Commerce → Agentic Commerce
-              </h1>
-              <p class="mt-6 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
-                Static funnels and passive carts are giving way to proactive, conversational journeys. <strong>NeuronKit</strong> equips your apps with context‑aware agents, turning browse‑and‑click into guided outcomes—ethical, private, and fast.
+              <h3 class="text-2xl md:text-3xl font-bold text-balance break-anywhere">On-Device Sandbox, Built for Trust</h3>
+              <p class="mt-4 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
+                Run agent-triggered actions safely at the edge. Unlike cloud sandboxes, NeuronKit enforces a capability-based model directly on the device—ensuring privacy, low latency, and fine-grained control. Sensitive features execute only under explicit policy, with security and human oversight always preserved.
               </p>
             </div>
             <!-- Variant D (Cloud brain, device hands) -->
             <div class="hero-variant hidden" data-variant="d">
-              <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-snug md:leading-tight text-balance break-anywhere hyphens-auto">
-                Cloud Brain, <span class="gradient-text">Device Hands</span> — Privacy‑First, Policy‑Controlled
-              </h1>
-              <p class="mt-6 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
-                Run intelligence in the cloud and actions on the device. NeuronKit’s on‑device capability sandbox enforces least‑privilege scopes, per‑action consent, and full audit—so you can ship agentic features with confidence.
+              <h3 class="text-2xl md:text-3xl font-bold text-balance break-anywhere">Plug-In Intelligence for Legacy Apps</h3>
+              <p class="mt-4 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
+                Retrofit existing apps with agentic capabilities—no major rewrite required. NeuronKit works as drop-in middleware: register features, capture context, and enable safe automation. Enterprises can instantly extend mobile or IoT apps with conversational AI, unlocking new business models and user engagement.
               </p>
             </div>
           </div>
@@ -119,9 +118,9 @@
           </div>
           <div class="mt-8 flex flex-wrap gap-3">
             <a href="#cta" class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium">Request Early Access</a>
-            <a href="#whitepaper" class="px-5 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">Read the White Paper</a>
+            <a href="#whitepaper" class="px-5 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">Explore Insights</a>
           </div>
-          <div class="mt-6 text-sm text-zinc-600 dark:text-zinc-400">Cloud brain, device hands. Privacy-first. Policy-controlled. Human-in-the-loop.</div>
+          <div class="mt-6 text-sm text-zinc-600 dark:text-zinc-400">Cloud Brain, Device Hands. Full Control.</div>
           <!-- Hero controls -->
           <div class="mt-4 flex items-center gap-2" aria-label="Hero variants" role="tablist">
             <button class="hero-dot h-2.5 w-2.5 rounded-full bg-zinc-400 aria-selected:bg-indigo-600" aria-selected="true" aria-controls="hero-a" role="tab" title="Variant A"></button>
@@ -156,7 +155,7 @@ flowchart LR
           </div>
           <p class="mt-4 text-sm text-zinc-600 dark:text-zinc-400">Inference in the cloud; safe actions on the device. The app behaves like a neuron in a larger agentic system.</p>
         </div>
-        <p class="mt-6 text-sm text-zinc-600 dark:text-zinc-400">If this path resonates, learn why teams pick NeuronKit to implement it in the <a href="#why" class="text-indigo-600 hover:text-indigo-500 underline-offset-2 underline">Why NeuronKit</a> section.</p>
+        <p class="mt-6 text-sm text-zinc-600 dark:text-zinc-400">If this path resonates, see how to implement it with NeuronKit in <a href="#features" class="text-indigo-600 hover:text-indigo-500 underline-offset-2 underline">Solution</a>.</p>
       </div>
     </div>
   </section>
@@ -167,19 +166,31 @@ flowchart LR
       <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">Challenges you’re facing — in the AI age</h2>
       <div class="mt-6 grid md:grid-cols-2 gap-6">
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-lg">Rigid UX misses intent</h3>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 text-indigo-600"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3 class="font-semibold text-lg">Rigid UX misses intent</h3>
+          </div>
           <p class="mt-2 text-zinc-700 dark:text-zinc-300">Users expect proactive help. Click‑based flows lose context and drop conversions.</p>
         </div>
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-lg">Privacy makes old playbooks obsolete</h3>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 text-indigo-600"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3 class="font-semibold text-lg">Privacy makes old playbooks obsolete</h3>
+          </div>
           <p class="mt-2 text-zinc-700 dark:text-zinc-300">Cookie/fingerprint‑heavy tracking fails. Consent and transparency are non‑negotiable.</p>
         </div>
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-lg">AI is inevitable, rewrites aren’t</h3>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 text-indigo-600"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3 class="font-semibold text-lg">AI is inevitable, rewrites aren’t</h3>
+          </div>
           <p class="mt-2 text-zinc-700 dark:text-zinc-300">You need agentic capability now—but full rewrites stall roadmaps and risk regressions.</p>
         </div>
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-lg">Context is the missing piece</h3>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 text-indigo-600"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3 class="font-semibold text-lg">Context is the missing piece</h3>
+          </div>
           <p class="mt-2 text-zinc-700 dark:text-zinc-300">LLMs guess when they should know. Without device/app context, your “AI” can’t act meaningfully.</p>
         </div>
       </div>
@@ -192,19 +203,31 @@ flowchart LR
       <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">What to do next — a low‑risk path forward</h2>
       <div class="mt-6 grid md:grid-cols-2 gap-6">
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-lg">Start with dialog streams</h3>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 text-indigo-600"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3 class="font-semibold text-lg">Start with dialog streams</h3>
+          </div>
           <p class="mt-2 text-zinc-700 dark:text-zinc-300">Layer conversational flows alongside existing UI. No big rewrites—just alternate paths to outcomes.</p>
         </div>
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-lg">Capture useful context</h3>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 text-indigo-600"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3 class="font-semibold text-lg">Capture useful context</h3>
+          </div>
           <p class="mt-2 text-zinc-700 dark:text-zinc-300">Stream location, sensors, and app telemetry into a memory layer for personalization and reasoning.</p>
         </div>
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-lg">Keep actions on‑device</h3>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 text-indigo-600"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3 class="font-semibold text-lg">Keep actions on‑device</h3>
+          </div>
           <p class="mt-2 text-zinc-700 dark:text-zinc-300">Run sensitive actions locally with least‑privilege scopes, per‑action consent, and full audit.</p>
         </div>
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-lg">Bridge cloud ↔ edge</h3>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5 text-indigo-600"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3 class="font-semibold text-lg">Bridge cloud ↔ edge</h3>
+          </div>
           <p class="mt-2 text-zinc-700 dark:text-zinc-300">Do inference in the cloud, execute safely on the device. Fast, private, and policy‑controlled.</p>
         </div>
       </div>
@@ -213,12 +236,12 @@ flowchart LR
 
   
 
-  <!-- Key Features -->
+  <!-- Solution -->
   <section id="features" class="py-12 md:py-20 bg-zinc-100/60 dark:bg-zinc-900/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-10 items-start">
         <div>
-          <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">Key Features</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">Solution</h2>
           <p class="mt-2 text-zinc-700 dark:text-zinc-300">Build the recommended path with a single SDK: add dialog streams, capture context, and execute on‑device with consent and audit—production‑ready across platforms.</p>
           <ul class="mt-6 space-y-4 text-zinc-700 dark:text-zinc-300">
             <li><span class="font-medium">Seamless Context SDK:</span> effortlessly stream device data like location and sensors into actionable insights—non‑intrusively upgrading awareness without codebase chaos.</li>
@@ -251,10 +274,10 @@ flowchart LR
     </div>
   </section>
 
-  <!-- White Paper -->
+  <!-- Insights -->
   <section id="whitepaper" class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">White Paper</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">Insights</h2>
       <p class="mt-4 text-zinc-700 dark:text-zinc-300 max-w-3xl">Dive deeper into NeuronKit’s architecture, capability model, and security posture. Learn how cloud memory, on-device sandboxing (PDP/PEP), and ConvoUI work together to enable safe, context-rich agentic experiences.</p>
       <div class="mt-6 flex flex-wrap gap-3">
         <a href="/en/neuronkit/whitepaper/" class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium">Read Online</a>
@@ -263,68 +286,7 @@ flowchart LR
     </div>
   </section>
 
-  <!-- Comparison -->
-  <section id="compare" class="py-12 md:py-20 bg-zinc-100/60 dark:bg-zinc-900/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">Comparison to Other Agent Sandboxes</h2>
-      <div class="mt-6 overflow-x-auto">
-        <table class="w-full text-left text-sm border-separate border-spacing-y-2">
-          <thead class="text-zinc-600 dark:text-zinc-400">
-            <tr>
-              <th class="px-4 py-2">Aspect</th>
-              <th class="px-4 py-2">Cloud Sandboxes (e.g., E2B/Modal)</th>
-              <th class="px-4 py-2">NeuronKit (On-Device)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="bg-white/60 dark:bg-zinc-900/60">
-              <td class="px-4 py-3 font-medium">Where tools run</td>
-              <td class="px-4 py-3">Server-side containers</td>
-              <td class="px-4 py-3">Directly in your app / device</td>
-            </tr>
-            <tr class="bg-white/60 dark:bg-zinc-900/60">
-              <td class="px-4 py-3 font-medium">Context richness</td>
-              <td class="px-4 py-3">Limited live device signals</td>
-              <td class="px-4 py-3">Full device context (with policy)</td>
-            </tr>
-            <tr class="bg-white/60 dark:bg-zinc-900/60">
-              <td class="px-4 py-3 font-medium">Privacy & consent</td>
-              <td class="px-4 py-3">Depends on cloud policies</td>
-              <td class="px-4 py-3">Policy engine + per-action consent on-device</td>
-            </tr>
-            <tr class="bg-white/60 dark:bg-zinc-900/60">
-              <td class="px-4 py-3 font-medium">Latency</td>
-              <td class="px-4 py-3">Round-trips for action execution</td>
-              <td class="px-4 py-3">Edge execution; lower perceived latency</td>
-            </tr>
-            <tr class="bg-white/60 dark:bg-zinc-900/60">
-              <td class="px-4 py-3 font-medium">UX</td>
-              <td class="px-4 py-3">Chat only, UI separate</td>
-              <td class="px-4 py-3">Chat + embedded UI components</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
 
-  <!-- Docs -->
-  <section id="docs" class="py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">Docs</h2>
-      <p class="mt-4 text-zinc-700 dark:text-zinc-300 max-w-3xl">Get started with the NeuronKit concepts, architecture, and developer guides.</p>
-      <div class="mt-6 grid sm:grid-cols-2 gap-6">
-        <a href="/en/neuronkit/intro.html" class="block p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900">
-          <h3 class="font-semibold text-lg">Introduction</h3>
-          <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Overview, key features, and architecture.</p>
-        </a>
-        <a href="https://finogeeks.github.io/agentic" target="_blank" rel="noreferrer" class="block p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900">
-          <h3 class="font-semibold text-lg">GitHub</h3>
-          <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Source code and roadmap.</p>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <!-- CTA -->
   <section id="cta" class="py-16 md:py-24">
@@ -342,8 +304,8 @@ flowchart LR
   <footer class="py-10 border-t border-zinc-200/60 dark:border-zinc-800/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
       <p class="text-sm text-zinc-600 dark:text-zinc-400">© <span id="y"></span> NeuronKit (Agentic Context SDK). Early preview.</p>
+      <p class="text-sm text-zinc-600 dark:text-zinc-400">Cloud Brain, Device Hands. Full Control.</p>
       <div class="text-sm flex items-center gap-4">
-        <a href="/en/neuronkit/intro.html" class="hover:text-indigo-600">Docs</a>
         <a href="#" class="hover:text-indigo-600">Privacy</a>
         <a href="#" class="hover:text-indigo-600">Contact</a>
       </div>
