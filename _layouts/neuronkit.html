@@ -46,17 +46,45 @@
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
           {% if prefix == '/zh/' %}
-            <a href="{{ base }}/#why" class="hover:text-indigo-600">为什么</a>
-            <a href="{{ base }}/#features" class="hover:text-indigo-600">特性</a>
-            <a href="{{ base }}/#whitepaper" class="hover:text-indigo-600">白皮书</a>
-            <a href="{{ base }}/#compare" class="hover:text-indigo-600">对比</a>
-            <a href="{{ base }}/#docs" class="hover:text-indigo-600">文档</a>
+            <a href="{{ base }}/#challenges" class="hover:text-indigo-600">变革</a>
+            <a href="{{ base }}/#next" class="hover:text-indigo-600">行动</a>
+            <a href="{{ base }}/#features" class="hover:text-indigo-600">方案</a>
+            <div class="relative group">
+              <button class="inline-flex items-center gap-1 hover:text-indigo-600" aria-haspopup="true" aria-expanded="false">
+                <span>洞见</span>
+                <svg class="h-3.5 w-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.173l3.71-3.942a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+              </button>
+              <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity duration-150 absolute right-0 mt-2 w-80 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-lg py-2">
+                <div class="px-4 py-2 text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">最新文章</div>
+                <a href="/zh/neuronkit/whitepaper/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">电商：从点击流到对话流</a>
+                <a href="/en/neuronkit/insights/from_clickstream_to_dialogstream.html" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">从点击流到对话流（可视化）</a>
+                <a href="/en/neuronkit/insights/sandboxing-for-agents/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">面向 Agent 的沙箱</a>
+                <a href="/en/neuronkit/insights/agentic-interface/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">Agentic 界面报告</a>
+                <a href="/en/neuronkit/insights/agent-cage/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">Agent 的“牢笼”</a>
+                <div class="my-2 border-t border-zinc-200 dark:border-zinc-800"></div>
+                <a href="/zh/neuronkit/insights/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">洞见首页</a>
+              </div>
+            </div>
           {% else %}
-            <a href="{{ base }}/#why" class="hover:text-indigo-600">Why</a>
-            <a href="{{ base }}/#features" class="hover:text-indigo-600">Features</a>
-            <a href="{{ base }}/#whitepaper" class="hover:text-indigo-600">White Paper</a>
-            <a href="{{ base }}/#compare" class="hover:text-indigo-600">Comparison</a>
-            <a href="{{ base }}/#docs" class="hover:text-indigo-600">Docs</a>
+            <a href="{{ base }}/#challenges" class="hover:text-indigo-600">Why Change</a>
+            <a href="{{ base }}/#next" class="hover:text-indigo-600">What's next</a>
+            <a href="{{ base }}/#features" class="hover:text-indigo-600">Solution</a>
+            <div class="relative group">
+              <button class="inline-flex items-center gap-1 hover:text-indigo-600" aria-haspopup="true" aria-expanded="false">
+                <span>Insights</span>
+                <svg class="h-3.5 w-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.173l3.71-3.942a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+              </button>
+              <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity duration-150 absolute right-0 mt-2 w-80 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-lg py-2">
+                <div class="px-4 py-2 text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">Latest Articles</div>
+                <a href="/en/neuronkit/insights/from_clickstream_to_dialogstream.html" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">From Clickstream to Dialogstream</a>
+                <a href="/en/neuronkit/whitepaper/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">E-commerce: Clickstream → Dialogstream</a>
+                <a href="/en/neuronkit/insights/sandboxing-for-agents/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">Sandboxing for Agents</a>
+                <a href="/en/neuronkit/insights/agentic-interface/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">The Agentic Interface: Definitive Report</a>
+                <a href="/en/neuronkit/insights/agent-cage/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">Agent Cage</a>
+                <div class="my-2 border-t border-zinc-200 dark:border-zinc-800"></div>
+                <a href="/en/neuronkit/insights/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">All Insights</a>
+              </div>
+            </div>
           {% endif %}
         </nav>
         <div class="flex items-center gap-3">

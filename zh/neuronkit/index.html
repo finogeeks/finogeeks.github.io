@@ -52,7 +52,22 @@
           <a href="#challenges" class="hover:text-indigo-600">变革</a>
           <a href="#next" class="hover:text-indigo-600">行动</a>
           <a href="#features" class="hover:text-indigo-600">方案</a>
-          <a href="#whitepaper" class="hover:text-indigo-600">洞察</a>
+          <div class="relative group">
+            <button class="inline-flex items-center gap-1 hover:text-indigo-600" aria-haspopup="true" aria-expanded="false">
+              <span>洞见</span>
+              <svg class="h-3.5 w-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.173l3.71-3.942a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity duration-150 absolute right-0 mt-2 w-80 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-lg py-2">
+              <div class="px-4 py-2 text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">最新文章</div>
+              <a href="/zh/neuronkit/whitepaper/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">电商：从点击流到对话流</a>
+              <a href="/en/neuronkit/insights/from_clickstream_to_dialogstream.html" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">从点击流到对话流（可视化）</a>
+              <a href="/en/neuronkit/insights/sandboxing-for-agents/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">面向 Agent 的沙箱</a>
+              <a href="/en/neuronkit/insights/agentic-interface/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">Agentic 界面报告</a>
+              <a href="/en/neuronkit/insights/agent-cage/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">Agent 的“牢笼”</a>
+              <div class="my-2 border-t border-zinc-200 dark:border-zinc-800"></div>
+              <a href="/zh/neuronkit/insights/" class="block px-4 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800">洞见首页</a>
+            </div>
+          </div>
         </nav>
         <div class="flex items-center gap-3">
           <a href="https://finogeeks.github.io/agentic" target="_blank" rel="noreferrer" class="px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-sm">GitHub</a>
