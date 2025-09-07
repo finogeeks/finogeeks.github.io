@@ -65,13 +65,44 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 relative">
       <div class="grid lg:grid-cols-2 gap-10 items-center">
         <div>
-          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-            仅靠“点击流”已不够。用 <span class="gradient-text">对话流</span> 与主动代理重构体验。
-          </h1>
-          <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
-            在 AI 时代，传统应用不能再被静态漏斗与被动购物车束缚。要完成跃迁，应用需要的不止是大语言模型，还需要 <strong>上下文工程（Context Engineering）</strong>。
-            <strong>NeuronKit</strong> 提供整套方案：采集实时设备数据，组织为 <em>语义</em>、<em>情景</em> 与 <em>程序性</em> 记忆，并通过独特的 <strong>设备侧能力模型沙箱</strong> 安全执行动作。不同于纯云端沙箱，NeuronKit 将 <strong>云端推理</strong> 与 <strong>本地安全执行</strong> 有机桥接，让任何应用与设备都能具备 Agentic 能力。
-          </p>
+          <div id="hero-variants" class="relative">
+            <!-- 变体 A（默认） -->
+            <div class="hero-variant" data-variant="a">
+              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                传统应用停在过去——无需大改造，解锁<span class="gradient-text">AI 对话能力</span>
+              </h1>
+              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+                你的移动应用仍依赖僵硬的点击与表单，但用户已期待直觉、主动的互动。AI 代理正在重塑人机交互——别被落下，轻松加入浪潮。<strong>NeuronKit</strong> 是非侵入式 SDK：为你的应用注入实时上下文感知、设备侧安全动作与顺滑的对话流。将被动体验升级为 Agentic 体验，在电商、金融等场景显著提升参与度，同时尊重隐私、改动最小。
+              </p>
+            </div>
+            <!-- 变体 B（更大胆） -->
+            <div class="hero-variant hidden" data-variant="b">
+              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                AI 正在取代老旧应用——<span class="gradient-text">现在升级</span>，别等为时已晚
+              </h1>
+              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+                从笨重的遗留界面迈向聪明的对话式代理：<strong>NeuronKit</strong> 让迁移变得简单顺滑。实时捕捉用户上下文，安全在设备侧执行动作，无需推倒重来即可集成 AI。尤其适合希望在金融、医疗等场景率先完成“面向未来”升级的团队。
+              </p>
+            </div>
+            <!-- 变体 C（点击流 → 对话流；电商 → Agentic 电商） -->
+            <div class="hero-variant hidden" data-variant="c">
+              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                从“点击流”到 <span class="gradient-text">“对话流”</span> —— 电商正演进为 Agentic 电商
+              </h1>
+              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+                静态漏斗与被动购物车，正在被主动、可对话的购物旅程取代。<strong>NeuronKit</strong> 让你的应用具备上下文感知的代理，将“浏览+点击”转化为被引导的结果——合规、私密、且更高效。
+              </p>
+            </div>
+            <!-- 变体 D（云端“脑”，设备“手”） -->
+            <div class="hero-variant hidden" data-variant="d">
+              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                云端“脑”，<span class="gradient-text">设备“手”</span> —— 隐私优先，策略可控
+              </h1>
+              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+                云端推理，设备执行。NeuronKit 的设备侧能力沙箱落实最小权限、逐次同意与完整审计——让你放心上线 Agentic 能力。
+              </p>
+            </div>
+          </div>
           <div class="mt-5 flex flex-wrap gap-2">
             <span class="px-2.5 py-1 text-xs rounded-full bg-indigo-600/10 text-indigo-700 dark:text-indigo-300 border border-indigo-600/20">对话流</span>
             <span class="px-2.5 py-1 text-xs rounded-full bg-emerald-600/10 text-emerald-700 dark:text-emerald-300 border border-emerald-600/20">上下文工程</span>
@@ -83,6 +114,14 @@
             <a href="#whitepaper" class="px-5 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">阅读白皮书</a>
           </div>
           <div class="mt-6 text-sm text-zinc-600 dark:text-zinc-400">云端“脑”、设备“手”。隐私优先，策略可控，人在回路。</div>
+          <!-- 首屏轮播控制 -->
+          <div class="mt-4 flex items-center gap-2" aria-label="首屏变体" role="tablist">
+            <button class="hero-dot h-2.5 w-2.5 rounded-full bg-zinc-400" aria-selected="true" aria-controls="hero-a" role="tab" title="变体 A"></button>
+            <button class="hero-dot h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" aria-selected="false" aria-controls="hero-b" role="tab" title="变体 B"></button>
+            <button class="hero-dot h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" aria-selected="false" aria-controls="hero-c" role="tab" title="变体 C"></button>
+            <button class="hero-dot h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" aria-selected="false" aria-controls="hero-d" role="tab" title="变体 D"></button>
+            <span class="ml-2 text-xs text-zinc-500 dark:text-zinc-400">自动轮播</span>
+          </div>
         </div>
         <div class="lg:pl-8">
           <div class="glass rounded-3xl p-6 shadow-xl ring-1 ring-zinc-200/60 dark:ring-zinc-800/60">
@@ -113,30 +152,40 @@ flowchart LR
     </div>
   </section>
 
+  <!-- 挑战 -->
+  <section class="py-12 md:py-20" id="challenges">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold">直面 AI 转型？你并不孤单——这是你的升级路径</h2>
+      <p class="mt-4 text-zinc-700 dark:text-zinc-300 max-w-3xl">
+        当 AI 重新定义人机交互，遗留移动应用面临诸多挑战：僵硬的界面让用户流失，隐私合规冲击传统跟踪方式，转型压力如影随形。但机遇同样巨大——长尾应用都在等待 AI 升级。NeuronKit 让这一切变得简单：非侵入式地集成具备上下文感知的代理，可补充现有流程、增强个性化，或演进为真正主动的体验。无需重写，一套工具，拥抱 Agentic 未来。
+      </p>
+    </div>
+  </section>
+
   <!-- 为什么 -->
   <section class="py-12 md:py-20" id="why">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold">为什么选择 NeuronKit</h2>
+      <h2 class="text-3xl md:text-4xl font-bold">为什么现在就用 NeuronKit 升级你的遗留应用</h2>
       <div class="mt-6 grid md:grid-cols-3 gap-6">
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-xl">从点击流 → 对话流</h3>
-          <p class="mt-2 text-zinc-600 dark:text-zinc-400">跳出静态漏斗，用主动、具上下文的对话引导用户达成目标。</p>
+          <h3 class="font-semibold text-xl">从僵硬流程到主动对话</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">摆脱点击式 UX 的局限，捕捉用户真实意图；用自然对话主动引导，沉淀长期黏性。</p>
         </div>
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-xl">上下文工程</h3>
-          <p class="mt-2 text-zinc-600 dark:text-zinc-400">持续采集设备信号，并组织为 <em>语义</em>、<em>情景</em>、<em>程序性</em> 记忆，提升推理质量。</p>
+          <h3 class="font-semibold text-xl">轻松获取上下文</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">不再从零散数据“猜需求”。NeuronKit 非侵入式采集位置、传感器、应用信号，沉淀为可推理的智能记忆。</p>
         </div>
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-xl">设备侧能力沙箱</h3>
-          <p class="mt-2 text-zinc-600 dark:text-zinc-400">能力模型 + 策略引擎，在执行前完成校验/同意/审计，保障安全可控。</p>
+          <h3 class="font-semibold text-xl">安全的设备侧能力</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">AI 动作在设备侧执行，内置同意与审计；云端智能与本地控制相结合，隐私优先。</p>
         </div>
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-xl">云端推理，本地执行</h3>
-          <p class="mt-2 text-zinc-600 dark:text-zinc-400">桥接云侧模型与边缘执行，将隐私敏感动作留在设备并受策略控制。</p>
+          <h3 class="font-semibold text-xl">为真实开发者而建</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">无论维护遗留应用还是打造超级应用——简单 API 与可插拔工具，让 AI 能力快速落地，无需重头来过。</p>
         </div>
         <div class="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
-          <h3 class="font-semibold text-xl">开发者与企业友好</h3>
-          <p class="mt-2 text-zinc-600 dark:text-zinc-400">中间件无侵入集成、简单 API，企业级可观测、合规与治理。</p>
+          <h3 class="font-semibold text-xl">未来属于 Agentic</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-400">传统应用正被 AI 驱动的人机交互增强甚至取代。率先拥抱变化，让应用变得自适应、可对话、面向未来。</p>
         </div>
       </div>
     </div>
@@ -149,13 +198,13 @@ flowchart LR
         <div>
           <h2 class="text-3xl md:text-4xl font-bold">关键特性</h2>
           <ul class="mt-6 space-y-4 text-zinc-700 dark:text-zinc-300">
-            <li><span class="font-medium">丰富上下文：</span> 位置、传感器、遥测等作为情景上下文。</li>
-            <li><span class="font-medium">设备侧沙箱：</span> 功能 → 能力 → 原语；敏感操作需同意。</li>
-            <li><span class="font-medium">云端记忆：</span> 时间序列日志促进为语义/情景/程序性记忆。</li>
-            <li><span class="font-medium">代理路由：</span> 将意图路由到注册代理，返回动作计划。</li>
-            <li><span class="font-medium">ConvoUI：</span> 语音/聊天 + 内嵌 UI 组件。</li>
-            <li><span class="font-medium">分析与审计：</span> 策略决策、同意与动作轨迹。</li>
-            <li><span class="font-medium">平台无关：</span> 兼容 Android / iOS / IoT，云中立。</li>
+            <li><span class="font-medium">无缝上下文 SDK：</span> 轻松将位置、传感器等设备数据转化为可行动洞察——非侵入式升级应用感知，无需“动大手术”。</li>
+            <li><span class="font-medium">设备侧防护沙箱：</span> 一次定义权限，AI 动作安全执行并自动处理同意——告别隐私与合规焦虑。</li>
+            <li><span class="font-medium">智能记忆中枢：</span> 为应用构建持久“记忆体”——时间戳日志进化为有意义的记忆，支撑前所未有的个性化。</li>
+            <li><span class="font-medium">智能代理路由：</span> 将用户意图连接到云端强大代理，再在本地安全执行，体验更灵动、更实时。</li>
+            <li><span class="font-medium">即插即用对话 UI：</span> 语音、聊天与互动组件（按钮、表单）开箱即用，用对话替代过时表单，分钟级集成。</li>
+            <li><span class="font-medium">合规更简单：</span> 内置分析与审计，完整记录每次决策与动作——轻松满足企业级标准。</li>
+            <li><span class="font-medium">跨平台灵活性：</span> 兼容 Android、iOS 与 IoT，云中立——适配海量长尾遗留应用的 Agentic 升级。</li>
           </ul>
         </div>
         <div class="lg:pl-8">
@@ -280,6 +329,58 @@ flowchart LR
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    (function(){
+      const container = document.getElementById('hero-variants');
+      if (!container) return;
+      const variants = Array.from(container.querySelectorAll('.hero-variant'));
+      const dots = Array.from(document.querySelectorAll('.hero-dot'));
+      let idx = 0;
+      let timer;
+
+      function show(i){
+        variants.forEach((el, k)=>{
+          if (k === i) { el.classList.remove('hidden'); }
+          else { el.classList.add('hidden'); }
+        });
+        dots.forEach((d, k)=>{
+          d.setAttribute('aria-selected', String(k===i));
+          d.classList.toggle('bg-zinc-400', k===i);
+          d.classList.toggle('bg-indigo-600', k===i);
+          d.classList.toggle('dark:bg-zinc-700', k!==i);
+          d.classList.toggle('bg-zinc-300', k!==i);
+        });
+        idx = i;
+      }
+
+      function next(){ show((idx+1)%variants.length); }
+      function start(){ timer = setInterval(next, 8000); }
+      function stop(){ if (timer) clearInterval(timer); }
+
+      const letter = (i)=> ['a','b','c','d'][i] || 'a';
+      const indexOf = (ch)=> Math.max(0, ['a','b','c','d'].indexOf(ch));
+
+      dots.forEach((d, k)=>{
+        d.addEventListener('click', ()=>{ stop(); show(k); location.hash = `hero=${letter(k)}`; start(); });
+        d.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); stop(); show(k); location.hash = `hero=${letter(k)}`; start(); }});
+      });
+
+      container.addEventListener('mouseenter', stop);
+      container.addEventListener('mouseleave', start);
+
+      const m = location.hash.match(/hero=([a-d])/i);
+      if (m) {
+        show(indexOf(m[1].toLowerCase()));
+      } else {
+        show(0);
+      }
+      window.addEventListener('hashchange', ()=>{
+        const m2 = location.hash.match(/hero=([a-d])/i);
+        if (m2) { stop(); show(indexOf(m2[1].toLowerCase())); start(); }
+      });
+      start();
+    })();
   </script>
 </body>
 </html>

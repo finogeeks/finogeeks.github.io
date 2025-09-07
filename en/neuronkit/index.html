@@ -67,12 +67,44 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 relative">
       <div class="grid lg:grid-cols-2 gap-10 items-center">
         <div>
-          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-            Legacy Apps Are Stuck in the Past—Unlock <span class="gradient-text">AI‑Powered Conversations</span> Without the Overhaul
-          </h1>
-          <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
-            Your traditional mobile apps rely on rigid clicks and forms, but users demand intuitive, proactive interactions. As AI agents redefine human‑computer interfaces, don’t get left behind—join the wave effortlessly. <strong>NeuronKit</strong> is the non‑intrusive SDK that upgrades your apps with real‑time context awareness, secure on‑device actions, and seamless dialog flows. Turn passive experiences into agentic ones, boosting engagement in e‑commerce, fintech, and more—while respecting privacy and requiring minimal code changes.
-          </p>
+          <div id="hero-variants" class="relative">
+            <!-- Variant A (default) -->
+            <div class="hero-variant" data-variant="a">
+              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                Legacy Apps Are Stuck in the Past—Unlock <span class="gradient-text">AI‑Powered Conversations</span> Without the Overhaul
+              </h1>
+              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+                Your traditional mobile apps rely on rigid clicks and forms, but users demand intuitive, proactive interactions. As AI agents redefine human‑computer interfaces, don’t get left behind—join the wave effortlessly. <strong>NeuronKit</strong> is the non‑intrusive SDK that upgrades your apps with real‑time context awareness, secure on‑device actions, and seamless dialog flows. Turn passive experiences into agentic ones, boosting engagement in e‑commerce, fintech, and more—while respecting privacy and requiring minimal code changes.
+              </p>
+            </div>
+            <!-- Variant B (bold) -->
+            <div class="hero-variant hidden" data-variant="b">
+              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                AI is Replacing Old‑School Apps—<span class="gradient-text">Upgrade Yours</span> Before It’s Too Late
+              </h1>
+              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+                From clunky legacy interfaces to smart, conversational agents: <strong>NeuronKit</strong> makes the transition painless. Capture user context in real time, execute actions securely on‑device, and integrate AI without ripping apart your codebase. Ideal for developers ready to future‑proof mobile apps in fintech, healthcare, and beyond.
+              </p>
+            </div>
+            <!-- Variant C (clickstreams → dialog streams) -->
+            <div class="hero-variant hidden" data-variant="c">
+              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                From Clickstreams to <span class="gradient-text">Dialog Streams</span> — E‑Commerce → Agentic Commerce
+              </h1>
+              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+                Static funnels and passive carts are giving way to proactive, conversational journeys. <strong>NeuronKit</strong> equips your apps with context‑aware agents, turning browse‑and‑click into guided outcomes—ethical, private, and fast.
+              </p>
+            </div>
+            <!-- Variant D (Cloud brain, device hands) -->
+            <div class="hero-variant hidden" data-variant="d">
+              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                Cloud Brain, <span class="gradient-text">Device Hands</span> — Privacy‑First, Policy‑Controlled
+              </h1>
+              <p class="mt-6 text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl">
+                Run intelligence in the cloud and actions on the device. NeuronKit’s on‑device capability sandbox enforces least‑privilege scopes, per‑action consent, and full audit—so you can ship agentic features with confidence.
+              </p>
+            </div>
+          </div>
           <div class="mt-5 flex flex-wrap gap-2">
             <span class="px-2.5 py-1 text-xs rounded-full bg-indigo-600/10 text-indigo-700 dark:text-indigo-300 border border-indigo-600/20">Dialog streams</span>
             <span class="px-2.5 py-1 text-xs rounded-full bg-emerald-600/10 text-emerald-700 dark:text-emerald-300 border border-emerald-600/20">Context engineering</span>
@@ -84,6 +116,14 @@
             <a href="#whitepaper" class="px-5 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium">Read the White Paper</a>
           </div>
           <div class="mt-6 text-sm text-zinc-600 dark:text-zinc-400">Cloud brain, device hands. Privacy-first. Policy-controlled. Human-in-the-loop.</div>
+          <!-- Hero controls -->
+          <div class="mt-4 flex items-center gap-2" aria-label="Hero variants" role="tablist">
+            <button class="hero-dot h-2.5 w-2.5 rounded-full bg-zinc-400 aria-selected:bg-indigo-600" aria-selected="true" aria-controls="hero-a" role="tab" title="Variant A"></button>
+            <button class="hero-dot h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" aria-selected="false" aria-controls="hero-b" role="tab" title="Variant B"></button>
+            <button class="hero-dot h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" aria-selected="false" aria-controls="hero-c" role="tab" title="Variant C"></button>
+            <button class="hero-dot h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" aria-selected="false" aria-controls="hero-d" role="tab" title="Variant D"></button>
+            <span class="ml-2 text-xs text-zinc-500 dark:text-zinc-400">Auto rotates</span>
+          </div>
         </div>
         <div class="lg:pl-8">
           <div class="glass rounded-3xl p-6 shadow-xl ring-1 ring-zinc-200/60 dark:ring-zinc-800/60">
@@ -291,6 +331,61 @@ flowchart LR
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    (function(){
+      const container = document.getElementById('hero-variants');
+      if (!container) return;
+      const variants = Array.from(container.querySelectorAll('.hero-variant'));
+      const dots = Array.from(document.querySelectorAll('.hero-dot'));
+      let idx = 0;
+      let timer;
+
+      function show(i){
+        variants.forEach((el, k)=>{
+          if (k === i) { el.classList.remove('hidden'); }
+          else { el.classList.add('hidden'); }
+        });
+        dots.forEach((d, k)=>{
+          d.setAttribute('aria-selected', String(k===i));
+          d.classList.toggle('bg-zinc-400', k===i);
+          d.classList.toggle('bg-indigo-600', k===i);
+          d.classList.toggle('dark:bg-zinc-700', k!==i);
+          d.classList.toggle('bg-zinc-300', k!==i);
+        });
+        idx = i;
+      }
+
+      function next(){ show((idx+1)%variants.length); }
+      function start(){ timer = setInterval(next, 8000); }
+      function stop(){ if (timer) clearInterval(timer); }
+
+      // Map between indices and hash letters
+      const letter = (i)=> ['a','b','c','d'][i] || 'a';
+      const indexOf = (ch)=> Math.max(0, ['a','b','c','d'].indexOf(ch));
+
+      dots.forEach((d, k)=>{
+        d.addEventListener('click', ()=>{ stop(); show(k); location.hash = `hero=${letter(k)}`; start(); });
+        d.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); stop(); show(k); location.hash = `hero=${letter(k)}`; start(); }});
+      });
+
+      container.addEventListener('mouseenter', stop);
+      container.addEventListener('mouseleave', start);
+
+      // Initialize from hash if present
+      const m = location.hash.match(/hero=([a-d])/i);
+      if (m) {
+        show(indexOf(m[1].toLowerCase()));
+      } else {
+        show(0);
+      }
+      // Respond to hash changes
+      window.addEventListener('hashchange', ()=>{
+        const m2 = location.hash.match(/hero=([a-d])/i);
+        if (m2) { stop(); show(indexOf(m2[1].toLowerCase())); start(); }
+      });
+      start();
+    })();
   </script>
 </body>
 </html>
