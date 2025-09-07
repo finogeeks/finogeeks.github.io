@@ -176,3 +176,130 @@ It combines:
 - As a complement to heavier compute isolation (microVMs/Wasm).  
 
 **Diagram: NeuronKit Sandbox Model**
+  Cloud Agent (Decision Engine)
+            │
+    Action Plan (DSL + tokens)
+            │
+    ┌───────▼────────┐
+    │ NeuronKit Local│
+    │   Sandbox       │
+    │  (PEP)          │
+    └───────▲────────┘
+            │
+┌───────────┴───────────┐
+│ Browser Security Layer │
+│ (CSP, SOP, Extension) │
+└───────────▲───────────┘
+            │
+    Local Page / DOM / APIs
+
+---
+
+## 4. Architectures & design patterns
+
+### 4.1 Cloud decision, local execution  
+- Cloud agent plans; local executor enforces via DSL.  
+- Cloud never receives raw secrets.  
+- Local executor = Policy Enforcement Point.  
+
+### 4.2 Instruction DSL + capability tokens  
+- Define auditable DSL with typed parameters.  
+- Short-lived capability tokens for resources.  
+- Never run arbitrary eval.  
+
+### 4.3 Two-layer sandbox: Wasm in microVM  
+- Wasm for plugin safety + microVM for kernel protection.  
+
+### 4.4 Ephemeral-per-task sandboxes  
+- Fresh environment per task; destroyed after execution.  
+
+---
+
+## 5. Enforcement, auditing & governance
+
+- **Policy Decision & Enforcement:** PDP in cloud; PEP local.  
+- **Observability & tamper resistance:** signed logs, append-only, replayable traces.  
+- **Least privilege & expiry:** short-lived capabilities.  
+- **Human-in-the-loop:** confirmation for irreversible actions.  
+
+---
+
+## 6. Evaluation criteria
+
+- Isolation strength.  
+- Attack surface.  
+- Performance & latency.  
+- Developer ergonomics.  
+- Operational cost.  
+- Auditability.  
+
+---
+
+## 7. Practical recommendations
+
+1. Classify actions by risk (low/medium/high).  
+2. Adopt cloud-decision / local-executor for browser agents.  
+3. For server code: microVMs (fully untrusted), Wasm (plugin models), or hybrid.  
+4. Apply kernel primitives everywhere.  
+5. Design host APIs around capabilities.  
+6. Instrument for audit & forensics.  
+7. Maintain sandbox lifecycle as ongoing practice.  
+8. For UI-driven agent systems, prefer **semantic sandboxes like NeuronKit** over raw JS execution.  
+
+---
+
+## 8. Case examples & references
+
+- **Firecracker / microVMs**: lightweight strong isolation.  
+- **Containers + seccomp**: pragmatic server-side sandboxing.  
+- **Wasmtime / WebAssembly**: portable runtime with capability APIs.  
+- **Browser sandbox & extension risks**: CSP, extension isolation, permission minimization.  
+- **NeuronKit Sandbox**: practical semantic sandbox for agent–UI interaction.  
+
+---
+
+## 9. Future directions
+
+- Provable SFI & formally verified runtimes.  
+- Hardware-backed isolation (TEEs / SGX / SEV).  
+- Capability OS & microkernels.  
+- Standardized agent DSL + signed capability tokens.  
+
+---
+
+## 10. Conclusion
+
+Agentic systems are powerful but risky. There is no single “best” sandbox; instead, adopt a layered approach:
+
+- Browser sandboxes + local PEP for UIs.  
+- Ephemeral microVMs for untrusted server code.  
+- Wasm + capability APIs for plugin models.  
+- NeuronKit for semantic enforcement in browser automation.  
+
+Assume agent outputs may be malicious. Minimize ambient authority, enforce capabilities, require user confirmation for risky actions, and maintain auditable trails.
+
+---
+
+## Appendix A — Short glossary
+
+- **MicroVM**: Minimal virtual machine with smaller TCB and faster boot.  
+- **Wasm / WebAssembly**: Binary instruction format for a portable sandboxed runtime.  
+- **seccomp**: Linux mechanism to restrict syscalls.  
+- **PEP / PDP**: Policy Enforcement/Decision Points.  
+- **CSP**: Content Security Policy.  
+
+---
+
+## Appendix B — Selected references
+
+- Firecracker microVM documentation.  
+- WebAssembly security docs.  
+- Same-Origin Policy (MDN).  
+- MicroVMs vs containers (Northflank blog).  
+- Server-side sandboxing with seccomp (Figma blog).  
+- Wasmtime security docs.  
+- Wasm sandbox projects (GitHub).  
+- WebAssembly security caveats (Snyk).  
+- Chrome extension manifest / sandbox docs.  
+- Reports on malicious browser extensions (Wired).  
+- NeuronKit design notes and documentation.  
