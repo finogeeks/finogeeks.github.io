@@ -163,6 +163,13 @@
       text-underline-offset: 3px;
       word-break: break-word;
     }
+  /* Simple high-contrast override for dark mode articles (force white text) */
+  .dark article.prose,
+  .dark article.prose :where(p, li, span, small, td, th, div, strong, em, a, h1, h2, h3, h4, h5, h6, blockquote, figcaption, code) {
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+
   </style>
 </head>
 <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
@@ -260,7 +267,7 @@
     <section class="py-10 md:py-14">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">{{ page.title }}</h1>
-        <article class="prose dark:prose-invert mt-6">
+        <article class="prose mt-6">
           {{ content }}
         </article>
       </div>
