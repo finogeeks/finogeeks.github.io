@@ -23,3 +23,35 @@
 
 .flow-arrow { font-size: 2rem; color: #118AB2; line-height: 1; }
 .flow-box { border: 2px solid #118AB2; background-color: #ffffff; }
+
+/* High-contrast text for dark mode (works on mobile via media query) */
+@media (prefers-color-scheme: dark) {
+  /* Scope to the main container so nav and other site areas keep their own styles */
+  .container,
+  .container p,
+  .container li,
+  .container span,
+  .container small,
+  .container td,
+  .container th,
+  .container div,
+  .container strong,
+  .container em,
+  .container a,
+  .container h1,
+  .container h2,
+  .container h3,
+  .container h4,
+  .container h5,
+  .container h6,
+  .container blockquote,
+  .container figcaption,
+  .container code {
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+  /* Override any Tailwind text-* utilities used inside visual articles */
+  .container [class*="text-"] {
+    color: #ffffff !important;
+  }
+}

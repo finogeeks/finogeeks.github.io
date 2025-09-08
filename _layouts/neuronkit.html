@@ -39,13 +39,23 @@
     .dark .prose { 
       color: rgb(248 250 252); 
     }
-    /* Ensure high contrast for all text elements */
-    .dark .prose :where(p, li, span, small, td, th, div, strong, em, a:not([class*="text-"])) {
-      color: rgb(248 250 252) !important;
+    /* Ensure high contrast for all text elements (avoid :where for mobile support) */
+    .dark .prose p,
+    .dark .prose li,
+    .dark .prose span,
+    .dark .prose small,
+    .dark .prose td,
+    .dark .prose th,
+    .dark .prose div,
+    .dark .prose strong,
+    .dark .prose em,
+    .dark .prose a:not([class*="text-"]) {
+      color: #ffffff !important;
     }
 
     /* Override any text color utilities */
-    .dark .prose :where([class*="text-"], [class*="text-"] *) {
+    .dark .prose [class*="text-"],
+    .dark .prose [class*="text-"] * {
       color: inherit !important;
       opacity: 1 !important;
     }
@@ -183,7 +193,25 @@
     }
   /* Simple high-contrast override for dark mode articles (force white text) */
   .dark article.prose,
-  .dark article.prose :where(p, li, span, small, td, th, div, strong, em, a, h1, h2, h3, h4, h5, h6, blockquote, figcaption, code) {
+  .dark article.prose p,
+  .dark article.prose li,
+  .dark article.prose span,
+  .dark article.prose small,
+  .dark article.prose td,
+  .dark article.prose th,
+  .dark article.prose div,
+  .dark article.prose strong,
+  .dark article.prose em,
+  .dark article.prose a,
+  .dark article.prose h1,
+  .dark article.prose h2,
+  .dark article.prose h3,
+  .dark article.prose h4,
+  .dark article.prose h5,
+  .dark article.prose h6,
+  .dark article.prose blockquote,
+  .dark article.prose figcaption,
+  .dark article.prose code {
     color: #ffffff !important;
     opacity: 1 !important;
   }
