@@ -1,136 +1,234 @@
 ---
-title: 《智能体的牢笼：自主系统沙盒化的全面白皮书》
+title: "智能体的牢笼：沙箱化自治系统的白皮书"
 layout: neuronkit
-permalink: /zh/neuronkit/insights/agent-cage/
+permalink: /en/neuronkit/insights/agent-cage/
 ---
 
-## 执行摘要
+## **摘要**
 
-自主软件代理的兴起标志着一个重要的技术拐点，它预示着前所未有的生产力和运营效率提升。然而，这种变革潜力也伴随着全新的安全风险类别。与依赖固定指令集运行的传统软件不同，自主代理具备独立行动、主动运作及深度融入企业生态系统的能力。这些特质既是其巨大价值的来源，也使其成为恶意活动的理想入口，能够造成意外损害、扩散安全漏洞，并依据被污染的数据采取行动。
+自治软件智能体的普及代表了一个重大的技术转折点，承诺带来前所未有的生产力和运营效率提升。然而，这种变革潜力伴随着一类新的且强大的安全风险。与按照固定指令集运行的传统软件不同，自治智能体具备独立行动、主动性和深度集成到企业生态系统的能力。这些特性——正是它们巨大价值的来源——也使它们成为恶意活动的理想入口，能够造成意外伤害、传播漏洞并基于中毒数据采取行动。
 
-传统依赖静态特征匹配的安全模型，从根本上难以应对这些代理系统动态且常不可预测的行为。我们需要一种新方法，其核心在于战略性地部署沙盒技术。沙盒本质上是一个高度受控的隔离环境，用于容纳和分析不可信代码。本文主张，沙盒不应仅仅被视为补充性的安全工具，而必须成为安全、合规、可扩展部署自主代理的基石和不可妥协的原则。
+传统的安全模型依赖于静态的、基于特征的检测，从根本上不适合管理这些智能系统的动态且往往不可预测的行为。需要一种新的方法，以沙箱技术的战略部署为中心。沙箱的核心是一个高度控制的、隔离的环境，用于包含和分析不可信代码。本文认为，沙箱化不仅仅是一种补充的安全工具，而是安全、道德和可扩展部署自治智能体的基础且不可谈判的原则。
 
-本文全面探讨了这一关键领域：我们首先界定代理自主性的核心特征及其带来的安全挑战，随后提出详细的沙盒技术分类，并阐述如何通过分层策略应对权限提升、数据污染等特定风险。除技术应用外，报告还延伸到更广泛的战略场景，包括 AI 红队测试、金融合规及自动驾驶研发。最后，我们分析沙盒逃逸与漏洞带来的重大挑战，并提出更高层级的治理机制——“AI 代理控制塔”，将其视为管理并保护新一代自主工作力量的必然演进。
+本报告对这一关键交叉点进行了全面考察。它定义了智能体自治的核心原则以及它引入的安全必要性。然后，它呈现了沙箱技术的详细分类——从高隔离虚拟机（VM）到轻量级容器，再到新的微虚拟机范式和硬件辅助的安全飞地。分析展示了这些技术如何被战略性地分层来应对特定智能体中心风险，例如权限提升和数据中毒。除了技术应用之外，本报告还探讨了沙箱在更广泛战略背景中的使用，包括AI红队测试、金融监管合规以及自治车辆的开发。本文以沙箱规避和漏洞带来的重大挑战结束，强调了更高层次治理层——“AI智能体控制塔”——的出现，作为管理并保护下一代自治劳动力所需的必要演进。
 
-## 1. 自主代理的兴起
+## **1. 自治智能体的兴起**
 
-### 1.1 软件代理的定义：超越传统软件
+### **1.1 定义软件智能体：超越传统软件**
 
-软件代理是一种代表用户或其他程序行动的程序，具备以下特征：
+在计算机科学中，软件智能体是一个代表用户或其他程序行动的程序，在代理关系中运作。1 这个定义源于拉丁语 *agere*，意思是“代表某人行动”，并暗示智能体有权在没有持续人类监督的情况下决定哪些行动是合适的。这种特性从根本上将软件智能体与传统软件区分开来。1 而传统程序遵循预定义的、明确的指令，智能体被设计为自治运作、学习并适应变化的条件和要求，而无需持续的人类干预。2
 
-- **自主性**：独立运作并自主决策，无需直接指令即可发起行动。  
-- **反应性**：感知环境变化并实时做出响应。  
-- **主动性**：不仅被动响应输入，更能主动设定目标并推动实现。  
-- **适应性**：借助机器学习与人工智能，从经验中学习并持续优化。  
+定义软件智能体独特能力的核心属性包括：
 
-与传统依赖固定规则的程序不同，软件代理能在无需持续监督的情况下，自行判断并行动。
+* **自治性：** 独立运作并做出决策的能力，在没有直接人类命令的情况下发起行动。2  
+* **反应性：** 感知其环境并对发生的变化做出响应的能力。2  
+* **主动性：** 主动采取举措并独立追求目标，而不是仅仅对输入做出反应。2  
+* **适应性：** 从过去经验中学习并随时间优化其行为的能力，通常通过机器学习和人工智能等技术。2
 
-### 1.2 向多代理系统的转变
+### **1.2 转向多智能体生态系统**
 
-代理正从单一用途工具转向 **多代理系统（MAS）**。MAS 中多个代理协作分工，能应对复杂和动态的任务。其优势包括：
+智能体的演进正在超越简单的、单一用途工具，例如基本的聊天机器人，向复杂的、去中心化的网络发展，即多智能体系统（MAS）。4 这种范式转变涉及一个高功能智能体团队，其中每个智能体负责问题的一个专业部分，并与其他智能体协作以实现集体目标。5 这种分布式工作负载和角色专业化允许MAS应对复杂、动态和大规模挑战，这些挑战对于单一的、单块AI系统来说将是压倒性的。5
 
-- 横向扩展能力  
-- 更强的鲁棒性（单点失效不会导致系统崩溃）  
-- 在供应链、客户服务、资源管理等领域已有广泛应用  
+这种协作模型的好处是巨大的，包括增强的问题解决能力、通过添加更多智能体而增加的可扩展性而不降低性能，以及改进的弹性，其中一个智能体的失败不会导致系统整体崩溃。5 这些系统的例子正在各个部门涌现，从供应链管理中智能体预测库存需求并管理资源，到客户服务中多个智能体协作处理查询、文档检索和个性化响应。5
 
-### 1.3 自主性的潜在风险
+### **1.3 智能体自治的潜在风险**
 
-代理自主性同时引入重大安全隐患：
+使自治智能体如此有价值的特性也是新的且重大安全风险的来源。这些系统的自治性和深度集成到数字生态系统中扩展了攻击面，为恶意行为者创造了新的途径。7 智能体独立运作、做出决策并与多个系统交互的能力，将其从单纯的工具转变为潜在的妥协入口。这呈现了一个根本悖论：智能体最珍贵的属性也是其最重大的漏洞。
 
-- **意外损害**：可能执行未授权或有害操作  
-- **数据污染**：依赖被操纵的输入数据导致错误决策  
-- **权限提升与边界模糊**：跨域访问带来更高入侵风险  
+一个主要担忧是**意外伤害**的风险。一个自治行动的智能体可能在没有用户明确批准甚至意识的情况下执行不期望或破坏性的行动。这可能从良性但令人沮丧的错误，如将电子邮件发送给错误的收件人，到更严重的后果，如更改关键日历事件或删除重要文件。7 这种风险的隐蔽性在于，用户可能直到重大损害发生后才意识到这些行动，因为智能体的深度集成和自治减少了人类干预的机会。7
 
----
+一个更复杂的威胁是**数据中毒**，其中攻击者操纵智能体消耗的输入，微妙地将决策过程导向恶意结果。8 例如，伪造的传感器数据可能欺骗智能体相信一台机器正在安全运行，而实际上它正在过热，可能导致灾难性的设备故障或危及人类生命。这种攻击特别难以检测，因为智能体在传统意义上没有“损坏”；它只是基于虚假事实行动。8
 
-## 2. 沙盒的必要性
+最后，新的安全景观的特点是**权限提升和企业边界的转变**。自治智能体通常需要跨域访问，在IT系统、云环境和运营技术（OT）网络之间通信。8 为了方便，人类操作员可能授予这些智能体广泛的权限，为攻击者创造了新的利用机会。一个被妥协的智能体不是单一故障点，而是一个具有预批准权限的动态入口，访问敏感系统。随着智能体在多智能体系统中联网，一个单一漏洞可以向外扩散，导致整个企业级联故障。8 这种动态安全边界意味着传统的“城堡和护城河”安全模型，专注于保护网络边界，正在变得过时。新挑战是保护在这些边界内和跨边界运作的自治实体。
 
-### 2.1 传统安全措施的局限性
+## **2. 沙箱化的基础**
 
-防火墙、IDS、特征匹配等传统防御手段难以应对代理的动态行为和对抗性输入。即便是善意代理，也可能因复杂环境做出危险行为。
+### **2.1 沙箱化作为核心安全原则**
 
-### 2.2 沙盒作为战略性基石
+沙箱是一个高度控制和隔离的环境，用于运行不可信应用程序、文件或代码。9 其中心目的是安全执行潜在恶意或可疑程序，而不冒着污染或妥协主机系统的风险。10 沙箱化不是单一技术，而是一个总体安全原则，建立在三个核心原则之上：
 
-沙盒提供隔离与受控环境，既能防止代理异常操作波及生产系统，又能用于安全团队的行为观测与分析。  
+* **包含：** 沙箱的最基本原则是将其任何行动限制在严格边界内。如果一个程序试图执行恶意行动，如损坏文件或建立未经授权的网络连接，该行动将被包含，并且只会妥协沙箱环境本身。10  
+* **隔离：** 沙箱创建一个单独的地址空间，防止运行应用程序访问主机系统的内存、文件系统或特权操作。9 这种隔离防止“侧信道泄漏”和数据渗出，确保与底层系统的完全分离。12  
+* **分析：** 沙箱环境被设计为一个安全的观察平台。它实时监控应用程序的行为，记录活动如文件写入、注册表修改和网络请求。11 这种行为分析为安全专业人士提供关键遥测，以理解威胁的真实意图。
 
-它不仅是“最后防线”，更是自主代理 **安全、合规部署的基础条件**。  
+### **2.2 沙箱化的传统应用**
 
----
+沙箱化的使用长期以来是分层防御策略的基石，特别是在网络安全领域。其主要应用包括：
 
-## 3. 沙盒技术的分类与评估
+* **恶意软件分析：** 沙箱被先进的杀毒软件和网络安全系统广泛用于安全分析病毒、勒索软件和其他形式的恶意软件。11 这个过程允许可疑文件，如感染恶意软件的Word文档，在沙箱中打开和执行，在那里观察其行为并发现其恶意意图，而不对主机计算机或网络造成风险。10  
+* **零日威胁检测：** 与依赖已知哈希或特征的遗留杀毒解决方案不同，沙箱在受控环境中执行文件并监控运行时指标。12 这种基于行为的方法特别有效对抗零日恶意软件、多态负载和其他先前未见的威胁，这些威胁规避了常规检测机制。10  
+* **软件和QA测试：** 开发者利用沙箱测试新代码和应用程序，而不冒着损坏其主要操作系统的风险。11 这提供了一个安全的、可重现的和包含的环境，用于质量保证（QA）和调试问题代码元素。10  
+* **Web浏览器安全：** 许多现代Web浏览器整合沙箱化来隔离不可信网页并防止漏洞影响系统的其余部分。11 这种模型在受限环境中运行每个标签，防止恶意脚本访问共享内存或主机操作系统。12
 
-| 技术形态 | 安全性 | 性能与效率 | 适用场景 | 局限性 |
-|----------|--------|------------|----------|--------|
-| **虚拟机（VM）** | 极高 | 资源消耗大，启动慢 | 金融、医疗等高敏感环境 | 难以大规模扩展 |
-| **容器** | 中等 | 轻量级，高效扩展 | NLP、数据检索等高并发场景 | 隔离弱，内核被攻破影响整体 |
-| **微虚拟机（MicroVM）** | 高 | 兼顾性能与安全 | 云端大规模多代理系统 | 技术生态尚在发展中 |
-| **硬件飞地（TEE）** | 极高 | 开发复杂度高，扩展性有限 | 军事、国家安全、高价值金融 | 依赖底层硬件，漏洞修复困难 |
+### **2.3 战略价值主张**
 
-**分层组合策略**：  
+沙箱化不仅仅是一个技术原语，而是一个战略控制。它是一个包含和分析机制，而不是预防机制。12 其价值在于提供一个关键的时间窗口，在威胁逃脱并造成伤害之前安全观察和理解威胁的行为。这种战略功能使其成为全面网络安全姿态的重要组成部分。
 
-- 核心任务运行于 TEE / VM  
-- 外围任务交给容器 / MicroVM  
-- 由策略管理器统一调度与监控  
+沙箱化从简单包含工具到复杂行为分析平台的演进，对于自治智能体的上下文高度相关。该技术“模拟真实执行条件”并监控运行时指标如文件写入、注册表修改和网络连接的能力，是其核心原则对智能体不可预测性质的直接应用。14 从静态、基于特征的安全模型向动态、基于行为的模型转变，是管理AI智能体新兴和适应行为的内在合适方法。它还促进内部协作和创新，允许多样化团队在受控环境中测试新应用程序，而无需昂贵的内部实验室。10
 
----
+## **3. 沙箱化自治智能体的理由**
 
-## 4. 针对特定风险的沙盒化应对
+### **3.1 独特的安全必要性**
 
-### 4.1 权限提升
+自治智能体，特别是那些利用大型语言模型（LLM）的智能体，以一种不可预测的程度运作，使它们从根本上不同于传统软件。它们的行为往往是新兴的，并可能受广泛输入的影响，使它们对静态、基于规则的安全方法免疫。3 标准安全框架无法充分保护一个能够“提前规划多个步骤”和“主动采取举措实现目标”的智能体。3 因此，沙箱化对于智能体不是一个有用的附加物；它是基本的安全要求。它提供了评估和部署设计为独立和主动行为系统的唯一安全方式。15
 
-- **最小权限原则**  
-- **分级信任机制**  
-- **动态监控与审计**  
+### **3.2 缓解智能体特定威胁**
 
-### 4.2 数据污染
+沙箱是对自治智能体特定独特威胁的强大防御：
 
-- **输入过滤与清洗**  
-- **影子执行对比**  
-- **异常检测与报警**  
+* **缓解数据中毒：** 自治系统的主要风险是它们消耗的数据被操纵，这可能微妙地腐败它们的决策过程。8 沙箱可用于监控智能体与数据源的交互，在智能体传播伪造数据或基于腐败信息行动之前允许实时检查异常。这为数据完整性提供了关键保护层。  
+* **防止权限提升和未经授权的API调用：** 智能体与广泛外部系统和API交互的能力创造了一个新的攻击向量。13 沙箱被设计为防止智能体逃脱其环境并获得对敏感系统或数据的未经授权访问。13 它们强制严格的访问控制和资源配额，将智能体的访问限制在仅授权的文件、API或网络端点。13 这种包含机制对于防止权限提升和数据渗出至关重要。  
+* **防止基础设施损坏：** 沙箱是防止智能体意外或恶意损坏基础设施的主要工具。15 它提供了一个安全的环境来测试智能体执行任意代码并与关键系统交互的能力，而没有真实世界的伤害。这是评估过程的关键步骤，以确保智能体的行动保持在可接受边界内。15
 
-### 4.3 对抗性提示与模型操纵
+### **3.3 沙箱在道德AI中的角色**
 
-- **多模型交叉验证**  
-- **提示过滤与解析**  
-- **行为模拟测试**  
+沙箱用于自治智能体的使用超越了技术安全，解决了关键的道德和治理挑战。沙箱提供的隔离允许对智能体行为的详细监控和审计，这对于确保透明度和问责制至关重要。17 通过在受控环境中观察智能体的行动，开发者和安全团队可以更好地理解其模型如何做出决策，帮助在部署前识别和缓解偏见。17 这种能力直接解决了问责制、隐私和知情同意的道德和合规挑战。7
 
----
+沙箱的使用已从纯粹的技术安全措施演变为治理和信任构建机制。监管机构已采用这种方法，通过“监管沙箱”来促进创新，同时确保消费者保护。例如，美国的一项新法案提出创建“AI创新实验室”，允许金融公司在一受控条件下测试AI解决方案。19 同样，像NayaOne AI沙箱这样的平台提供“沙箱即服务”，其中AI模型可以被评估透明度、公平性和治理，而不影响实时生产系统。17 这展示了强大的概念飞跃：隔离的技术功能被利用来解决以人为中心的问题，即信任和合规，使沙箱成为负责任AI的关键推动者。
 
-## 5. 战略应用场景
+## **4. 智能体沙箱化技术的分类**
 
-- **AI 红队测试**：在沙盒中安全模拟攻击，验证代理鲁棒性  
-- **金融合规**：隔离自动交易代理，保留审计日志  
-- **自动驾驶 / 物联网**：数字孪生环境验证代理行为  
+沙箱化技术的景观是多样的，每种方法提供了独特的安全、性能和资源效率平衡。不同的类别不是互斥的，而是可以战略性地部署在分层安全架构中，以应对智能体工作流的特定需求。技术的选择取决于所需的隔离水平、性能要求以及处理数据的敏感性。
 
----
+### **4.1 虚拟机（VM）沙箱化**
 
-## 6. 沙盒的挑战与未来演进
+虚拟机沙箱化是最成熟和稳健的隔离方法之一。VM在虚拟机管理程序之上运行完整的客户操作系统，提供硬件抽象层。20 每个VM都有自己的专用OS内核、内存和存储，提供与主机和其他VM的完全分离。20
 
-### 6.1 沙盒逃逸
+* **优势：** 这种架构提供了最高水平的安全和隔离。内核的完全分离确保一个VM内的妥协极不可能影响主机或其他VM。20 这使VM成为高风险评估和运行具有未知或高度可疑行为的应用程序的首选。15  
+* **劣势：** VM的主要缺点是其高资源开销和较慢的供应时间。20 为每个实例运行完整的OS消耗大量的CPU、内存和存储，这可能导致系统减速和成本增加，特别是对于大规模部署。22
 
-- 需持续更新虚拟化技术  
-- 融合硬件级安全  
-- 定期渗透测试与漏洞修复  
+### **4.2 基于容器的沙箱化**
 
-### 6.2 性能与可扩展性
+容器化提供了更轻量级和敏捷的沙箱化方法。容器是自包含的可执行包，共享主机操作系统的内核。20 它们封装应用程序代码及其依赖项，在容器引擎上运行，该引擎调解与主机OS的资源请求。21
 
-- 发展轻量级 MicroVM  
-- 硬件加速  
-- 分层架构的动态调度  
+* **优势：** 容器比VM有显著更小的足迹，并且启动和停止更快。20 这使它们理想用于快速、并行测试和开发工作流，其中资源效率是优先级。13  
+* **劣势：** 容器的根本限制是其共享内核架构。20 虽然它们提供进程隔离，但主机内核中的漏洞可能被利用来实现“沙箱逃脱”，授予攻击者对底层系统的访问。这使它们对于需要最高安全水平的应用程序不太稳健。
 
-### 6.3 治理与“代理控制塔”
+### **4.3 微虚拟机范式**
 
-未来需要更高层治理机制：  
+微虚拟机的出现是对传统VM和容器模型限制的直接技术响应。它通过创建一种新的混合解决方案来解决VM的开销和容器的隔离弱点。微虚拟机利用像Firecracker和Kata Containers这样的技术运行最小化的、专为目的构建的VM，这些VM在毫秒内启动，提供硬件级隔离，同时具有容器般的速度和效率。13
 
-- **AI 代理控制塔**  
-  - 统一管理多代理及沙盒环境  
-  - 实现跨系统合规与风险监控  
-  - 连接人类监督与自主代理  
+* **架构：** 微虚拟机为每个沙箱提供真正的硬件隔离虚拟机。13 它们结合了传统VM的安全性，通过提供单独的OS内核，与容器的速度和低开销相结合。23 这种架构被认为是生产证明的，并被主要平台用于每月处理数百万工作负载。23  
+* **优势：** 这种范式为许多AI智能体用例提供了理想平衡，提供强大的硬件级隔离用于安全，同时保持可扩展、动态工作负载所需的高速启动时间和低资源消耗。13  
+* **劣势：** 尽管有优势，一些微虚拟机平台可能对会话持续时间或持久性有限制。此外，管理这些环境可能复杂，需要持续维护来解决不同组件之间的兼容性问题。23
 
----
+### **4.4 硬件辅助的安全飞地**
 
-## 结论
+安全飞地为最敏感的操作，特别是数据处理，提供了最高水平的安全。安全飞地是处理器内的一个受保护内存区域，与主操作系统和所有其他进程隔离。24 像Intel Software Guard Extensions (SGX)这样的技术创建了一个“可信执行环境”（TEE），其中代码和数据免受外部访问，甚至免受特权系统账户或调试器的访问。24
 
-自主代理带来生产力的飞跃，但同时引入全新安全挑战。沙盒化是解决这一矛盾的结构性方案，它不仅是最后防线，更是合规部署代理的根基。  
+* **架构：** 飞地对系统的其余部分表现为一个不透明的盒子。24 客户端驱动程序将加密密钥和数据发送到飞地，飞地解密数据、对明文执行计算，然后在返回结果之前重新加密。24 这个过程确保敏感信息从未以可读格式暴露在安全内存区域之外。  
+* **优势：** 安全飞地的主要好处是它们保护数据*在使用中*的能力。24 这对于处理敏感信息的智能体至关重要，例如财务记录或专有业务数据。  
+* **劣势：** 虽然安全飞地为它们包含的数据提供了无与伦比的保护，但它们的实现复杂，其安全与底层硬件的完整性和认证过程相关。24 它们是一种专化解决方案，不是所有智能体工作流的通用沙箱。
 
-未来，沙盒将演进为 **多层次综合安全框架**，并融入 **“代理控制塔”治理体系**。唯有如此，才能在释放自主代理潜能的同时，确保其运行于 **安全、可控、可信** 的轨道之上。  
+技术景观展示了沙箱化不是单一的、单块解决方案。相反，它是一个专化技术的战略组合，可以部署在多层安全架构中。高风险评估可能使用完整的VM，而可扩展的动态工作负载可能使用微虚拟机。对于敏感数据操作，安全飞地可以用作最终保护层。这种专化和安全控制的分层是构建稳健和弹性自治系统的关键架构模式。
+
+| 技术 | 隔离水平 | 资源开销 | 速度/延迟 | 理想智能体用例 | 关键优势/劣势 |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| **虚拟机** | 最高（硬件级） | 高 | 缓慢供应 | 高风险评估、恶意软件分析、遗留系统。 | **优势：** 最强的隔离、完整OS仿真。 **劣势：** 资源密集、启动缓慢、成本高。 |
+| **容器化** | 中等（共享内核） | 低 | 快速启动 | 快速开发、QA测试、分布式微服务。 | **优势：** 轻量级、快速、高资源效率。 **劣势：** 隔离较弱、内核漏洞可被利用。 |
+| **微虚拟机** | 高（硬件级） | 低 | 快速启动 | 安全代码执行、多租户AI服务、生产规模工作负载。 | **优势：** 结合VM隔离与容器速度、生产证明。 **劣势：** 可能有有限持久性、需要持续维护。 |
+| **安全飞地** | 最高（处理器级） | 可变 | 低延迟 | 敏感数据处理、保密计算。 | **优势：** 保护使用中的数据免受OS和特权用户影响。 **劣势：** 实现复杂，不是通用沙箱。 |
+
+## **5. 沙箱化在现实世界中的应用：应用和用例**
+
+沙箱化的应用远远超越了传统的网络安全，展示了其作为跨多样行业创新和安全基础原则的战略重要性。“沙箱”的概念正在从低级代码执行容器抽象为整个系统或监管环境的虚拟副本。这种概念演进突出了其作为安全实验框架的多功能性和力量。
+
+| 应用领域 | 解决的问题 | 沙箱化的使用方式 | 关键好处 |
+| :---- | :---- | :---- | :---- |
+| **AI智能体评估与红队测试** | 不可预测且潜在有害的智能体行为；真实世界损坏风险。 | 一个受控环境来运行智能体代码并测试其逃脱和恶意行动的能力，而不造成伤害。 | 安全评估智能体能力；主动识别安全漏洞；自动化对抗测试并测量攻击成功率（ASR）。 |
+| **金融中的监管沙箱** | 需要平衡快速AI创新与消费者保护和监管合规。 | 监管机构创建“AI创新实验室”，其中公司可以在受控条件下测试新AI解决方案，具有监管灵活性。 | 促进安全、监督的创新；确保问责制、透明度和公平性；简化金融公司的合规流程。 |
+| **自治车辆（AV）模拟** | 广泛真实世界测试的高成本和安全担忧。 | 一个超现实的虚拟环境（数字孪生）来测试、验证和改进AV系统。 | 减少对昂贵真实世界测试的依赖；加速迭代周期；允许安全测试罕见、危险场景。 |
+
+### **5.1 AI智能体评估和红队测试**
+
+随着AI智能体变得更强大，在不冒真实世界伤害风险的情况下评估其行为变得越来越困难。这就是沙箱对于**AI红队测试**至关重要的地方，这是一个模拟对抗行为的过程，以主动发现AI系统中的安全风险和漏洞，在部署之前。15 主要目标是测试智能体执行任意代码、与关键系统交互，甚至尝试逃脱其沙箱环境的能力。15
+
+像Microsoft AI Red Teaming Agent这样的工具通过模拟对抗探测并测量攻击成功率（ASR）来自动化这个过程，以大规模识别和评估已知风险。26 这种实践允许组织从昂贵的、反应性事件响应“左移”到更主动和预防性的安全框架。26 它将漏洞评估从理论练习转变为经验验证，提供可行动的安全情报，同时减少假阳性。27
+
+### **5.2 金融中的监管沙箱**
+
+在金融部门，沙箱的概念已被采纳为法律和政策框架，以促进安全和负责任的创新。这些**监管沙箱**被设计为提供一个受控的法律和技术环境，其中金融公司可以实验AI解决方案，而不面临过度的监管障碍或执法风险。17
+
+例如，美国的一项新的两党法案提出七个联邦机构，包括美联储和SEC，创建“AI创新实验室”用于监督AI测试。19 这种方法允许公司安全且快速测试AI模型的透明度、可解释性和公平性，确保技术在广泛采用之前符合道德原则和消费者保护政策。17 这展示了关键的发展：隔离的技术功能被利用来解决以人为中心的问题，即信任、合规和治理，将沙箱定位为负责任AI的战略推动者。
+
+### **5.3 自治车辆中的模拟**
+
+自治车辆（AV）的开发是一个极度资本密集和复杂的努力，由先进传感器技术、车载计算硬件和广泛真实世界测试的需求驱动。28 **模拟沙箱**的使用已成为解决这些高开发成本和固有安全担忧的有前景解决方案。
+
+AV模拟软件创建一个超现实的虚拟环境——或“数字孪生”——来测试、验证和改进AV系统。28 这种方法提供了几个关键优势28：它减少了对昂贵且耗时的真实世界测试的依赖；它允许更快的迭代周期，使开发者能够快速识别和纠正系统弱点；它促进了对罕见、危险事件的 безопас测试，这些事件在真实世界中难以或不可能复制。28 通过在开发过程早期识别设计缺陷和潜在问题，模拟沙箱通过减少昂贵召回和部署后修改的风险来节省资金，同时提高AV系统的安全性和可靠性。28
+
+## **6. 挑战、限制和沙箱化的未来**
+
+虽然沙箱化是一种强大且基本的技术，但它不是万能药。对其限制和演进威胁景观的细致理解对于构建真正弹性的安全姿态至关重要。由复杂威胁和自治系统固有复杂性带来的挑战正在导致一个新的概念和技术安全层的出现。
+
+### **6.1 演进的威胁景观**
+
+最重大的挑战之一是先进的恶意软件和智能体正在变得“沙箱感知”。11 这些威胁采用**规避技术**来检测它们是否在虚拟化或受控环境中运行。例如，它们可能检查特定虚拟硬件的存在、监控时间延迟或分析环境的配置。14 如果检测到沙箱，恶意软件可以保持休眠或表现出良性行为，完全绕过分析过程，并在逃脱到生产系统后才激活其恶意负载。22 这突出了简单的隔离层是不够的；需要多层防御策略来对抗这些复杂攻击。31
+
+### **6.2 沙箱逃脱漏洞**
+
+**沙箱逃脱**是一个关键的安全缺陷，允许攻击者在受限环境之外执行代码，从而获得对主机系统的未经授权访问和控制。31 一个最近的此类漏洞例子是**CVE-2025-4609**，这是Chromium的进程间通信（IPC）机制中的一个关键漏洞。32 这个缺陷允许被妥协的进程获得特权句柄，使其能够逃脱沙箱并在受害者机器上实现远程代码执行。32
+
+这个案例展示了关于沙箱化的关键真相：其安全仅与其依赖的底层组件的完整性一样强。该漏洞暴露了一个“信任边界绕过”，其中基础系统IPC机制中的缺陷破坏了整个隔离模型。32 这突出了一个“供应链安全问题”，其中补丁可能在上游存在，但尚未被下游应用程序集成，留下数百万开发者暴露。32 沙箱化机制的完整性是其所有组成部分完整性的函数。因此，全面的安全策略必须不仅包括稳健的沙箱化，还包括严格的供应链管理、定期安全补丁和多层防御机制。31
+
+### **6.3 一个新的治理层**
+
+孤立沙箱的限制和多智能体系统的固有复杂性正在驱动对更高层次安全框架的需求。行业正在转向一个集中的治理层，通常称为“**AI智能体控制塔**”。33 这个平台被设计为一个统一的指挥中心，为企业级的所有AI举措提供全面监督和治理。35
+
+控制塔的出现是对可能导致“混乱配方”的断开、单一用途智能体拼凑的直接响应。33 它将这种异质景观转变为一个凝聚、安全和优化的自治劳动力。33 这些平台的关键特性包括通用智能体注册、中央治理和全面审计能力，提供一个单一窗格，用于监控、安全和测量跨不同环境的AI工具和智能体。33
+
+一个新的框架，**“治理即服务”（GaaS）**，正在被提出，以在运行时强制政策，而不更改智能体的内部代码。36 这将治理与智能体的架构解耦，使其成为一个可扩展和可审计的层，可以调节智能体输出并跟踪合规。36 从技术隔离向系统治理的转变是一个逻辑且必要的演进，因为它解决了单个沙箱的限制，并提供了管理动态和自治劳动力所需战略监督。
+
+## **结论与推荐**
+
+自治智能体和沙箱技术的融合标志着企业安全和创新的新前沿。本报告中呈现的分析建立了一个清晰且引人注目的理由：沙箱化不再是网络安全专业人士的利基工具，而是构建信任、确保合规并安全扩展自治系统的基础原则。
+
+自治智能体的核心悖论——其最大优势也是其最大安全风险——需要一个主动的、基于行为的安全模型。沙箱化提供了管理这个新的动态威胁向量所需的包含和分析能力，提供对抗数据中毒、权限提升和意外行动的关键防御层。
+
+为了有效利用这种融合的潜力，组织应采用以以下推荐为中心的战略、多层方法：
+
+1. **拥抱分层沙箱化架构：** 不要依赖单一的沙箱化技术。相反，设计一个利用每个类别优势的安全框架。使用完整的VM进行高风险评估，微虚拟机用于可扩展生产工作负载，硬件辅助的安全飞地用于高度敏感数据的处理。安全智能体部署的未来在于这种专化和分层的方法。  
+2. **将沙箱化与完整智能体生命周期集成：** 沙箱应从开发的最早阶段集成，而不仅仅作为最终安全检查。使用沙箱进行AI智能体红队测试和评估，以在部署前主动发现漏洞并测试沙箱逃脱尝试。  
+3. **投资集中治理层：** 孤立沙箱的限制和多智能体系统的混乱性质需要更高层次的解决方案。考虑投资或构建一个“AI智能体控制塔”，以提供治理、可观察性和合规的统一指挥中心，覆盖整个自治劳动力。这个战略层对于管理异质智能体生态系统的复杂性和风险至关重要。  
+4. **优先考虑供应链安全：** 沙箱的安全仅与其底层组件一样安全。正如最近漏洞所展示的，基础系统中的缺陷可能破坏整个隔离模型。为了对抗此，实施严格的软件补丁、漏洞管理和供应链安全实践，以确保沙箱化环境的完整性。
+
+通过实施这些战略推荐，组织可以超越反应性安全姿态，构建一个稳健、弹性且前瞻性的框架，使自治智能体的安全、道德和变革潜力得以实现。
+
+## 参考文献
+
+1. en.wikipedia.org, accessed September 7, 2025, [https://en.wikipedia.org/wiki/Software\_agent](https://en.wikipedia.org/wiki/Software_agent)  
+2. Understanding Software Agents and Their Autonomous Abilities ..., accessed September 7, 2025, [https://www.lenovo.com/us/en/glossary/agent/](https://www.lenovo.com/us/en/glossary/agent/)  
+3. The Power of Autonomous Agents: A Comprehensive Guide for 2024 \- Lyzr AI, accessed September 7, 2025, [https://www.lyzr.ai/blog/autonomous-agents/](https://www.lyzr.ai/blog/autonomous-agents/)  
+4. Autonomous AI Agents Explained: What They Are and Why They Matter | Domo, accessed September 7, 2025, [https://www.domo.com/blog/autonomous-ai-agents-explained-what-they-are-and-why-they-matter](https://www.domo.com/blog/autonomous-ai-agents-explained-what-they-are-and-why-they-matter)  
+5. What is a multi-agent system in AI? | Google Cloud, accessed September 7, 2025, [https://cloud.google.com/discover/what-is-a-multi-agent-system](https://cloud.google.com/discover/what-is-a-multi-agent-system)  
+6. What is a Multi-Agent System? | IBM, accessed September 7, 2025, [https://www.ibm.com/think/topics/multiagent-system](https://www.ibm.com/think/topics/multiagent-system)  
+7. AI's silent threat: Navigating the risks of autonomous agents \- Intelligent CISO, accessed September 7, 2025, [https://www.intelligentciso.com/2025/08/11/ais-silent-threat-navigating-the-risks-of-autonomous-agents/](https://www.intelligentciso.com/2025/08/11/ais-silent-threat-navigating-the-risks-of-autonomous-agents/)  
+8. Addressing the Hidden Security Risks of AI Agents \- RTInsights, accessed September 7, 2025, [https://www.rtinsights.com/addressing-the-hidden-security-risks-of-ai-agents-in-industrial-operations/](https://www.rtinsights.com/addressing-the-hidden-security-risks-of-ai-agents-in-industrial-operations/)  
+9. csrc.nist.gov, accessed September 7, 2025, [https://csrc.nist.gov/glossary/term/sandbox\#:\~:text=Definitions%3A,file%20system%20or%20the%20network.](https://csrc.nist.gov/glossary/term/sandbox#:~:text=Definitions%3A,file%20system%20or%20the%20network.)  
+10. What Is Sandboxing? Sandbox Security and Environment | Fortinet, accessed September 7, 2025, [https://www.fortinet.com/resources/cyberglossary/what-is-sandboxing](https://www.fortinet.com/resources/cyberglossary/what-is-sandboxing)  
+11. Definition Sandbox Protection \- ORSYS, accessed September 7, 2025, [https://www.orsys.fr/orsys-lemag/en/glossary-2/sandbox-sandbox/](https://www.orsys.fr/orsys-lemag/en/glossary-2/sandbox-sandbox/)  
+12. What Is Sandboxing? \- Palo Alto Networks, accessed September 7, 2025, [https://www.paloaltonetworks.com/cyberpedia/sandboxing](https://www.paloaltonetworks.com/cyberpedia/sandboxing)  
+13. How Agent Sandboxes Power Secure, Scalable AI Innovation \- Novita AI Blog, accessed September 7, 2025, [https://blogs.novita.ai/agent-sandbox/](https://blogs.novita.ai/agent-sandbox/)  
+14. What Is Sandboxing? \- Palo Alto Networks, accessed September 7, 2025, [https://www.paloaltonetworks.co.uk/cyberpedia/sandboxing](https://www.paloaltonetworks.co.uk/cyberpedia/sandboxing)  
+15. The Inspect Sandboxing Toolkit: Scalable and secure AI agent evaluations | AISI Work, accessed September 7, 2025, [https://www.aisi.gov.uk/work/the-inspect-sandboxing-toolkit-scalable-and-secure-ai-agent-evaluations](https://www.aisi.gov.uk/work/the-inspect-sandboxing-toolkit-scalable-and-secure-ai-agent-evaluations)  
+16. Prevent AI Agents from Accessing Unauthorized Data \- AuthZed, accessed September 7, 2025, [https://authzed.com/blog/prevent-ai-agents-from-accessing-unauthorized-data](https://authzed.com/blog/prevent-ai-agents-from-accessing-unauthorized-data)  
+17. NayaOne's AI Sandbox \- GOV.UK, accessed September 7, 2025, [https://www.gov.uk/ai-assurance-techniques/nayaones-ai-sandbox](https://www.gov.uk/ai-assurance-techniques/nayaones-ai-sandbox)  
+18. AI Agents Are The Next Wave: Managing Benefits and Risks, accessed September 7, 2025, [https://www.mssbta.com/post/ai-agents-are-the-next-wave-managing-benefits-and-risks](https://www.mssbta.com/post/ai-agents-are-the-next-wave-managing-benefits-and-risks)  
+19. Congress Pushes AI Sandboxes for Finance Firms in New ..., accessed September 7, 2025, [https://completeaitraining.com/news/congress-pushes-ai-sandboxes-for-finance-firms-in-new/](https://completeaitraining.com/news/congress-pushes-ai-sandboxes-for-finance-firms-in-new/)  
+20. Containers vs. virtual machines (VMs) | Google Cloud, accessed September 7, 2025, [https://cloud.google.com/discover/containers-vs-vms](https://cloud.google.com/discover/containers-vs-vms)  
+21. Containers vs VM \- Difference Between Deployment Technologies ..., accessed September 7, 2025, [https://aws.amazon.com/compare/the-difference-between-containers-and-virtual-machines/](https://aws.amazon.com/compare/the-difference-between-containers-and-virtual-machines/)  
+22. Sandbox in cyber security: what is it and why is it important? \- DriveLock, accessed September 7, 2025, [https://www.drivelock.com/en/blog/sandbox-in-the-cybersecurity](https://www.drivelock.com/en/blog/sandbox-in-the-cybersecurity)  
+23. Top Modal Sandboxes alternatives for secure AI code execution ..., accessed September 7, 2025, [https://northflank.com/blog/top-modal-sandboxes-alternatives-for-secure-ai-code-execution](https://northflank.com/blog/top-modal-sandboxes-alternatives-for-secure-ai-code-execution)  
+24. Always Encrypted with secure enclaves \- SQL Server | Microsoft Learn, accessed September 7, 2025, [https://learn.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-enclaves?view=sql-server-ver17](https://learn.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-enclaves?view=sql-server-ver17)  
+25. Secure Enclave \- Apple Support, accessed September 7, 2025, [https://support.apple.com/guide/security/secure-enclave-sec59b0b31ff/web](https://support.apple.com/guide/security/secure-enclave-sec59b0b31ff/web)  
+26. AI Red Teaming Agent \- Azure AI Foundry | Microsoft Learn, accessed September 7, 2025, [https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/ai-red-teaming-agent](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/ai-red-teaming-agent)  
+27. Multi-Agent Penetration Testing AI for the Web \- arXiv, accessed September 7, 2025, [https://arxiv.org/html/2508.20816v1](https://arxiv.org/html/2508.20816v1)  
+28. Tackling High Development Costs: How AVSandbox Can Accelerate ..., accessed September 7, 2025, [https://www.avsandbox.com/the-sandbox/tackling-high-development-costs-how-av-sandbox-can-accelerate-your-autonomous-vehicle-deployment/](https://www.avsandbox.com/the-sandbox/tackling-high-development-costs-how-av-sandbox-can-accelerate-your-autonomous-vehicle-deployment/)  
+29. AVSandbox | Autonomous Vehicle Simulation, accessed September 7, 2025, [https://www.avsandbox.com/](https://www.avsandbox.com/)  
+30. Importance And Limitations Of Sandboxing In Malware Analysis \- Forbes, accessed September 7, 2025, [https://www.forbes.com/councils/forbestechcouncil/2023/08/17/importance-and-limitations-of-sandboxing-in-malware-analysis/](https://www.forbes.com/councils/forbestechcouncil/2023/08/17/importance-and-limitations-of-sandboxing-in-malware-analysis/)  
+31. Sandbox Escape \- Lark, accessed September 7, 2025, [https://www.larksuite.com/en\_us/topics/cybersecurity-glossary/sandbox-escape](https://www.larksuite.com/en_us/topics/cybersecurity-glossary/sandbox-escape)  
+32. The aftermath of CVE-2025-4609: Critical Sandbox Escape Leaves 1.5M Developers Vulnerable \- OX Security, accessed September 7, 2025, [https://www.ox.security/blog/the-aftermath-of-cve-2025-4609-critical-sandbox-escape-leaves-1-5m-developers-vulnerable/](https://www.ox.security/blog/the-aftermath-of-cve-2025-4609-critical-sandbox-escape-leaves-1-5m-developers-vulnerable/)  
+33. Covasant Technologies rolls out AI agent control tower platform, accessed September 7, 2025, [https://timesofindia.indiatimes.com/business/india-business/covasant-technologies-rolls-out-ai-agent-control-tower-platform/articleshow/123681567.cms](https://timesofindia.indiatimes.com/business/india-business/covasant-technologies-rolls-out-ai-agent-control-tower-platform/articleshow/123681567.cms)  
+34. <www.covasant.com>, accessed September 7, 2025, [https://www.covasant.com/products/ai-product-suite/ai-agent-control-tower\#:\~:text=The%20Governance%20Layer%20for%20Your,hybrid%20and%20multi%2Dcloud%20environments.](https://www.covasant.com/products/ai-product-suite/ai-agent-control-tower#:~:text=The%20Governance%20Layer%20for%20Your,hybrid%20and%20multi%2Dcloud%20environments.)  
+35. ServiceNow AI Control Tower: Everything You Need to Know \- Cyntexa, accessed September 7, 2025, [https://cyntexa.com/blog/servicenow-ai-control-tower-everything-you-need-to-know/](https://cyntexa.com/blog/servicenow-ai-control-tower-everything-you-need-to-know/)  
+36. \[2508.18765\] Governance-as-a-Service: A Multi-Agent Framework for AI System Compliance and Policy Enforcement \- arXiv, accessed September 7, 2025, [https://arxiv.org/abs/2508.18765](https://arxiv.org/abs/2508.18765)
