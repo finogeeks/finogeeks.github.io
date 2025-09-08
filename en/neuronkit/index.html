@@ -131,6 +131,23 @@ layout: null
     .break-anywhere { overflow-wrap: anywhere; word-break: break-word; }
     /* Avoid sticky header overlap for in-page anchors */
     section[id] { scroll-margin-top: 5.5rem; }
+    /* Hero emphasis */
+    .hero-glow {
+      text-shadow: 0 1px 0 rgba(255,255,255,.35), 0 12px 30px rgba(2,6,23,.12);
+    }
+    .dark .hero-glow {
+      text-shadow: 0 2px 18px rgba(255,255,255,.12);
+    }
+    .hero-wash {
+      position: absolute; inset: -8rem -4rem auto -4rem; height: 18rem;
+      background: radial-gradient(1200px 300px at 20% 30%, rgba(99,102,241,0.15), transparent 60%),
+                  radial-gradient(900px 240px at 10% 80%, rgba(6,182,212,0.12), transparent 65%);
+      pointer-events: none;
+    }
+    .dark .hero-wash {
+      background: radial-gradient(1200px 300px at 20% 30%, rgba(99,102,241,0.18), transparent 60%),
+                  radial-gradient(900px 240px at 10% 80%, rgba(6,182,212,0.16), transparent 65%);
+    }
   </style>
 </head>
 <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
@@ -196,42 +213,43 @@ layout: null
     <div class="absolute inset-0 bg-gradient-to-b from-indigo-50 via-zinc-50 to-transparent dark:from-indigo-950/20 dark:via-zinc-950 dark:to-transparent"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-24 relative">
       <div class="grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
-        <div>
+        <div class="relative">
           <!-- Tagline Pair -->
+          <div class="hero-wash"></div>
           <div class="mb-6">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug md:leading-tight text-balance break-anywhere hyphens-auto">
+            <h1 class="hero-glow text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-balance break-anywhere hyphens-auto">
               Turn Any App Into an Agent
             </h1>
-            <p class="mt-3 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
+            <p class="mt-4 text-xl sm:text-2xl leading-relaxed text-zinc-800 dark:text-zinc-100/95 max-w-2xl md:max-w-3xl text-pretty break-anywhere hyphens-auto">
               Collect context, secure actions, and unlock agentic experiences—bridging cloud intelligence with on-device execution.
             </p>
           </div>
-          <div id="hero-variants" class="relative">
+          <div id="hero-variants" class="relative mt-4 p-4 rounded-2xl border border-zinc-200/70 dark:border-zinc-800/70 bg-white/50 dark:bg-zinc-900/30 backdrop-blur-sm">
             <!-- Variant A (default) -->
             <div class="hero-variant" data-variant="a">
-              <h3 class="text-2xl md:text-3xl font-bold text-balance break-anywhere">From Clicks to Conversations</h3>
-              <p class="mt-4 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
+              <h3 class="text-xl md:text-2xl font-semibold text-zinc-800 dark:text-zinc-200 opacity-80 text-balance break-anywhere">From Clicks to Conversations</h3>
+              <p class="mt-4 text-sm sm:text-base text-zinc-600 dark:text-zinc-300/80 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
                 Transform static, click-driven apps into dialog-driven experiences. Instead of navigating menus and shopping carts, users interact with an intelligent concierge that understands intent and takes action. Conversations replace clicks, creating more natural, proactive, and engaging ways to complete everyday tasks.
               </p>
             </div>
             <!-- Variant B (bold) -->
             <div class="hero-variant hidden" data-variant="b">
-              <h3 class="text-2xl md:text-3xl font-bold text-balance break-anywhere">Context Creates Intelligence</h3>
-              <p class="mt-4 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
+              <h3 class="text-xl md:text-2xl font-semibold text-zinc-800 dark:text-zinc-200 opacity-80 text-balance break-anywhere">Context Creates Intelligence</h3>
+              <p class="mt-4 text-sm sm:text-base text-zinc-600 dark:text-zinc-300/80 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
                 AI isn’t just about large language models—it’s about context. By organizing device signals, history, and app state into semantic, episodic, and procedural memories, NeuronKit enables agents to make relevant, timely decisions. Richer context means smarter intelligence and experiences tuned to real situations.
               </p>
             </div>
             <!-- Variant C (clickstreams → dialog streams) -->
             <div class="hero-variant hidden" data-variant="c">
-              <h3 class="text-2xl md:text-3xl font-bold text-balance break-anywhere">On-Device Sandbox, Built for Trust</h3>
-              <p class="mt-4 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
+              <h3 class="text-xl md:text-2xl font-semibold text-zinc-800 dark:text-zinc-200 opacity-80 text-balance break-anywhere">On-Device Sandbox, Built for Trust</h3>
+              <p class="mt-4 text-sm sm:text-base text-zinc-600 dark:text-zinc-300/80 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
                 Run agent-triggered actions safely at the edge. Unlike cloud sandboxes, NeuronKit enforces a capability-based model directly on the device—ensuring privacy, low latency, and fine-grained control. Sensitive features execute only under explicit policy, with security and human oversight always preserved.
               </p>
             </div>
             <!-- Variant D (Cloud brain, device hands) -->
             <div class="hero-variant hidden" data-variant="d">
-              <h3 class="text-2xl md:text-3xl font-bold text-balance break-anywhere">Plug-In Intelligence for Legacy Apps</h3>
-              <p class="mt-4 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
+              <h3 class="text-xl md:text-2xl font-semibold text-zinc-800 dark:text-zinc-200 opacity-80 text-balance break-anywhere">Plug-In Intelligence for Legacy Apps</h3>
+              <p class="mt-4 text-sm sm:text-base text-zinc-600 dark:text-zinc-300/80 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
                 Retrofit existing apps with agentic capabilities—no major rewrite required. NeuronKit works as drop-in middleware: register features, capture context, and enable safe automation. Enterprises can instantly extend mobile or IoT apps with conversational AI, unlocking new business models and user engagement.
               </p>
             </div>
