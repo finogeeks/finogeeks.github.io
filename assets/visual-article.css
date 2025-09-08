@@ -1,0 +1,25 @@
+/* Shared styles for visual insight articles */
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 350px;
+  max-height: 400px;
+}
+@media (min-width: 768px) {
+  .chart-container { height: 400px; }
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #118AB2, #06D6A0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.flow-arrow { font-size: 2rem; color: #118AB2; line-height: 1; }
+.flow-box { border: 2px solid #118AB2; background-color: #ffffff; }
