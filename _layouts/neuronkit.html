@@ -332,14 +332,14 @@
         }
       }
       btn.addEventListener('click', toggle);
-      // Close on clicking any link inside the mobile menu
-      menu.addEventListener('click', (e)=>{
+      // Close on interacting with any link inside the mobile menu (capture early to run before navigation)
+      const linkCloseHandler = (e)=>{
         const target = e.target;
-        if (target && target.closest && target.closest('a')) {
-          // Allow navigation and close the menu immediately
-          closeMenu();
-        }
-      });
+        if (target && target.closest && target.closest('a')) closeMenu();
+      };
+      menu.addEventListener('pointerdown', linkCloseHandler, true);
+      menu.addEventListener('touchstart', linkCloseHandler, { passive: true, capture: true });
+      menu.addEventListener('click', linkCloseHandler);
       // Close when clicking outside
       document.addEventListener('click', (e)=>{
         if (!menu.contains(e.target) && !btn.contains(e.target)) {
@@ -348,6 +348,9 @@
       });
       // Close on Escape
       document.addEventListener('keydown', (e)=>{ if (e.key==='Escape') closeMenu(); });
+      // Close on hash navigation or page lifecycle
+      window.addEventListener('hashchange', closeMenu);
+      window.addEventListener('pagehide', closeMenu);
     })();
   </script>
 </body>
