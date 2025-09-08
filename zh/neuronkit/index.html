@@ -36,6 +36,8 @@
     .text-pretty { text-wrap: pretty; }
     .hyphens-auto { hyphens: auto; }
     .break-anywhere { overflow-wrap: anywhere; word-break: break-word; }
+    /* 避免粘性头部遮挡锚点位置 */
+    section[id] { scroll-margin-top: 5.5rem; }
   </style>
 </head>
 <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
@@ -149,7 +151,7 @@
             </div>
             <!-- 变体 D（云端“脑”，设备“手”） -->
             <div class="hero-variant hidden" data-variant="d">
-              <h3 class="text-2xl md:text-3xl font-bold text-balance break-anywhere">为遗留应用插上“智能插件”</h3>
+              <h3 class="text-2xl md:text-3xl font-bold text-balance break-anywhere">为现有应用插上“智能插件”</h3>
               <p class="mt-4 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 max-w-xl md:max-w-2xl text-pretty break-anywhere hyphens-auto">
                 无需大改造，即可为现有应用加上 Agentic 能力。NeuronKit 以中间件形式即插即用：注册功能、采集上下文并启用安全自动化。企业可以立刻为移动或 IoT 应用接入对话式 AI，解锁新业务与更高参与度。
               </p>
@@ -485,14 +487,47 @@ flowchart LR
         }
       }
       btn.addEventListener('click', toggle);
-      // Close on interacting with any link inside the mobile menu (run before navigation)
-      const linkCloseHandler = (e)=>{
-        const link = e.target && e.target.closest && e.target.closest('a');
-        if (link) closeMenu();
+      // 解析并处理菜单中的链接，兼容文本节点点击
+      const getClosestLink = (t)=>{
+        let node = t;
+        while (node && node.nodeType !== 1) node = node.parentNode;
+        return node && node.closest ? node.closest('a') : null;
       };
-      menu.addEventListener('pointerdown', linkCloseHandler, true);
-      menu.addEventListener('touchstart', linkCloseHandler, { passive: true, capture: true });
-      menu.addEventListener('click', linkCloseHandler);
+      const navigateAfterClose = (link)=>{
+        const href = link.getAttribute('href');
+        const targetAttr = link.getAttribute('target');
+        if (!href) return;
+        const isHashOnly = href.startsWith('#');
+        const url = new URL(href, window.location.origin + window.location.pathname);
+        const samePath = url.pathname === window.location.pathname;
+        const hash = url.hash || (isHashOnly ? href : '');
+        closeMenu();
+        setTimeout(()=>{
+          if ((isHashOnly || samePath) && hash) {
+            const id = hash.replace('#','');
+            const el = document.getElementById(id);
+            if (el && typeof el.scrollIntoView === 'function') {
+              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+              window.location.hash = hash;
+            }
+          } else {
+            if (targetAttr === '_blank') window.open(url.href, '_blank');
+            else window.location.href = url.href;
+          }
+        }, 0);
+      };
+      const linkHandler = (e)=>{
+        const link = getClosestLink(e.target);
+        if (link) {
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+          e.preventDefault();
+          navigateAfterClose(link);
+        }
+      };
+      menu.addEventListener('pointerdown', linkHandler, true);
+      menu.addEventListener('touchstart', linkHandler, { passive: false, capture: true });
+      menu.addEventListener('click', linkHandler);
       // close when clicking outside
       document.addEventListener('click', (e)=>{
         if (!menu.contains(e.target) && !btn.contains(e.target)) {

@@ -347,8 +347,14 @@
           }
         }, 0);
       };
+      const getClosestLink = (t)=>{
+        let node = t;
+        // If the target is not an Element (e.g., Text), walk up to a parent Element
+        while (node && node.nodeType !== 1) node = node.parentNode;
+        return node && node.closest ? node.closest('a') : null;
+      };
       const linkHandler = (e)=>{
-        const link = e.target && e.target.closest && e.target.closest('a');
+        const link = getClosestLink(e.target);
         if (link) {
           // Do not interfere with modifier-clicks
           if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;

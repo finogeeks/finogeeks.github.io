@@ -56,14 +56,48 @@
           }
         }
         btn.addEventListener('click', toggle);
-        // Close when interacting with any link inside the menu
-        const linkCloseHandler = (e)=>{
-          const link = e.target && e.target.closest && e.target.closest('a');
-          if (link) closeMenu();
+        // Robust anchor detection and navigation
+        const getClosestLink = (t)=>{
+          let node = t;
+          while (node && node.nodeType !== 1) node = node.parentNode;
+          return node && node.closest ? node.closest('a') : null;
         };
-        menu.addEventListener('pointerdown', linkCloseHandler, true);
-        menu.addEventListener('touchstart', linkCloseHandler, { passive: true, capture: true });
-        menu.addEventListener('click', linkCloseHandler);
+        const navigateAfterClose = (link)=>{
+          const href = link.getAttribute('href');
+          const targetAttr = link.getAttribute('target');
+          if (!href) return;
+          const isHashOnly = href.startsWith('#');
+          const url = new URL(href, window.location.origin + window.location.pathname);
+          const samePath = url.pathname === window.location.pathname;
+          const hash = url.hash || (isHashOnly ? href : '');
+          closeMenu();
+          setTimeout(()=>{
+            if ((isHashOnly || samePath) && hash) {
+              const id = hash.replace('#','');
+              const el = document.getElementById(id);
+              if (el && typeof el.scrollIntoView === 'function') {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              } else {
+                // Fallback to default hash navigation
+                window.location.hash = hash;
+              }
+            } else {
+              if (targetAttr === '_blank') window.open(url.href, '_blank');
+              else window.location.href = url.href;
+            }
+          }, 0);
+        };
+        const linkHandler = (e)=>{
+          const link = getClosestLink(e.target);
+          if (link) {
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+            e.preventDefault();
+            navigateAfterClose(link);
+          }
+        };
+        menu.addEventListener('pointerdown', linkHandler, true);
+        menu.addEventListener('touchstart', linkHandler, { passive: false, capture: true });
+        menu.addEventListener('click', linkHandler);
         // Close when clicking outside
         document.addEventListener('click', (e)=>{
           if (!menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
@@ -92,6 +126,8 @@
     .text-pretty { text-wrap: pretty; }
     .hyphens-auto { hyphens: auto; }
     .break-anywhere { overflow-wrap: anywhere; word-break: break-word; }
+    /* Avoid sticky header overlap for in-page anchors */
+    section[id] { scroll-margin-top: 5.5rem; }
   </style>
 </head>
 <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
