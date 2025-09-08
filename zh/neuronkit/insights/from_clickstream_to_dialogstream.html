@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic 转型：从点击流到对话流</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: transparent;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #118AB2, #06D6A0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+        .flow-arrow { font-size: 2rem; color: #118AB2; line-height: 1; }
+        .flow-box { border: 2px solid #118AB2; background-color: #ffffff; }
+    </style>
+</head>
+<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100">
+
+    <!-- Top nav -->
+    <header class="bg-[#052A38]/70 backdrop-blur sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="/zh/neuronkit/index.html" class="text-white/90 hover:text-white text-sm">NeuronKit</a>
+                <span class="text-white/40">/</span>
+                <a href="/zh/neuronkit/insights/" class="text-white/90 hover:text-white text-sm">洞见</a>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+                <a href="/en/neuronkit/insights/from_clickstream_to_dialogstream.html" class="px-2.5 py-1 rounded-md border border-white/20 text-white/90 hover:text-white hover:bg-white/10">English</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Agentic 转型</h1>
+            <p class="text-lg md:text-xl text-zinc-600 dark:text-zinc-300">从点击流到对话流：重塑 AI 时代的用户体验</p>
+        </header>
+
+        <main class="space-y-12 md:space-y-16">
+
+            <section class="bg-white dark:bg-zinc-900 rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-6">新的 Web 范式</h2>
+                <p class="max-w-4xl mx-auto text-center text-zinc-600 dark:text-zinc-300 mb-8">互联网正经历一次前所未有的转型：从静态页面与预定义路径，迈向由智能、主动的 AI 智能体驱动的动态生态。这不仅仅是“聊天机器人”，更是人与数字信息与服务互动方式的根本改变。</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                    <div class="bg-red-50 p-6 rounded-lg border-2 border-[#FF6B6B]">
+                        <h3 class="text-2xl font-bold mb-2 text-[#FF6B6B]">过去：页面的网络</h3>
+                        <p class="text-5xl mb-4">🖱️</p>
+                        <p class="font-semibold text-lg">点击流</p>
+                        <p>用户在链接的迷宫中穿梭，从被动的“文字袋子”中手动拉取信息。界面固定、旅程完全由用户驱动。</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg border-2 border-[#06D6A0]">
+                        <h3 class="text-2xl font-bold mb-2 text-[#06D6A0]">现在：智能体的网络</h3>
+                        <p class="text-5xl mb-4">💬</p>
+                        <p class="font-semibold text-lg">对话流</p>
+                        <p>用户与理解上下文、能预测需求并主动执行任务的智能体对话。体验从“操作”走向“协作”。</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="bg-white dark:bg-zinc-900 rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-6">生成式 UI 的崛起</h2>
+                <p class="max-w-4xl mx-auto text-center text-zinc-600 dark:text-zinc-300 mb-8">自然语言很强大，但不会完全取代图形界面。未来是对话与“动态生成 UI 组件”的无缝融合。智能体将按需实时生成表单/列表/按钮等界面，形成“结构化信息与非结构化语言流交织”的连续体验。</p>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 text-center">
+                    <div class="p-4 rounded-lg flow-box w-full md:w-1/4">
+                        <p class="font-bold">自然语言输入</p>
+                        <p class="text-xs text-gray-500">“帮我订下周二两人的东京机票。”</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block">&rarr;</div>
+                    <div class="flow-arrow md:hidden">&darr;</div>
+                    <div class="p-4 rounded-lg flow-box w-full md:w-1/4">
+                        <p class="font-bold">智能体处理</p>
+                        <p class="text-xs text-gray-500">理解意图、查询可用性、识别缺失信息。</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block">&rarr;</div>
+                    <div class="flow-arrow md:hidden">&darr;</div>
+                    <div class="p-4 rounded-lg flow-box w-full md:w-1/4">
+                        <p class="font-bold">生成式 UI 输出</p>
+                        <p class="text-xs text-gray-500">动态渲染航班选项卡片与日期选择器。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white dark:bg-zinc-900 rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-6">生成式 UI 协议：MCP‑UI 与 AG‑UI</h2>
+                <p class="max-w-4xl mx-auto text-center text-zinc-600 dark:text-zinc-300 mb-8">要让生成式 UI 成为现实，Web 需要新的协议。MCP‑UI 与 AG‑UI 提供了让智能体生成并呈现动态界面的技术框架，衔接“智能体逻辑”与“可视化体验”。</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-center">
+                    <div class="p-6 rounded-lg bg-[#F0F4F8] border-2 border-[#118AB2] h-full flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold mb-2 text-[#118AB2]">MCP‑UI</h3>
+                        <p class="text-lg">为特定查询生成上下文化 UI 组件（如表单、列表、按钮）。更像服务器向客户端发送的一张“卡片”。</p>
+                    </div>
+                    <div class="p-6 rounded-lg bg-[#F0F4F8] border-2 border-[#06D6A0] h-full flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold mb-2 text-[#06D6A0]">AG‑UI</h3>
+                        <p class="text-lg">代表“智能体即应用”的完整界面，是一个持续、统一的 UI，用于承载主动智能体、复杂任务与“人‑在‑回路”体验。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white dark:bg-zinc-900 rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-6">应用的 Agentic 演进</h2>
+                <p class="max-w-4xl mx-auto text-center text-zinc-600 dark:text-zinc-300 mb-8">应用引入智能体将经历阶段性演进：从增强到主导，再到“智能体即应用”。这标志着从“用户操作软件”到“与智能系统协作完成任务”的转变。</p>
+                <div class="chart-container">
+                    <canvas id="agentEvolutionChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white dark:bg-zinc-900 rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-6">打造基础：WebMCP</h2>
+                <p class="max-w-4xl mx-auto text-center text-zinc-600 dark:text-zinc-300 mb-8">要让智能体高效工作，需要一个“智能体的 HTTP”。Web 多提供方计算协议（WebMCP）为此而生：让智能体通过结构化、机器可读的动作与服务交互，而不是解析可视 UI。</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="webmcpChart"></canvas>
+                    </div>
+                    <div>
+                        <ul class="space-y-4 text-left">
+                            <li class="p-4 bg-gray-50 rounded-lg">
+                                <strong class="text-[#118AB2]">转向结构化动作：</strong> 以稳定的“类 API 调用”替代脆弱的 UI 抓取，准确高效。
+                            </li>
+                            <li class="p-4 bg-gray-50 rounded-lg">
+                                <strong class="text-[#06D6A0]">范围化认证：</strong> 细粒度、安全地授权智能体代用户执行动作。
+                            </li>
+                            <li class="p-4 bg-gray-50 rounded-lg">
+                                <strong class="text-[#FFD166]">结果导向激励：</strong> 从注意力经济（展示、点击）转向价值经济（任务完成）。
+                            </li>
+                            <li class="p-4 bg-gray-50 rounded-lg">
+                                <strong class="text-[#FF6B6B]">标准化分发：</strong> 让智能体可发现、评估与选择最合适的工具/服务。
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="bg-white dark:bg-zinc-900 rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-6">前行之路的核心挑战</h2>
+                <p class="max-w-4xl mx-auto text-center text-zinc-600 dark:text-zinc-300 mb-8">要让 Web 真正“面向智能体”，必须解决当“机器而非人类”成为主要用户时的一些根本挑战——当前 Web 生态并非为此而设计。</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                    <div class="p-6 rounded-lg bg-gray-50 border-t-4 border-[#FF6B6B]">
+                        <h3 class="text-xl font-bold mb-2">准确性与效率</h3>
+                        <p>解析视觉布局（VLM）或 DOM 既慢又不可靠。需要转向结构化、语义化通信。</p>
+                    </div>
+                    <div class="p-6 rounded-lg bg-gray-50 border-t-4 border-[#FFD166]">
+                        <h3 class="text-xl font-bold mb-2">安全</h3>
+                        <p>如何在不暴露凭据、且不授予过宽权限的情况下，安全地让智能体代用户行动？</p>
+                    </div>
+                    <div class="p-6 rounded-lg bg-gray-50 border-t-4 border-[#06D6A0]">
+                        <h3 class="text-xl font-bold mb-2">商业模式</h3>
+                        <p>在智能体场景中，基于注意力的模式（广告、点击）失效，需要基于计量访问或可验证结果的新模式。</p>
+                    </div>
+                    <div class="p-6 rounded-lg bg-gray-50 border-t-4 border-[#118AB2]">
+                        <h3 class="text-xl font-bold mb-2">分发</h3>
+                        <p>当“代码变得廉价”，智能体如何在海量重叠供应中发现与选择最佳工具？需要标准化机制。</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-12 md:mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+            <p class="text-zinc-700 dark:text-zinc-300">“生成式 UI + 智能体协议”的融合，正在创造更直观、高效、协作的数字世界。</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (label, maxLength = 16) => {
+            if (typeof label !== 'string' || label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine.length > 0) lines.push(currentLine);
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) return label.join(' ');
+            return label;
+        };
+        
+        const sharedChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#4A5568',
+                        font: { family: "'Inter', sans-serif", size: 14 }
+                    }
+                },
+                tooltip: {
+                    callbacks: { title: tooltipTitleCallback },
+                    backgroundColor: '#073B4C',
+                    titleFont: { size: 16, family: "'Inter', sans-serif" },
+                    bodyFont: { size: 14, family: "'Inter', sans-serif" },
+                    padding: 12,
+                    cornerRadius: 8,
+                }
+            },
+            scales: {
+                y: { ticks: { color: '#4A5568', font: { family: "'Inter', sans-serif" } }, grid: { color: '#E2E8F0' } },
+                x: { ticks: { color: '#4A5568', font: { family: "'Inter', sans-serif" } }, grid: { display: false } }
+            }
+        };
+
+        // 演进图（百分比堆叠）
+        const agentEvolutionCtx = document.getElementById('agentEvolutionChart').getContext('2d');
+        const evolutionLabels = ['2025', '2027', '2029', '2031', '2033', '2035', '2037'];
+        new Chart(agentEvolutionCtx, {
+            type: 'bar',
+            data: {
+                labels: evolutionLabels,
+                datasets: [
+                    { label: '智能体增强的应用', data: [3, 30, 40, 25, 10, 10, 5], backgroundColor: '#FFD166' },
+                    { label: '智能体主导界面', data: [0, 5, 20, 40, 50, 35, 25], backgroundColor: '#06D6A0' },
+                    { label: '智能体即应用', data: [0, 0, 5, 20, 25, 50, 65], backgroundColor: '#118AB2' }
+                ]
+            },
+            options: {
+                ...sharedChartOptions,
+                scales: {
+                    y: {
+                        stacked: true,
+                        ticks: { callback: (v) => v + '%', color: '#4A5568' },
+                        grid: { color: '#E2E8F0' }
+                    },
+                    x: { stacked: true, ticks: { color: '#4A5568' }, grid: { display: false } }
+                }
+            }
+        });
+        
+        // WebMCP 支柱（甜甜圈图）
+        const webmcpCtx = document.getElementById('webmcpChart').getContext('2d');
+        const webmcpLabels = [
+            '结构化动作', 
+            '结果导向激励', 
+            '范围化认证与安全', 
+            '标准化分发'
+        ].map(label => wrapLabel(label));
+        new Chart(webmcpCtx, {
+            type: 'doughnut',
+            data: {
+                labels: webmcpLabels,
+                datasets: [{
+                    label: 'WebMCP 支柱',
+                    data: [30, 25, 25, 20],
+                    backgroundColor: ['#118AB2', '#FFD166', '#06D6A0', '#FF6B6B'],
+                    borderColor: '#fff',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#4A5568',
+                            font: { family: "'Inter', sans-serif", size: 12 },
+                            boxWidth: 15,
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: { title: tooltipTitleCallback },
+                        backgroundColor: '#073B4C',
+                        titleFont: { size: 16, family: "'Inter', sans-serif" },
+                        bodyFont: { size: 14, family: "'Inter', sans-serif" },
+                        padding: 12,
+                        cornerRadius: 8,
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -30,25 +30,34 @@
   <script>
     // Mobile menu toggling
     (function(){
-      const btn = document.getElementById('mobile-menu-button');
-      const menu = document.getElementById('mobile-menu');
-      const iconOpen = document.getElementById('icon-hamburger');
-      const iconClose = document.getElementById('icon-close');
-      if (!btn || !menu) return;
-      function toggle(){
-        const open = menu.classList.contains('hidden');
-        menu.classList.toggle('hidden');
-        btn.setAttribute('aria-expanded', String(open));
-        iconOpen.classList.toggle('hidden', !open);
-        iconClose.classList.toggle('hidden', open);
-      }
-      btn.addEventListener('click', toggle);
-      document.addEventListener('click', (e)=>{
-        if (!menu.contains(e.target) && !btn.contains(e.target)) {
-          if (!menu.classList.contains('hidden')) toggle();
+      function initMobileMenu(){
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-hamburger');
+        const iconClose = document.getElementById('icon-close');
+        if (!btn || !menu) return;
+        function toggle(){
+          const open = menu.classList.contains('hidden');
+          menu.classList.toggle('hidden');
+          btn.setAttribute('aria-expanded', String(open));
+          if (iconOpen && iconClose) {
+            iconOpen.classList.toggle('hidden', !open);
+            iconClose.classList.toggle('hidden', open);
+          }
         }
-      });
-      document.addEventListener('keydown', (e)=>{ if (e.key==='Escape' && !menu.classList.contains('hidden')) toggle(); });
+        btn.addEventListener('click', toggle);
+        document.addEventListener('click', (e)=>{
+          if (!menu.contains(e.target) && !btn.contains(e.target)) {
+            if (!menu.classList.contains('hidden')) toggle();
+          }
+        });
+        document.addEventListener('keydown', (e)=>{ if (e.key==='Escape' && !menu.classList.contains('hidden')) toggle(); });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMobileMenu);
+      } else {
+        initMobileMenu();
+      }
     })();
   </script>
   <style>
@@ -350,15 +359,39 @@ flowchart LR
   <section id="whitepaper" class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl md:text-4xl font-bold text-balance break-anywhere">Insights</h2>
-      <p class="mt-4 text-zinc-700 dark:text-zinc-300 max-w-3xl">Dive deeper into NeuronKit’s architecture and related topics through our collection of articles.</p>
-      <ul class="mt-6 space-y-2 list-disc list-inside">
-        <li><a href="/en/neuronkit/insights/from_clickstream_to_dialogstream.html">From Clickstream to Dialogstream</a></li>
-        <li><a href="/en/neuronkit/whitepaper/">E-commerce: Clickstream to Dialogstream (Report)</a></li>
-        <li><a href="/en/neuronkit/insights/sandboxing-for-agents/">Sandboxing for Agents</a></li>
-        <li><a href="/en/neuronkit/insights/agentic-interface/">The Agentic Interface: A Definitive Report</a></li>
-        <li><a href="/en/neuronkit/insights/agent-cage/">Agent Cage</a></li>
-        <li><a href="/en/neuronkit/insights/ai-agent-economy/">The Agentic Economy</a></li>
-      </ul>
+      <p class="mt-4 text-zinc-700 dark:text-zinc-300 max-w-3xl">Curated articles and reports. Explore deep dives, frameworks, and reference architectures.</p>
+
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="/en/neuronkit/whitepaper/" class="block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white hover:shadow-md dark:hover:bg-zinc-900 transition duration-200">
+          <div class="text-xs uppercase tracking-wide text-zinc-500">Report</div>
+          <h3 class="mt-1 font-semibold">E‑commerce: Clickstream → Dialogstream</h3>
+          <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">How dialog streams and agentic UX reshape funnels, personalization, and measurement.</p>
+        </a>
+
+        <a href="/en/neuronkit/insights/from_clickstream_to_dialogstream.html" class="block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white hover:shadow-md dark:hover:bg-zinc-900 transition duration-200">
+          <div class="text-xs uppercase tracking-wide text-zinc-500">Insight</div>
+          <h3 class="mt-1 font-semibold">From Clickstream to Dialogstream</h3>
+          <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">A visual tour of the agentic shift and generative UI.</p>
+        </a>
+
+        <a href="/en/neuronkit/insights/sandboxing-for-agents/" class="block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white hover:shadow-md dark:hover:bg-zinc-900 transition duration-200">
+          <div class="text-xs uppercase tracking-wide text-zinc-500">Whitepaper</div>
+          <h3 class="mt-1 font-semibold">Sandboxing for Agentic Systems</h3>
+          <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Taxonomy and patterns for securing agent‑generated actions.</p>
+        </a>
+
+        <a href="/en/neuronkit/insights/ai-agent-economy/" class="block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white hover:shadow-md dark:hover:bg-zinc-900 transition duration-200">
+          <div class="text-xs uppercase tracking-wide text-zinc-500">Report</div>
+          <h3 class="mt-1 font-semibold">The Agentic Economy</h3>
+          <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">From eyeballs to agents: AI‑native pricing, M2M payments, and trust frameworks.</p>
+        </a>
+      </div>
+
+      <div class="mt-8">
+        <a href="/en/neuronkit/insights/" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900">View all insights
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M13.5 4.5L21 12l-7.5 7.5-1.06-1.06L18.38 13H3v-2h15.38l-5.94-5.94 1.06-1.06Z"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 

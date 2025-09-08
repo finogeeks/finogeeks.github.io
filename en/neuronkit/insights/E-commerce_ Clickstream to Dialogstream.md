@@ -44,6 +44,7 @@ This autonomy is a key differentiator. The agent can proactively engage with a c
 ### **2.3 The HCI Paradigm Shift: From Interface to Interaction**
 
 The transition to a dialog stream paradigm represents a fundamental shift in Human-Computer Interaction (HCI). The old model required users to learn and adapt to the complexities of a graphical interface, including its menus, buttons, and navigation systems. This often created friction and increased the user's cognitive load. The new model reverses this dynamic: the technology now adapts to the user's natural communication style.  
+
 Conversational User Interfaces (CUIs) are designed to mimic human conversation, making interactions feel intuitive and natural. This significantly reduces the learning curve for technology, making it more accessible to a broader audience, including users with limited technical skills or disabilities. The system's ability to maintain "contextual understanding" and remember previous parts of a conversation allows for a more coherent and consistent dialogue. This creates a more engaging and emotionally resonant experience for the user. The core value of this HCI paradigm shift is not just in the backend efficiency for businesses but in the improved, frictionless, and more personal experience it provides to the consumer.
 
 | Aspect | Clickstream \+ Website Paradigm | Dialog Stream \+ Agent Paradigm |
