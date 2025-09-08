@@ -19,6 +19,21 @@
     .prose { color: rgb(39 39 42); line-height: 1.75; }
     /* Increase contrast for dark mode body text */
     .dark .prose { color: rgb(244 244 245); }
+    /* Ensure high contrast for common text elements in dark mode */
+    .dark .prose p,
+    .dark .prose li,
+    .dark .prose span,
+    .dark .prose small,
+    .dark .prose td,
+    .dark .prose th {
+      color: rgb(235 235 236);
+    }
+    /* Muted captions still readable */
+    .dark .prose figcaption,
+    .dark .prose .caption,
+    .dark .prose .footnotes {
+      color: rgb(208 208 213);
+    }
     .prose h1 { font-size: 2.25rem; font-weight: 800; line-height: 1.15; margin-top: 2rem; letter-spacing: -0.01em; }
     .prose h2 { font-size: 1.75rem; font-weight: 700; line-height: 1.25; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose h3 { font-size: 1.35rem; font-weight: 600; line-height: 1.3; margin-top: 1.25rem; margin-bottom: 0.25rem; }
@@ -26,12 +41,15 @@
     .prose p { margin-top: 0.85rem; }
     .prose strong { font-weight: 700; color: inherit; }
     .prose a { color: rgb(79 70 229); text-decoration: underline; text-underline-offset: 3px; }
-    .dark .prose a { color: rgb(165 180 252); }
+    .dark .prose a { color: rgb(173 191 255); }
     .dark .prose a:hover { color: rgb(196 181 253); }
     .prose ul, .prose ol { margin-top: 0.85rem; padding-left: 1.25rem; }
     .prose li { margin-top: 0.35rem; }
     .prose blockquote { margin: 1rem 0; padding: 0.75rem 1rem; border-left: 4px solid rgb(99 102 241); background: rgba(99,102,241,0.06); border-radius: 0 0.5rem 0.5rem 0; }
-    .dark .prose blockquote { background: rgba(99,102,241,0.12); }
+    .dark .prose blockquote {
+      background: rgba(99,102,241,0.12);
+      color: rgb(235 235 236);
+    }
     .prose hr { border: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(24,24,27,0.15), transparent); margin: 2rem 0; }
     .dark .prose hr { background: linear-gradient(to right, transparent, rgba(250,250,250,0.15), transparent); }
     .prose img { border-radius: 0.75rem; box-shadow: 0 10px 24px rgba(0,0,0,0.07); margin: 1rem 0; }
@@ -46,10 +64,16 @@
     .prose pre { background: rgb(9 9 11); color: rgb(250 250 250); padding: 0.85rem 1rem; border-radius: 0.75rem; overflow-x: auto; margin: 1rem 0; }
     .dark .prose pre { background: rgb(24 24 27); }
     .prose code { background: rgba(99,102,241,0.08); color: rgb(55 48 163); padding: 0.15rem 0.35rem; border-radius: 0.35rem; }
-    .dark .prose code { background: rgba(99,102,241,0.18); color: rgb(199 210 254); }
+    .dark .prose code { background: rgba(99,102,241,0.18); color: rgb(210 220 255); }
     .prose kbd { background: rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.12); border-bottom-width: 2px; padding: 0 0.3rem; border-radius: 0.35rem; font-size: 0.9em; }
     .prose .lead { font-size: 1.1rem; color: rgb(63 63 70); }
-    .dark .prose .lead { color: rgb(229 229 231); }
+    .dark .prose .lead { color: rgb(240 240 242); }
+    /* Override low-contrast Tailwind zinc utilities inside prose */
+    .dark .prose .text-zinc-400,
+    .dark .prose .text-zinc-500,
+    .dark .prose .text-zinc-600 {
+      color: rgb(235 235 236) !important;
+    }
 
     /* Executive Summary styling */
     .exec-summary {
