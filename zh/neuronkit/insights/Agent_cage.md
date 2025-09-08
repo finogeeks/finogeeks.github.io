@@ -1,7 +1,7 @@
 ---
 title: "智能体的牢笼：沙箱化自治系统的白皮书"
 layout: neuronkit
-permalink: /en/neuronkit/insights/agent-cage/
+permalink: /zh/neuronkit/insights/agent-cage/
 ---
 
 ## **摘要**
