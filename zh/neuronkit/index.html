@@ -48,6 +48,7 @@
           <span>NeuronKit</span>
           <span class="ml-2 rounded-full px-2 py-0.5 text-xs bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">预览</span>
         </a>
+        <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-6 text-sm">
           <a href="#challenges" class="hover:text-indigo-600">变革</a>
           <a href="#next" class="hover:text-indigo-600">行动</a>
@@ -69,7 +70,12 @@
             </div>
           </div>
         </nav>
-        <div class="flex items-center gap-3">
+        <!-- Mobile hamburger -->
+        <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center rounded-xl border border-zinc-300 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900" aria-label="打开导航" aria-expanded="false">
+          <svg id="icon-hamburger" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <div class="hidden md:flex items-center gap-3">
           <a href="https://finogeeks.github.io/agentic" target="_blank" rel="noreferrer" class="px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-sm">GitHub</a>
           <a href="#cta" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium">加入候补名单</a>
           <a href="/en/neuronkit/index.html" class="px-3 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-sm">English</a>
@@ -77,6 +83,32 @@
       </div>
     </div>
   </header>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 z-40 hidden">
+    <div class="mx-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-lg overflow-hidden">
+      <nav class="p-4 grid gap-2 text-sm">
+        <a href="#challenges" class="block px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900">变革</a>
+        <a href="#next" class="block px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900">行动</a>
+        <a href="#features" class="block px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900">方案</a>
+        <div class="mt-1">
+          <div class="px-3 text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">洞见</div>
+          <a href="/zh/neuronkit/whitepaper/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900">电商：从点击流到对话流</a>
+          <a href="/en/neuronkit/insights/from_clickstream_to_dialogstream.html" class="block px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900">从点击流到对话流（可视化）</a>
+          <a href="/zh/neuronkit/insights/sandboxing-for-agents/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900">面向 Agent 的沙箱</a>
+          <a href="/zh/neuronkit/insights/agentic-interface/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900">Agentic 界面报告</a>
+          <a href="/zh/neuronkit/insights/agent-cage/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900">Agent 的“牢笼”</a>
+          <a href="/zh/neuronkit/insights/ai-agent-economy/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900">智能体经济新指南</a>
+          <a href="/zh/neuronkit/insights/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900">洞见首页</a>
+        </div>
+        <div class="mt-2 grid gap-2">
+          <a href="https://finogeeks.github.io/agentic" target="_blank" rel="noreferrer" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700">GitHub</a>
+          <a href="#cta" class="px-3 py-2 rounded-lg bg-indigo-600 text-white">加入候补名单</a>
+          <a href="/en/neuronkit/index.html" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700">English</a>
+        </div>
+      </nav>
+    </div>
+  </div>
 
   <!-- 首屏 -->
   <section class="relative overflow-hidden">
@@ -395,6 +427,32 @@ flowchart LR
         if (m2) { stop(); show(indexOf(m2[1].toLowerCase())); start(); }
       });
       start();
+    })();
+  </script>
+  <script>
+    // Mobile menu toggling
+    (function(){
+      const btn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-hamburger');
+      const iconClose = document.getElementById('icon-close');
+      if (!btn || !menu) return;
+      function toggle(){
+        const open = menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(open));
+        iconOpen.classList.toggle('hidden', !open);
+        iconClose.classList.toggle('hidden', open);
+      }
+      btn.addEventListener('click', toggle);
+      // close when clicking outside
+      document.addEventListener('click', (e)=>{
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+          if (!menu.classList.contains('hidden')) toggle();
+        }
+      });
+      // close on Esc
+      document.addEventListener('keydown', (e)=>{ if (e.key==='Escape' && !menu.classList.contains('hidden')) toggle(); });
     })();
   </script>
 </body>
