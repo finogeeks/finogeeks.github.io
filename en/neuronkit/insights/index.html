@@ -20,14 +20,44 @@
         <span class="inline-flex h-8 w-8 rounded-xl bg-gradient-to-br from-cyan-500 via-indigo-500 to-emerald-500"></span>
         <span>NeuronKit</span>
       </a>
+      <!-- Desktop nav -->
       <nav class="hidden md:flex items-center gap-6 text-sm">
         <a href="/en/neuronkit/index.html#challenges" class="hover:text-indigo-600">Why Change</a>
         <a href="/en/neuronkit/index.html#next" class="hover:text-indigo-600">What's next</a>
         <a href="/en/neuronkit/index.html#features" class="hover:text-indigo-600">Solution</a>
         <a href="/en/neuronkit/insights/" class="text-indigo-600 font-medium">Insights</a>
       </nav>
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center rounded-xl border border-zinc-300 p-2 hover:bg-zinc-100" aria-label="Open navigation" aria-expanded="false">
+        <svg id="icon-hamburger" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 z-40 hidden">
+    <div class="mx-4 rounded-2xl border border-zinc-200 bg-white shadow-lg overflow-hidden">
+      <nav class="p-4 grid gap-2 text-sm">
+        <a href="/en/neuronkit/index.html#challenges" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">Why Change</a>
+        <a href="/en/neuronkit/index.html#next" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">What's next</a>
+        <a href="/en/neuronkit/index.html#features" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">Solution</a>
+        <div class="mt-1">
+          <div class="px-3 text-xs uppercase tracking-wide text-zinc-500">Insights</div>
+          <a href="/en/neuronkit/whitepaper/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">E‑commerce Report</a>
+          <a href="/en/neuronkit/insights/from_clickstream_to_dialogstream.html" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">From Clickstream to Dialogstream</a>
+          <a href="/en/neuronkit/insights/sandboxing-for-agents/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">Sandboxing for Agents</a>
+          <a href="/en/neuronkit/insights/agentic-interface/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">The Agentic Interface</a>
+          <a href="/en/neuronkit/insights/agent-cage/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">Agent's Cage</a>
+          <a href="/en/neuronkit/insights/ai-agent-economy/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">The Agentic Economy</a>
+          <a href="/en/neuronkit/insights/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">All Insights</a>
+        </div>
+        <div class="mt-2 grid gap-2">
+          <a href="/en/neuronkit/index.html" class="px-3 py-2 rounded-lg border border-zinc-300">Back to NeuronKit</a>
+        </div>
+      </nav>
+    </div>
+  </div>
 
   <main class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -94,5 +124,29 @@
     </div>
   </footer>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    // Mobile menu toggling
+    (function(){
+      const btn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-hamburger');
+      const iconClose = document.getElementById('icon-close');
+      if (!btn || !menu) return;
+      function toggle(){
+        const open = menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(open));
+        iconOpen.classList.toggle('hidden', !open);
+        iconClose.classList.toggle('hidden', open);
+      }
+      btn.addEventListener('click', toggle);
+      document.addEventListener('click', (e)=>{
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+          if (!menu.classList.contains('hidden')) toggle();
+        }
+      });
+      document.addEventListener('keydown', (e)=>{ if (e.key==='Escape' && !menu.classList.contains('hidden')) toggle(); });
+    })();
+  </script>
 </body>
 </html>
