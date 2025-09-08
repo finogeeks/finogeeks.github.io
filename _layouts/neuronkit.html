@@ -8,6 +8,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    // Apply dark mode class early based on user system preference
+    (function(){
+      try {
+        var root = document.documentElement;
+        var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+        function apply() {
+          if (mq && mq.matches) root.classList.add('dark');
+          else root.classList.remove('dark');
+        }
+        apply();
+        if (mq) {
+          if (mq.addEventListener) mq.addEventListener('change', apply);
+          else if (mq.addListener) mq.addListener(apply);
+        }
+      } catch (e) {}
+    })();
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
@@ -100,14 +118,14 @@
     .dark .prose [class*="text-zinc-"],
     .dark .prose [class*="text-gray-"],
     .dark .prose [class*="text-slate-"] {
-      color: rgb(242 242 243) !important;
+      color: #ffffff !important;
     }
     /* Counter low-opacity text utilities that hurt readability */
     .dark .prose [class*="text-white/"],
     .dark .prose [class*="text-zinc-"][class*="/"],
     .dark .prose [class*="opacity-"] {
       opacity: 1 !important;
-      color: rgb(242 242 243) !important;
+      color: #ffffff !important;
     }
 
     /* Executive Summary styling */
@@ -168,6 +186,11 @@
   .dark article.prose :where(p, li, span, small, td, th, div, strong, em, a, h1, h2, h3, h4, h5, h6, blockquote, figcaption, code) {
     color: #ffffff !important;
     opacity: 1 !important;
+  }
+
+  /* Ensure any Tailwind utility text-* classes inside article are forced to white */
+  .dark article.prose [class*="text-"] {
+    color: #ffffff !important;
   }
 
   </style>
