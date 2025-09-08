@@ -1,0 +1,28 @@
+{% assign url = page.url | split: '?' | first | default: '' %}
+{% assign prefix = url | slice: 0, 4 %}
+{% if prefix == '/zh/' %}
+  {% assign base = '/zh/neuronkit' %}
+  {% assign insights_path = '/zh/neuronkit/insights/' %}
+  {% assign lang_href = url | replace: '/zh/', '/en/' %}
+  {% assign lang_text = 'English' %}
+  {% assign insights_label = '洞见' %}
+{% else %}
+  {% assign base = '/en/neuronkit' %}
+  {% assign insights_path = '/en/neuronkit/insights/' %}
+  {% assign lang_href = url | replace: '/en/', '/zh/' %}
+  {% assign lang_text = '中文' %}
+  {% assign insights_label = 'Insights' %}
+{% endif %}
+
+<header class="bg-[#052A38]/70 backdrop-blur sticky top-0 z-30">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="{{ base }}/index.html" class="text-white/90 hover:text-white text-sm">NeuronKit</a>
+      <span class="text-white/40">/</span>
+      <a href="{{ insights_path }}" class="text-white/90 hover:text-white text-sm">{{ insights_label }}</a>
+    </div>
+    <div class="flex items-center gap-3 text-sm">
+      <a href="{{ lang_href }}" class="px-2.5 py-1 rounded-md border border-white/20 text-white/90 hover:text-white hover:bg-white/10">{{ lang_text }}</a>
+    </div>
+  </div>
+</header>
