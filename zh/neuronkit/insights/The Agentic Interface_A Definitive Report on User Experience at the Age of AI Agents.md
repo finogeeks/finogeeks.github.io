@@ -1,8 +1,9 @@
 ---
-title: "代理式界面：AI代理时代用户体验的权威报告"
+title: "Agentic 界面：对话式混合UI设计"
 layout: neuronkit
 permalink: /zh/neuronkit/insights/agentic-interface/
 ---
+
 
 ## **执行摘要**
 

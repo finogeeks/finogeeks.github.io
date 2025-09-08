@@ -1,8 +1,10 @@
 ---
-title: "The Agentic Interface: A Definitive Report on User Experience at the Age of AI Agents"
+title: "The Agentic Interface: Designing Hybrid Conversational UI"
 layout: neuronkit
 permalink: /en/neuronkit/insights/agentic-interface/
 ---
+
+<!-- markdownlint-disable MD041 -->
 
 ## **Executive Summary**
 

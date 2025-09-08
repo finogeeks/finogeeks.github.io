@@ -1,8 +1,10 @@
 ---
-title: "智能体的牢笼：沙箱化自治系统的白皮书"
+title: "智能体的牢笼：自治系统安全"
 layout: neuronkit
 permalink: /zh/neuronkit/insights/agent-cage/
 ---
+
+<!-- markdownlint-disable MD041 -->
 
 ## **摘要**
 

@@ -1,8 +1,10 @@
 ---
-title: "The Agent's Cage: A Comprehensive White Paper on Sandboxing Autonomous Systems"
+title: "The Agent’s Cage: Securing Autonomous Systems"
 layout: neuronkit
 permalink: /en/neuronkit/insights/agent-cage/
 ---
+
+<!-- markdownlint-disable MD041 -->
 
 ## **Executive Summary**
 

@@ -1,8 +1,10 @@
 ---
-title: "Sandboxing for Agentic Systems — A Technical White Paper"
+title: "Sandboxing Agentic Systems: A Playbook"
 layout: neuronkit
 permalink: /en/neuronkit/insights/sandboxing-for-agents/
 ---
+
+<!-- markdownlint-disable MD041 -->
 
 ## Executive summary
 

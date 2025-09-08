@@ -1,8 +1,9 @@
 ---
-title: "The Transformation of E-commerce: From Clickstream to Dialog Stream and Beyond"
+title: "E‑commerce Reinvented: From Clickstream to Dialogstream"
 layout: neuronkit
 permalink: /en/neuronkit/whitepaper/
 ---
+
 
 ## **Executive Summary**
 

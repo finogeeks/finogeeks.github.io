@@ -1,8 +1,10 @@
 ---
 layout: neuronkit
-title: "电子商务的变革：从点击流到对话流"
+title: "电商重构：从点击流到对话流"
 permalink: /zh/neuronkit/whitepaper/
 ---
+
+<!-- markdownlint-disable MD041 -->
 
 ## 内容提要
 

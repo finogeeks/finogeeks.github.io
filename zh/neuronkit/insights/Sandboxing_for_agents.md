@@ -1,8 +1,10 @@
 ---
-title: "面向智能体系统的沙箱技术 — 技术白皮书"
+title: "Agent 沙箱实战手册"
 layout: neuronkit
 permalink: /zh/neuronkit/insights/sandboxing-for-agents/
 ---
+
+<!-- markdownlint-disable MD041 -->
 
 ## 执行摘要
 
