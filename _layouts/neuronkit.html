@@ -50,6 +50,59 @@
     .prose kbd { background: rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.12); border-bottom-width: 2px; padding: 0 0.3rem; border-radius: 0.35rem; font-size: 0.9em; }
     .prose .lead { font-size: 1.1rem; color: rgb(63 63 70); }
     .dark .prose .lead { color: rgb(229 229 231); }
+
+    /* Executive Summary styling */
+    .exec-summary {
+      position: relative;
+      padding: 1rem 1.25rem;
+      border-radius: 0.85rem;
+      background: linear-gradient(180deg, rgba(99,102,241,0.06), rgba(99,102,241,0.03));
+      border: 1px solid rgba(99,102,241,0.22);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+      margin: 0.75rem 0 1.25rem 0;
+    }
+    .dark .exec-summary {
+      background: linear-gradient(180deg, rgba(99,102,241,0.12), rgba(99,102,241,0.06));
+      border-color: rgba(165,180,252,0.3);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+    }
+    .exec-pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: rgb(99 102 241);
+      color: white;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
+    }
+    .dark .exec-pill { background: rgb(129 140 248); }
+
+    /* Works cited / References styling */
+    .citations {
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      background: rgba(2, 6, 23, 0.02);
+      border: 1px dashed rgba(24, 24, 27, 0.2);
+      margin-top: 0.5rem;
+    }
+    .dark .citations { background: rgba(250, 250, 250, 0.03); border-color: rgba(250, 250, 250, 0.22); }
+    .citations ol,
+    .citations ul {
+      list-style: decimal;
+      margin-left: 1.25rem;
+    }
+    .citations li {
+      padding-left: 0.25rem;
+      margin: 0.35rem 0;
+      text-indent: -0.25rem;
+    }
+    .citations a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      word-break: break-word;
+    }
   </style>
 </head>
 <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
@@ -197,6 +250,61 @@
   </footer>
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+    // Enhance Executive Summary and Works Cited sections
+    (function(){
+      const root = document.querySelector('article.prose');
+      if (!root) return;
+      const headingSelectors = 'h2, h3, h4';
+      const isExec = (txt) => {
+        const t = txt.trim().toLowerCase();
+        return (
+          t === 'executive summary' ||
+          t === '**executive summary**' ||
+          t === '摘要' || t === '执行摘要' || t.includes('执行摘要')
+        );
+      };
+      const isCitations = (txt) => {
+        const t = txt.trim().toLowerCase();
+        return (
+          t === 'works cited' || t.includes('works cited') ||
+          t === 'references' || t.includes('references') ||
+          t.includes('参考资料') || t.includes('参考文献')
+        );
+      };
+
+      // Wrap content between this heading and the next heading of same or higher level
+      function wrapSection(afterHeading, wrapperClass, addPill) {
+        const wrapper = document.createElement('div');
+        wrapper.className = wrapperClass;
+        const nodesToWrap = [];
+        for (let el = afterHeading.nextElementSibling; el; el = el.nextElementSibling) {
+          if (el.matches(headingSelectors)) break;
+          nodesToWrap.push(el);
+        }
+        if (nodesToWrap.length === 0) return;
+        const first = nodesToWrap[0];
+        afterHeading.parentNode.insertBefore(wrapper, first);
+        if (addPill) {
+          const pill = document.createElement('span');
+          pill.className = 'exec-pill';
+          pill.textContent = afterHeading.textContent.replaceAll('*','').trim();
+          wrapper.appendChild(pill);
+        }
+        nodesToWrap.forEach(n => wrapper.appendChild(n));
+      }
+
+      // Find headings to stylize
+      const headings = Array.from(root.querySelectorAll(headingSelectors));
+      headings.forEach(h => {
+        const text = (h.textContent || '').trim();
+        if (isExec(text)) {
+          wrapSection(h, 'exec-summary', true);
+        }
+        if (isCitations(text)) {
+          wrapSection(h, 'citations', false);
+        }
+      });
+    })();
     // Mobile menu toggling
     (function(){
       const btn = document.getElementById('mobile-menu-button');

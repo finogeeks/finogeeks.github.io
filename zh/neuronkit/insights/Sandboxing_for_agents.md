@@ -6,7 +6,7 @@ permalink: /zh/neuronkit/insights/sandboxing-for-agents/
 
 <!-- markdownlint-disable MD041 -->
 
-## 执行摘要
+## 摘要
 
 智能体系统（agentic systems）——使用模型进行规划、决策和行动的软件（通常通过执行脚本或控制 UI）——同时放大了能力与风险。运行不受信任的智能体生成的操作（代码、浏览器自动化、文件操作、网络请求）需要强大且架构合理的隔离机制，以确保单个恶意或存在缺陷的智能体不会升级为系统整体被攻陷或数据泄露。
 
