@@ -12,6 +12,23 @@ layout: none
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script>
+      // Align dark mode behavior with main site
+      (function(){
+        try {
+          var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+          function apply(){
+            if (mq && mq.matches) document.documentElement.classList.add('dark');
+            else document.documentElement.classList.remove('dark');
+          }
+          apply();
+          if (mq) {
+            if (mq.addEventListener) mq.addEventListener('change', function(){ apply(); location.reload(); });
+            else if (mq.addListener) mq.addListener(function(){ apply(); location.reload(); });
+          }
+        } catch (e) {}
+      })();
+    </script>
     <style>
         body { font-family: 'Inter', sans-serif; background-color: transparent; }
     </style>
@@ -34,14 +51,14 @@ layout: none
                 <h2 class="text-3xl font-bold text-center mb-6">A New Web Paradigm</h2>
                 <p class="max-w-4xl mx-auto text-center text-zinc-600 dark:text-zinc-300 mb-8">The internet is undergoing its most significant transformation yet. We are moving from a web of static pages and predefined paths to a dynamic ecosystem powered by intelligent, proactive AI agents. This isn't just about chatbots; it's a fundamental change in how we interact with digital information and services.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-                    <div class="bg-red-50 p-6 rounded-lg border-2 border-[#FF6B6B]">
-                        <h3 class="text-2xl font-bold mb-2 text-[#FF6B6B]">THEN: The Web of Pages</h3>
+                    <div class="p-6 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                        <h3 class="text-2xl font-bold mb-2 text-indigo-600 dark:text-indigo-300">THEN: The Web of Pages</h3>
                         <p class="text-5xl mb-4">🖱️</p>
                         <p class="font-semibold text-lg">Click Stream</p>
                         <p>Users navigate a maze of links, manually pulling information from passive "bags of words." The UI is fixed, and the journey is user-led.</p>
                     </div>
-                    <div class="bg-green-50 p-6 rounded-lg border-2 border-[#06D6A0]">
-                        <h3 class="text-2xl font-bold mb-2 text-[#06D6A0]">NOW: The Web of Agents</h3>
+                    <div class="p-6 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                        <h3 class="text-2xl font-bold mb-2 text-emerald-600 dark:text-emerald-300">NOW: The Web of Agents</h3>
                         <p class="text-5xl mb-4">💬</p>
                         <p class="font-semibold text-lg">Dialog Stream</p>
                         <p>Users converse with intelligent agents that understand context, anticipate needs, and proactively execute tasks. The experience is collaborative.</p>
@@ -76,12 +93,12 @@ layout: none
                 <h2 class="text-3xl font-bold text-center mb-6">Protocols for a Generative UI: MCP-UI & AG-UI</h2>
                 <p class="max-w-4xl mx-auto text-center text-zinc-600 dark:text-zinc-300 mb-8">To bring generative UI to life, the web needs new protocols. MCP-UI and AG-UI are proposed standards that provide the technical framework for agents to generate and present dynamic user interfaces. They bridge the gap between an agent's logic and the visual experience.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-center">
-                     <div class="p-6 rounded-lg bg-[#F0F4F8] border-2 border-[#118AB2] h-full flex flex-col justify-center">
-                        <h3 class="text-2xl font-bold mb-2 text-[#118AB2]">MCP-UI</h3>
+                     <div class="p-6 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 h-full flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold mb-2 text-indigo-600 dark:text-indigo-300">MCP-UI</h3>
                         <p class="text-lg">Generates individual, contextual UI components (e.g., forms, lists, buttons) for a specific user query. It's the protocol for a server to send a UI to a client, like a single 'card' in a chat stream.</p>
                     </div>
-                    <div class="p-6 rounded-lg bg-[#F0F4F8] border-2 border-[#06D6A0] h-full flex flex-col justify-center">
-                        <h3 class="text-2xl font-bold mb-2 text-[#06D6A0]">AG-UI</h3>
+                    <div class="p-6 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 h-full flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold mb-2 text-emerald-600 dark:text-emerald-300">AG-UI</h3>
                         <p class="text-lg">Represents the full-fledged user interface of an agent-as-an-app. It's a cohesive, persistent interface for a proactive agent to manage complex tasks and provide a dedicated "human-in-the-loop" experience.</p>
                     </div>
                 </div>
@@ -104,17 +121,17 @@ layout: none
                     </div>
                     <div>
                         <ul class="space-y-4 text-left">
-                            <li class="p-4 bg-gray-50 rounded-lg">
-                                <strong class="text-[#118AB2]">Shift to Structured Actions:</strong> Replaces fragile UI scraping with robust, standardized API-like calls, improving accuracy and efficiency.
+                            <li class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-800/40">
+                                <strong class="text-indigo-600 dark:text-indigo-300">Shift to Structured Actions:</strong> Replaces fragile UI scraping with robust, standardized API-like calls, improving accuracy and efficiency.
                             </li>
-                            <li class="p-4 bg-gray-50 rounded-lg">
-                                <strong class="text-[#06D6A0]">Scoped Authentication:</strong> Provides fine-grained, secure access control for agents, allowing them to perform actions on a user's behalf safely.
+                            <li class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-800/40">
+                                <strong class="text-emerald-600 dark:text-emerald-300">Scoped Authentication:</strong> Provides fine-grained, secure access control for agents, allowing them to perform actions on a user's behalf safely.
                             </li>
-                             <li class="p-4 bg-gray-50 rounded-lg">
-                                <strong class="text-[#FFD166]">Outcome-Based Incentives:</strong> Shifts the web's business model from an attention economy (views, clicks) to a value economy (successful task completion).
+                             <li class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-800/40">
+                                <strong class="text-amber-600 dark:text-amber-300">Outcome-Based Incentives:</strong> Shifts the web's business model from an attention economy (views, clicks) to a value economy (successful task completion).
                             </li>
-                            <li class="p-4 bg-gray-50 rounded-lg">
-                                <strong class="text-[#FF6B6B]">Standardized Distribution:</strong> Creates a mechanism for agents to discover, rate, and select the best tools or services for a given task.
+                            <li class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-800/40">
+                                <strong class="text-rose-500 dark:text-rose-300">Standardized Distribution:</strong> Creates a mechanism for agents to discover, rate, and select the best tools or services for a given task.
                             </li>
                         </ul>
                     </div>
@@ -125,19 +142,19 @@ layout: none
                  <h2 class="text-3xl font-bold text-center mb-6">Core Challenges on the Path Forward</h2>
                  <p class="max-w-4xl mx-auto text-center text-zinc-600 dark:text-zinc-300 mb-8">Making the web truly "agent-native" requires solving fundamental challenges that arise when machines, not humans, are the primary users. The current web ecosystem was not designed for this new paradigm.</p>
                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-                    <div class="p-6 rounded-lg bg-gray-50 border-t-4 border-[#FF6B6B]">
+                    <div class="p-6 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                         <h3 class="text-xl font-bold mb-2">Accuracy & Efficiency</h3>
                         <p>Agents parsing visual layouts (VLM) or DOM trees is slow, costly, and unreliable. A shift to structured, semantic communication is essential.</p>
                     </div>
-                     <div class="p-6 rounded-lg bg-gray-50 border-t-4 border-[#FFD166]">
+                     <div class="p-6 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                         <h3 class="text-xl font-bold mb-2">Security</h3>
                         <p>How can users safely grant agents the authority to act on their behalf without exposing credentials or granting overly broad permissions?</p>
                     </div>
-                     <div class="p-6 rounded-lg bg-gray-50 border-t-4 border-[#06D6A0]">
+                     <div class="p-6 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                         <h3 class="text-xl font-bold mb-2">Business Model</h3>
                         <p>The attention-based economy (ads, clicks) breaks down with agents. New models based on metered access or verifiable outcomes are needed.</p>
                     </div>
-                     <div class="p-6 rounded-lg bg-gray-50 border-t-4 border-[#118AB2]">
+                     <div class="p-6 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                         <h3 class="text-xl font-bold mb-2">Distribution</h3>
                         <p>With code being cheap, how will an agent discover, evaluate, and choose the best tool from a sea of overlapping providers without a standardized system?</p>
                     </div>
@@ -160,6 +177,15 @@ layout: none
     </div>
 
     <script>
+        // Chart.js theming aligned to dark mode
+        const mq = window.matchMedia('(prefers-color-scheme: dark)');
+        const isDark = () => document.documentElement.classList.contains('dark') || (mq && mq.matches);
+        const palette = () => ({
+            text: isDark() ? '#e5e7eb' : '#4A5568',
+            grid: isDark() ? '#334155' : '#E2E8F0',
+            tooltipBg: isDark() ? '#0b132b' : '#073B4C'
+        });
+
         const wrapLabel = (label, maxLength = 16) => {
             if (typeof label !== 'string' || label.length <= maxLength) {
                 return label;
@@ -196,7 +222,7 @@ layout: none
             plugins: {
                 legend: {
                     labels: {
-                        color: '#4A5568',
+                        color: palette().text,
                         font: {
                             family: "'Inter', sans-serif",
                             size: 14,
@@ -207,7 +233,7 @@ layout: none
                     callbacks: {
                         title: tooltipTitleCallback
                     },
-                    backgroundColor: '#073B4C',
+                    backgroundColor: palette().tooltipBg,
                     titleFont: { size: 16, family: "'Inter', sans-serif" },
                     bodyFont: { size: 14, family: "'Inter', sans-serif" },
                     padding: 12,
@@ -216,11 +242,11 @@ layout: none
             },
             scales: {
                 y: {
-                    ticks: { color: '#4A5568', font: { family: "'Inter', sans-serif" } },
-                    grid: { color: '#E2E8F0' }
+                    ticks: { color: palette().text, font: { family: "'Inter', sans-serif" } },
+                    grid: { color: palette().grid }
                 },
                 x: {
-                    ticks: { color: '#4A5568', font: { family: "'Inter', sans-serif" } },
+                    ticks: { color: palette().text, font: { family: "'Inter', sans-serif" } },
                     grid: { display: false }
                 }
             }
@@ -257,13 +283,13 @@ layout: none
                         stacked: true,
                         ticks: {
                             callback: function(value) { return value + '%' },
-                            color: '#4A5568'
+                            color: palette().text
                         },
-                        grid: { color: '#E2E8F0' }
+                        grid: { color: palette().grid }
                     },
                     x: {
                         stacked: true,
-                        ticks: { color: '#4A5568' },
+                        ticks: { color: palette().text },
                         grid: { display: false }
                     }
                 }
@@ -297,7 +323,7 @@ layout: none
                     legend: {
                         position: 'bottom',
                         labels: {
-                            color: '#4A5568',
+                            color: palette().text,
                             font: {
                                 family: "'Inter', sans-serif",
                                 size: 12
@@ -310,7 +336,7 @@ layout: none
                          callbacks: {
                             title: tooltipTitleCallback
                         },
-                        backgroundColor: '#073B4C',
+                        backgroundColor: palette().tooltipBg,
                         titleFont: { size: 16, family: "'Inter', sans-serif" },
                         bodyFont: { size: 14, family: "'Inter', sans-serif" },
                         padding: 12,
