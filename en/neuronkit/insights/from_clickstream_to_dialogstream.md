@@ -2,6 +2,7 @@
 layout: neuronkit
 title: "From Clickstream to Dialogstream"
 permalink: /en/neuronkit/insights/from_clickstream_to_dialogstream/
+hide_title: true
 ---
 
 <!-- markdownlint-disable MD033 -->
@@ -107,3 +108,4 @@ permalink: /en/neuronkit/insights/from_clickstream_to_dialogstream/
   {% include interactive-article-styles.html %}
   {% include interactive-article-scripts.html %}
 </div>
+<!-- markdownlint-enable MD033 -->
