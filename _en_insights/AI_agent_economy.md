@@ -1,6 +1,8 @@
 ---
 title: "The New Playbook for the Agentic Economy: A Strategic Report on Digital Monetization in the Age of AI"
 layout: neuronkit
+date: 2025-09-22 00:00:00 +0800
+description: "Strategic report on monetization models and infrastructure for the agentic economy"
 permalink: /en/neuronkit/insights/ai-agent-economy/ 
 ---
 

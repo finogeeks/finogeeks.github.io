@@ -1,6 +1,8 @@
 ---
 layout: neuronkit
 title: "From Clickstream to Dialogstream"
+date: 2025-09-21 00:00:00 +0800
+description: "Visual guide to the agentic shift and generative UI"
 permalink: /en/neuronkit/insights/from_clickstream_to_dialogstream/
 hide_title: true
 ---

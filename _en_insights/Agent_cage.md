@@ -1,6 +1,8 @@
 ---
 title: "The Agent’s Cage: Securing Autonomous Systems"
 layout: neuronkit
+date: 2025-09-20 00:00:00 +0800
+description: "Security blueprint for governing and sandboxing autonomous AI systems"
 permalink: /en/neuronkit/insights/agent-cage/
 ---
 

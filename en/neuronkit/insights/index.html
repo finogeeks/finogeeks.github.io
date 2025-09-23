@@ -1,160 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NeuronKit — Insights</title>
-  <meta name="description" content="NeuronKit insights: articles and reports on agentic UX, sandboxing, and the agent-native web." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
-  </style>
-</head>
-<body class="bg-zinc-50 text-zinc-900">
-  <header class="border-b border-zinc-200/60 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="/en/neuronkit/index.html" class="flex items-center gap-2 font-semibold text-lg">
-        <span class="inline-flex h-8 w-8 rounded-xl bg-gradient-to-br from-cyan-500 via-indigo-500 to-emerald-500"></span>
-        <span>NeuronKit</span>
-      </a>
-      <!-- Desktop nav -->
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="/en/neuronkit/index.html#challenges" class="hover:text-indigo-600">Why Change</a>
-        <a href="/en/neuronkit/index.html#next" class="hover:text-indigo-600">What's next</a>
-        <a href="/en/neuronkit/index.html#features" class="hover:text-indigo-600">Solution</a>
-        <a href="/en/neuronkit/insights/" class="text-indigo-600 font-medium">Insights</a>
-      </nav>
-      <!-- Mobile hamburger -->
-      <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center rounded-xl border border-zinc-300 p-2 hover:bg-zinc-100" aria-label="Open navigation" aria-expanded="false">
-        <svg id="icon-hamburger" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-  </header>
+---
+layout: neuronkit
+title: "Insights"
+description: "NeuronKit insights: articles and reports on agentic UX, sandboxing, and the agent-native web."
+hide_title: true
+---
 
-  <!-- Mobile menu panel -->
-  <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 z-40 hidden">
-    <div class="mx-4 rounded-2xl border border-zinc-200 bg-white shadow-lg overflow-hidden">
-      <nav class="p-4 grid gap-2 text-sm">
-        <a href="/en/neuronkit/index.html#challenges" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">Why Change</a>
-        <a href="/en/neuronkit/index.html#next" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">What's next</a>
-        <a href="/en/neuronkit/index.html#features" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">Solution</a>
-        <div class="mt-1">
-          <div class="px-3 text-xs uppercase tracking-wide text-zinc-500">Insights</div>
-          <a href="/en/neuronkit/whitepaper/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">E‑commerce Reinvented</a>
-          <a href="/en/neuronkit/insights/from_clickstream_to_dialogstream/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">From Clicks to Conversations: A Visual Guide</a>
-          <a href="/en/neuronkit/insights/sandboxing-for-agents/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">Sandboxing Agentic Systems</a>
-          <a href="/en/neuronkit/insights/agentic-interface/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">The Agentic Interface: Hybrid Conversational UI</a>
-          <a href="/en/neuronkit/insights/agent-cage/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">The Agent’s Cage: Securing Autonomous Systems</a>
-          <a href="/en/neuronkit/insights/ai-agent-economy/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">The Agentic Economy</a>
-          <a href="/en/neuronkit/insights/context-agent/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">The Proactive AI: Device-side Context</a>
-          <a href="/en/neuronkit/insights/" class="block px-3 py-2 rounded-lg hover:bg-zinc-50">All Insights</a>
-        </div>
-        <div class="mt-2 grid gap-2">
-          <a href="/en/neuronkit/index.html" class="px-3 py-2 rounded-lg border border-zinc-300">Back to NeuronKit</a>
-        </div>
-      </nav>
+<section class="py-12 md:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl md:text-4xl font-bold">Insights</h1>
+    <p class="mt-3 text-zinc-700 dark:text-zinc-300 max-w-3xl">Curated articles and whitepapers on agentic UX, sandboxing, and the agent-native web. Explore deep dives, frameworks, and reference architectures.</p>
+
+    <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="insights-grid">
+      {% assign insights = site.en_insights | sort: 'date' | reverse %}
+      {% for p in insights %}
+      <a href="{{ p.url }}" class="insight-card block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white hover:shadow-md dark:hover:bg-zinc-900 transition duration-200{% if forloop.index > 12 %} hidden{% endif %}">
+        <div class="text-xs uppercase tracking-wide text-zinc-500">Insight</div>
+        <h2 class="mt-1 font-semibold">{{ p.title }}</h2>
+        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{{ p.description | default: p.excerpt | strip_html | truncate: 160 }}</p>
+      </a>
+      {% endfor %}
+    </div>
+
+    {% if insights.size > 12 %}
+    <div class="mt-6">
+      <button id="load-more" class="px-4 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900">Load more</button>
+    </div>
+    <script>
+      (function(){
+        const btn = document.getElementById('load-more');
+        const grid = document.getElementById('insights-grid');
+        if (!btn || !grid) return;
+        btn.addEventListener('click', ()=>{
+          grid.querySelectorAll('.insight-card.hidden').forEach(el=>el.classList.remove('hidden'));
+          btn.parentElement.remove();
+        });
+      })();
+    </script>
+    {% endif %}
+
+    <div class="mt-10">
+      <a href="/en/neuronkit/index.html" class="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-500">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M10.5 19.5L3 12l7.5-7.5 1.06 1.06L5.62 11H21v2H5.62l5.94 5.94-1.06 1.06Z"/></svg>
+        <span>Back to NeuronKit</span>
+      </a>
     </div>
   </div>
-
-  <main class="py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl md:text-4xl font-bold">Insights</h1>
-      <p class="mt-3 text-zinc-700 max-w-3xl">Curated articles and whitepapers on agentic UX, sandboxing, and the agent-native web. Explore deep dives, frameworks, and reference architectures.</p>
-
-      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Card: E-commerce whitepaper -->
-        <a href="/en/neuronkit/whitepaper/" class="block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white dark:hover:bg-zinc-900 hover:shadow-md hover:-translate-y-0.5 transition duration-200">
-          <div class="text-xs uppercase tracking-wide text-zinc-500">Report</div>
-          <h2 class="mt-1 font-semibold">E‑commerce Reinvented: From Clickstream to Dialogstream</h2>
-          <p class="mt-2 text-sm text-zinc-600">How dialog streams and agentic UX reshape funnels, personalization, and measurement in a cookieless world.</p>
-        </a>
-
-        <!-- Card: From Clickstream to Dialogstream (HTML) -->
-        <a href="/en/neuronkit/insights/from_clickstream_to_dialogstream/" class="block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white dark:hover:bg-zinc-900 hover:shadow-md hover:-translate-y-0.5 transition duration-200">
-          <div class="text-xs uppercase tracking-wide text-zinc-500">Insight</div>
-          <h2 class="mt-1 font-semibold">From Clicks to Conversations: A Visual Guide</h2>
-          <p class="mt-2 text-sm text-zinc-600">A visual tour of the agentic shift and generative UI, with charts and diagrams.</p>
-        </a>
-
-        <!-- Card: Sandboxing for Agents -->
-        <a href="/en/neuronkit/insights/sandboxing-for-agents/" class="block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white dark:hover:bg-zinc-900 hover:shadow-md hover:-translate-y-0.5 transition duration-200">
-          <div class="text-xs uppercase tracking-wide text-zinc-500">Whitepaper</div>
-          <h2 class="mt-1 font-semibold">Sandboxing Agentic Systems: A Playbook</h2>
-          <p class="mt-2 text-sm text-zinc-600">A practical taxonomy and design patterns for securing agent-generated actions.</p>
-        </a>
-
-        <!-- Card: Agentic Interface report -->
-        <a href="/en/neuronkit/insights/agentic-interface/" class="block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white dark:hover:bg-zinc-900 hover:shadow-md hover:-translate-y-0.5 transition duration-200">
-          <div class="text-xs uppercase tracking-wide text-zinc-500">Report</div>
-          <h2 class="mt-1 font-semibold">The Agentic Interface: Designing Hybrid Conversational UI</h2>
-          <p class="mt-2 text-sm text-zinc-600">Protocol stack, design principles, and case studies for the emerging agentic UX.</p>
-        </a>
-
-        <!-- Card: Agent's Cage -->
-        <a href="/en/neuronkit/insights/agent-cage/" class="block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white dark:hover:bg-zinc-900 hover:shadow-md hover:-translate-y-0.5 transition duration-200">
-          <div class="text-xs uppercase tracking-wide text-zinc-500">Whitepaper</div>
-          <h2 class="mt-1 font-semibold">The Agent’s Cage: Securing Autonomous Systems</h2>
-          <p class="mt-2 text-sm text-zinc-600">Comprehensive paper on sandboxing autonomous systems and governance layers.</p>
-        </a>
-
-        <!-- Card: Agentic Economy -->
-        <a href="/en/neuronkit/insights/ai-agent-economy/" class="block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white dark:hover:bg-zinc-900 hover:shadow-md hover:-translate-y-0.5 transition duration-200">
-          <div class="text-xs uppercase tracking-wide text-zinc-500">Report</div>
-          <h2 class="mt-1 font-semibold">The Agentic Economy: A New Playbook for Monetization</h2>
-          <p class="mt-2 text-sm text-zinc-600">From eyeballs to agents: AI-native pricing models, M2M payments, and trust frameworks.</p>
-        </a>
-
-        <!-- Card: Context Agent (Device-side context) -->
-        <a href="/en/neuronkit/insights/context-agent/" class="block p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:bg-white dark:hover:bg-zinc-900 hover:shadow-md hover:-translate-y-0.5 transition duration-200">
-          <div class="text-xs uppercase tracking-wide text-zinc-500">Whitepaper</div>
-          <h2 class="mt-1 font-semibold">The Proactive AI: Leveraging Device-side Context</h2>
-          <p class="mt-2 text-sm text-zinc-600">A taxonomy of device signals and a framework for consent-driven SDKs that infer intent and act proactively.</p>
-        </a>
-      </div>
-
-      <div class="mt-10">
-        <a href="/en/neuronkit/index.html" class="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-500">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M10.5 19.5L3 12l7.5-7.5 1.06 1.06L5.62 11H21v2H5.62l5.94 5.94-1.06 1.06Z"/></svg>
-          <span>Back to NeuronKit</span>
-        </a>
-      </div>
-    </div>
-  </main>
-
-  <footer class="py-10 border-t border-zinc-200/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-      <p class="text-sm text-zinc-600">© <span id="y"></span> NeuronKit</p>
-      <div class="text-sm text-zinc-600">Cloud Brain, Device Hands. Full Control.</div>
-    </div>
-  </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
-  <script>
-    // Mobile menu toggling
-    (function(){
-      const btn = document.getElementById('mobile-menu-button');
-      const menu = document.getElementById('mobile-menu');
-      const iconOpen = document.getElementById('icon-hamburger');
-      const iconClose = document.getElementById('icon-close');
-      if (!btn || !menu) return;
-      function toggle(){
-        const open = menu.classList.contains('hidden');
-        menu.classList.toggle('hidden');
-        btn.setAttribute('aria-expanded', String(open));
-        iconOpen.classList.toggle('hidden', !open);
-        iconClose.classList.toggle('hidden', open);
-      }
-      btn.addEventListener('click', toggle);
-      document.addEventListener('click', (e)=>{
-        if (!menu.contains(e.target) && !btn.contains(e.target)) {
-          if (!menu.classList.contains('hidden')) toggle();
-        }
-      });
-      document.addEventListener('keydown', (e)=>{ if (e.key==='Escape' && !menu.classList.contains('hidden')) toggle(); });
-    })();
-  </script>
-</body>
-</html>
+</section>

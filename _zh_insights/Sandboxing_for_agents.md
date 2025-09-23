@@ -1,6 +1,8 @@
 ---
 title: "Agent 沙箱实战手册"
 layout: neuronkit
+date: 2025-09-23 00:00:00 +0800
+description: 智能体系统沙箱化的分类方法、架构模式与实践指南
 permalink: /zh/neuronkit/insights/sandboxing-for-agents/
 ---
 

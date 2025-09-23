@@ -17,6 +17,15 @@ minima:
 url: ""   # set your production URL if needed
 baseurl: ""   # if serving from a subpath
 
+# Collections for insights
+collections:
+  en_insights:
+    output: true
+    permalink: /en/neuronkit/insights/:name/
+  zh_insights:
+    output: true
+    permalink: /zh/neuronkit/insights/:name/
+
 # Optional social links shown by Minima (customize as needed)
 # https://github.com/jekyll/minima#social-links
 # social_links:

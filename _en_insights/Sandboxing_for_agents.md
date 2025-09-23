@@ -1,6 +1,8 @@
 ---
 title: "Sandboxing Agentic Systems: A Playbook"
 layout: neuronkit
+date: 2025-09-23 00:00:00 +0800
+description: "Whitepaper on sandboxing strategies and patterns for agentic systems"
 permalink: /en/neuronkit/insights/sandboxing-for-agents/
 ---
 

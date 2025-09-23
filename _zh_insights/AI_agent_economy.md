@@ -1,6 +1,8 @@
 ---
 title: 智能体经济新指南：AI 时代数字货币化的战略报告
 layout: neuronkit
+date: 2025-09-22 00:00:00 +0800
+description: 面向 AI 智能体时代的数字货币化模式与基础设施的战略报告
 permalink: /zh/neuronkit/insights/ai-agent-economy/
 ---
 

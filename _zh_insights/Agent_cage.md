@@ -1,6 +1,8 @@
 ---
 title: "智能体的牢笼：自治系统安全"
 layout: neuronkit
+date: 2025-09-20 00:00:00 +0800
+description: 面向自治AI系统的安全治理与沙箱分层设计蓝图
 permalink: /zh/neuronkit/insights/agent-cage/
 ---
 

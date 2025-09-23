@@ -1,6 +1,8 @@
 ---
 layout: neuronkit
 title: "电商重构：从点击流到对话流"
+date: 2025-09-18 00:00:00 +0800
+description: 关于电商从点击流向对话流与 Agentic 体验转型的报告
 permalink: /zh/neuronkit/whitepaper/
 ---
 

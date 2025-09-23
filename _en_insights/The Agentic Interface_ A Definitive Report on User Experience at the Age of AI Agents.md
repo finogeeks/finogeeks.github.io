@@ -1,6 +1,8 @@
 ---
 title: "The Agentic Interface: Designing Hybrid Conversational UI"
 layout: neuronkit
+date: 2025-09-17 00:00:00 +0800
+description: "Comprehensive report on hybrid conversational UI and protocols for agentic UX"
 permalink: /en/neuronkit/insights/agentic-interface/
 ---
 

@@ -1,6 +1,8 @@
 ---
 title: "E‑commerce Reinvented: From Clickstream to Dialogstream"
 layout: neuronkit
+date: 2025-09-18 00:00:00 +0800
+description: "Report on transforming e‑commerce from clickstreams to dialogstreams and agentic UX"
 permalink: /en/neuronkit/whitepaper/
 ---
 

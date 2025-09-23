@@ -1,7 +1,9 @@
 ---
 title: "The Proactive AI: A Whitepaper on Leveraging Device-Side Context for Intelligent Agents"
 layout: neuronkit
-permalink: /en/neuronkit/insights/context-agent/ 
+date: 2025-09-16 00:00:00 +0800
+description: "How device-side context enables proactive, consent-driven intelligent agents"
+permalink: /en/neuronkit/insights/context-agent/
 ---
 
 ### Executive Summary

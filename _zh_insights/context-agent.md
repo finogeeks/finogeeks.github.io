@@ -1,6 +1,8 @@
 ---
 title: "主动式AI：利用设备端上下文构建智能代理"
 layout: neuronkit
+date: 2025-09-16 00:00:00 +0800
+description: 利用设备端上下文与同意机制，打造主动式智能代理的技术白皮书
 permalink: /zh/neuronkit/insights/context-agent/
 ---
 
