@@ -1,3 +1,10 @@
+---
+title: "NeuronKit Developer Guide"
+layout: neuronkit
+description: "A comprehensive guide for iOS developers to integrate AI-powered conversational experiences into mobile apps using NeuronKit."
+permalink: /en/neuronkit/developer-guide/
+---
+
 # NeuronKit Developer Guide
 
 A comprehensive guide for iOS developers to integrate AI-powered conversational experiences into mobile apps using NeuronKit.
